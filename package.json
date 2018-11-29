@@ -4,7 +4,6 @@
   "private": true,
   "description": "Enigma Emulator",
   "devDependencies": {
-    "@htmlacademy/editorconfig-cli": "^1.0.0",
     "autoprefixer": "^9.3.1",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
@@ -19,26 +18,17 @@
     "gulp-webp": "^3.0.0",
     "posthtml-include": "^1.2.0",
     "run-sequence": "^2.2.1",
-    "stylelint": "^9.9.0"
+    "stylelint": "^9.9.0",
+    "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
-    "editorconfig": "editorconfig-cli",
     "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
     "test": "npm run editorconfig && npm run stylelint",
     "build": "gulp build",
     "start": "npm run build && gulp serve"
   },
   "browserslist": [
-    "last 2 versions",
-    "Firefox ESR"
-  ],
-  "editorconfig-cli": [
-    "*.json",
-    "*.js",
-    "source/*.html",
-    "source/js/**/*.js",
-    "source/img/**/*.svg",
-    "source/sass/**/*.{sass,scss}"
+    "last 2 versions"
   ],
   "engines": {
     "node": "10.14.0"
