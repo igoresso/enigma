@@ -1,0 +1,64 @@
+.keyboard {
+
+  &__btn {
+    width: $mobile-width * 0.074 + px;
+    padding: $mobile-width * 0.019 + px $mobile-width * 0.01 + px;
+    color: #f1f1fc;
+    font-family: 'Open Sans', sans-serif;
+    font-size: $mobile-width * 0.03 + px;
+    line-height: $mobile-width * 0.03 + px;
+    background: #090a0c;
+    border: $mobile-width * 0.003 + px solid #f1f1fc;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: $mobile-width * 0.027 + px;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #6b7076;
+    }
+
+    &:active {
+      color: #6b7076;
+      border-color: #373b3e;
+    }
+  }
+}
+
+@media (min-width: $mobile-width + px) {
+  .keyboard {
+
+    &__btn {
+      width: 7.4vw;
+      padding: 1.9vw 1vw;
+      font-size: 3vw;
+      line-height: 3vw;
+      border-width: 0.3vw;
+
+      &:not(:last-child) {
+        margin-right: 2.7vw;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-width + px) {
+  .keyboard {
+
+    &__btn {
+      width: $desktop-width * 0.074 + px;
+      padding: $desktop-width * 0.019 + px $mobile-width * 0.01 + px;
+      font-size: $desktop-width * 0.03 + px;
+      line-height: $desktop-width * 0.03 + px;
+      background: #090a0c;
+      border-width: $desktop-width * 0.003 + px;
+
+      &:not(:last-child) {
+        margin-right: $desktop-width * 0.027 + px;
+      }
+    }
+  }
+}

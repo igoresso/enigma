@@ -1,11 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Enigma Emulator</title>
+  <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
+
+  <header class="page-header">
+    <div class="page-header__wrapper">
+      <img class="page-header__logo" src="img/logo.svg" width="200px" alt="Enigma logo">
+    </div>
+  </header>
+
+  <main>
+
+    <section class="rotors">
+      <h2 class="visually-hidden">Rotors</h2>
+      <div class="rotors__wrapper">
+        <div class="rotors__item">
+          <button class="rotors__btn rotors__btn--next">Increase value</button>
+          <span class="rotors__window rotors__window--no-border">S</span>
+          <span class="rotors__window">R</span>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" value="Q"></input>
+          <span class="rotors__window">P</span>
+          <span class="rotors__window rotors__window--no-border">O</span>
+          <button class="rotors__btn rotors__btn--prev">Decrease value</button>
+        </div>
+        <div class="rotors__item">
+          <button class="rotors__btn rotors__btn--next">Increase value</button>
+          <span class="rotors__window rotors__window--no-border">S</span>
+          <span class="rotors__window">R</span>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" value="Q"></input>
+          <span class="rotors__window">P</span>
+          <span class="rotors__window rotors__window--no-border">O</span>
+          <button class="rotors__btn rotors__btn--prev">Decrease value</button>
+        </div>
+        <div class="rotors__item">
+          <button class="rotors__btn rotors__btn--next">Increase value</button>
+          <span class="rotors__window rotors__window--no-border">S</span>
+          <span class="rotors__window">R</span>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" value="Q"></input>
+          <span class="rotors__window">P</span>
+          <span class="rotors__window rotors__window--no-border">O</span>
+          <button class="rotors__btn rotors__btn--prev">Decrease value</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lampboard">
+      <h2 class="visually-hidden">Lampboard</h2>
+      <div class="section__row">
+        <span class="lampboard__lamp">Q</span>
+        <span class="lampboard__lamp">W</span>
+        <span class="lampboard__lamp">E</span>
+        <span class="lampboard__lamp">R</span>
+        <span class="lampboard__lamp">T</span>
+        <span class="lampboard__lamp">Z</span>
+        <span class="lampboard__lamp">U</span>
+        <span class="lampboard__lamp">I</span>
+        <span class="lampboard__lamp">O</span>
+      </div>
+      <div class="section__row">
+        <span class="lampboard__lamp">A</span>
+        <span class="lampboard__lamp">S</span>
+        <span class="lampboard__lamp">D</span>
+        <span class="lampboard__lamp">F</span>
+        <span class="lampboard__lamp">G</span>
+        <span class="lampboard__lamp">H</span>
+        <span class="lampboard__lamp">J</span>
+        <span class="lampboard__lamp">K</span>
+      </div>
+      <div class="section__row">
+        <span class="lampboard__lamp">P</span>
+        <span class="lampboard__lamp">Y</span>
+        <span class="lampboard__lamp">X</span>
+        <span class="lampboard__lamp">C</span>
+        <span class="lampboard__lamp">V</span>
+        <span class="lampboard__lamp">B</span>
+        <span class="lampboard__lamp">N</span>
+        <span class="lampboard__lamp">M</span>
+        <span class="lampboard__lamp">L</span>
+      </div>
+    </section>
+    <section class="section keyboard">
+      <h2 class="visually-hidden">Keyboard</h2>
+      <div class="section__row">
+        <button class="keyboard__btn" type="button">Q</button>
+        <button class="keyboard__btn" type="button">W</button>
+        <button class="keyboard__btn" type="button">E</button>
+        <button class="keyboard__btn" type="button">R</button>
+        <button class="keyboard__btn" type="button">T</button>
+        <button class="keyboard__btn" type="button">Z</button>
+        <button class="keyboard__btn" type="button">U</button>
+        <button class="keyboard__btn" type="button">I</button>
+        <button class="keyboard__btn" type="button">O</button>
+      </div>
+      <div class="section__row">
+        <button class="keyboard__btn" type="button">A</button>
+        <button class="keyboard__btn" type="button">S</button>
+        <button class="keyboard__btn" type="button">D</button>
+        <button class="keyboard__btn" type="button">F</button>
+        <button class="keyboard__btn" type="button">G</button>
+        <button class="keyboard__btn" type="button">H</button>
+        <button class="keyboard__btn" type="button">J</button>
+        <button class="keyboard__btn" type="button">K</button>
+      </div>
+      <div class="section__row">
+        <button class="keyboard__btn" type="button">P</button>
+        <button class="keyboard__btn" type="button">Y</button>
+        <button class="keyboard__btn" type="button">X</button>
+        <button class="keyboard__btn" type="button">C</button>
+        <button class="keyboard__btn" type="button">V</button>
+        <button class="keyboard__btn" type="button">B</button>
+        <button class="keyboard__btn" type="button">N</button>
+        <button class="keyboard__btn" type="button">M</button>
+        <button class="keyboard__btn" type="button">L</button>
+      </div>
+    </section>
+    <section class="plugboard">
+      <div class="plugboard__row">
+        <div class="plugboard__socket" tabindex="0">
+          <span>Q</span>
+          <div class="plugboard__plug">Q</div>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>W</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>E</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>R</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>T</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>Z</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>U</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>I</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>O</span>
+        </div>
+      </div>
+      <div class="plugboard__row">
+        <div class="plugboard__socket" tabindex="0">
+          <span>A</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>S</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>D</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>F</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>G</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>H</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>J</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>K</span>
+        </div>
+      </div>
+      <div class="plugboard__row">
+        <div class="plugboard__socket" tabindex="0">
+          <span>F</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>Y</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>X</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>C</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>V</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>B</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>N</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>M</span>
+        </div>
+        <div class="plugboard__socket" tabindex="0">
+          <span>L</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+
+  </footer>
+
 </body>
+
 </html>

@@ -15,15 +15,12 @@
     "gulp-posthtml": "^3.0.4",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-webp": "^3.0.0",
     "posthtml-include": "^1.2.0",
-    "run-sequence": "^2.2.1",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
     "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
-    "test": "npm run editorconfig && npm run stylelint",
     "build": "gulp build",
     "start": "npm run build && gulp serve"
   },

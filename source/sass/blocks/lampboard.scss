@@ -1,0 +1,56 @@
+.lampboard {
+
+  &__lamp {
+    width: $mobile-width * 0.074 + px;
+    padding: $mobile-width * 0.022 + px $mobile-width * 0.01 + px;
+    color: #373b3e;
+    font-family: 'Open Sans', sans-serif;
+    font-size: $mobile-width * 0.03 + px;
+    line-height: $mobile-width * 0.03 + px;
+    font-weight: 800;
+    text-align: center;
+    background: #090a0c;
+    border: none;
+    border-radius: 50%;
+
+    &:not(:last-child) {
+      margin-right: $mobile-width * 0.027 + px;
+    }
+
+    &--active {
+      color: #fcca46;
+    }
+  }
+}
+
+@media (min-width: $mobile-width + px) {
+  .lampboard {
+
+    &__lamp {
+      width: 7.4vw;
+      padding: 2.2vw 1vw;
+      font-size: 3vw;
+      line-height: 3vw;
+
+      &:not(:last-child) {
+        margin-right: 2.7vw;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-width + px) {
+  .lampboard {
+
+    &__lamp {
+      width: $desktop-width * 0.074 + px;
+      padding: $desktop-width * 0.022 + px $desktop-width * 0.01 + px;
+      font-size: $desktop-width * 0.03 + px;
+      line-height: $desktop-width * 0.03 + px;
+
+      &:not(:last-child) {
+        margin-right: $desktop-width * 0.027 + px;
+      }
+    }
+  }
+}
