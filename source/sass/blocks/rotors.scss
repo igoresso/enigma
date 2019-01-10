@@ -18,18 +18,6 @@
     position: relative;
     width: $mobile-width * 0.25 + px;
     height: 230px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 20%;
-      right: 0;
-      width: 1px;
-      height: 60%;
-      background: linear-gradient(to bottom,#f1f1fc 50%, transparent 50%);
-      background-size: 100% 10%;
-      background-repeat: repeat-y;
-    }
   }
 
   &__window {
@@ -66,8 +54,7 @@
     background: none;
     border-style: solid;
     border-color: #f1f1fc;
-    border-width: 0px 1px 1px 0px;
-
+    border-width: 0 1px 1px 0;
     transition: border-width 150ms ease-in-out;
     cursor: pointer;
 
@@ -84,11 +71,21 @@
       border-right-width: 4px;
     }
   }
+
+  &__wheel {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(to bottom, #f1f1fc 50%, transparent 50%);
+    background-size: 100% 10%;
+    background-repeat: repeat-y;
+  }
 }
 
 @media (min-width: $tablet-width + px) {
   .rotors {
-
     &__wrapper {
       width: 50%;
       margin: 0;

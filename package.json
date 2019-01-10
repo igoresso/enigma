@@ -4,10 +4,13 @@
   "private": true,
   "description": "Enigma Emulator",
   "devDependencies": {
+    "ajv": "^6.5.5",
     "autoprefixer": "^9.3.1",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
+    "eslint": "^5.12.0",
     "gulp": "^4.0.0",
+    "gulp-better-rollup": "^3.4.0",
     "gulp-csso": "^3.0.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.1",
@@ -15,14 +18,18 @@
     "gulp-posthtml": "^3.0.4",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "jest": "^23.6.0",
     "posthtml-include": "^1.2.0",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
     "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
+    "eslint": "eslint source/js/",
     "build": "gulp build",
-    "start": "npm run build && gulp serve"
+    "start": "npm run build && gulp serve",
+    "test": "jest"
   },
   "browserslist": [
     "last 2 versions"

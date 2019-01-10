@@ -1,5 +1,4 @@
 .keyboard {
-
   &__btn {
     width: $mobile-width * 0.074 + px;
     padding: $mobile-width * 0.019 + px $mobile-width * 0.01 + px;
@@ -30,7 +29,6 @@
 
 @media (min-width: $mobile-width + px) {
   .keyboard {
-
     &__btn {
       width: 7.4vw;
       padding: 1.9vw 1vw;
@@ -47,7 +45,6 @@
 
 @media (min-width: $desktop-width + px) {
   .keyboard {
-
     &__btn {
       width: $desktop-width * 0.074 + px;
       padding: $desktop-width * 0.019 + px $mobile-width * 0.01 + px;
