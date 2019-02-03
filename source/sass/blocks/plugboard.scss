@@ -24,6 +24,7 @@
     height: calc(100% + 2px);
     font-size: $mobile-width * 0.025 + px;
     line-height: $mobile-width * 0.025 + px;
+    text-transform: uppercase;
     background-color: #4b5358;
     border-radius: $mobile-width * 0.036 + 1 + px;
     transform: translate(-1px, -1px);
@@ -72,8 +73,8 @@
       bottom: 0;
     }
 
-    &:focus::before,
-    &:focus::after {
+    &:hover::before,
+    &:hover::after {
       border-color: #6b7076;
     }
 
