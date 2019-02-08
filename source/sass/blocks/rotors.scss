@@ -54,7 +54,7 @@
     background: none;
     border-style: solid;
     border-color: #f1f1fc;
-    border-width: 0 1px 1px 0;
+    border-width: 0 2px 2px 0;
     transition: border-width 150ms ease-in-out;
     cursor: pointer;
 
@@ -75,8 +75,8 @@
   &__wheel {
     position: absolute;
     top: 20%;
-    right: 0;
-    width: 1px;
+    right: 10%;
+    width: 2px;
     height: 60%;
     background: linear-gradient(to bottom, #f1f1fc 50%, transparent 50%);
     background-size: 100% 10%;
@@ -101,7 +101,7 @@
       width: 4.5vw;
       height: 4.5vw;
       font-size: 2.6vw;
-      border-width: 0.13vw;
+      border-width: 0.26vw;
 
       &--active {
         border-width: 0.26vw;
@@ -111,7 +111,7 @@
     &__btn {
       height: 3.3vw;
       width: 3.3vw;
-      border-width: 0 0.13vw 0.13vw 0;
+      border-width: 0 0.26vw 0.26vw 0;
 
       &--next {
         transform: translateY(2.3vw) rotate(-135deg);
@@ -153,7 +153,7 @@
     &__btn {
       height: $desktop-width * 0.033 + px;
       width: $desktop-width * 0.033 + px;
-      border-width: 0 $desktop-width * 0.0013 + px $desktop-width * 0.0013 + px 0;
+      border-width: 0 $desktop-width * 0.0026 + px $desktop-width * 0.0026 + px 0;
 
       &--next {
         transform: translateY($desktop-width * 0.023 + px) rotate(-135deg);

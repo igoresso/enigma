@@ -211,7 +211,7 @@ input[type="radio"].visually-hidden {
     background: none;
     border-style: solid;
     border-color: #f1f1fc;
-    border-width: 0 1px 1px 0;
+    border-width: 0 2px 2px 0;
     -webkit-transition: border-width 150ms ease-in-out;
     transition: border-width 150ms ease-in-out;
     cursor: pointer; }
@@ -227,8 +227,8 @@ input[type="radio"].visually-hidden {
   .rotors__wheel {
     position: absolute;
     top: 20%;
-    right: 0;
-    width: 1px;
+    right: 10%;
+    width: 2px;
     height: 60%;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #f1f1fc), color-stop(50%, transparent));
     background: linear-gradient(to bottom, #f1f1fc 50%, transparent 50%);
@@ -247,13 +247,13 @@ input[type="radio"].visually-hidden {
     width: 4.5vw;
     height: 4.5vw;
     font-size: 2.6vw;
-    border-width: 0.13vw; }
+    border-width: 0.26vw; }
     .rotors__window--active {
       border-width: 0.26vw; }
   .rotors__btn {
     height: 3.3vw;
     width: 3.3vw;
-    border-width: 0 0.13vw 0.13vw 0; }
+    border-width: 0 0.26vw 0.26vw 0; }
     .rotors__btn--next {
       -webkit-transform: translateY(2.3vw) rotate(-135deg);
               transform: translateY(2.3vw) rotate(-135deg); }
@@ -281,7 +281,7 @@ input[type="radio"].visually-hidden {
     .rotors__btn {
       height: 33.792px;
       width: 33.792px;
-      border-width: 0 1.3312px 1.3312px 0; }
+      border-width: 0 2.6624px 2.6624px 0; }
       .rotors__btn--next {
         -webkit-transform: translateY(23.552px) rotate(-135deg);
                 transform: translateY(23.552px) rotate(-135deg); }
