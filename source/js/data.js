@@ -2,7 +2,7 @@ export const Alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N'
 
 export const Layout = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
 
-export const Rotor = {
+export const RotorOption = {
   'i': {
     'letter': ['E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J'],
     'notch': 'Q'
@@ -17,10 +17,8 @@ export const Rotor = {
   }
 };
 
-export const Reflector = {
-  'B': {
-    letter: ['Y','R','U','H','Q','S','L','D','P','X','N','G','O','K','M','I','E','B','F','Z','C','W','V','J','A','T']
-  }
+export const ReflectorOption = {
+  'B': ['Y','R','U','H','Q','S','L','D','P','X','N','G','O','K','M','I','E','B','F','Z','C','W','V','J','A','T']
 };
 
 export const KeyCode= {

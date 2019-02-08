@@ -1,0 +1,19 @@
+.page-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: $mobile-width * 0.03 + px 0;
+}
+
+@media (min-width: $mobile-width + px) {
+  .page-footer {
+    padding: 3vw 0;
+  }
+}
+
+@media (min-width: $desktop-width + px) {
+  .page-footer {
+    padding: $desktop-width * 0.03 + px 0;
+  }
+}

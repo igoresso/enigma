@@ -1,6 +1,8 @@
 .plugboard {
   width: 100%;
-  padding: $mobile-width * 0.05 + px 0;
+  margin: 0;
+  padding: 0;
+  padding-top: $mobile-width * 0.05 + px;
 
   &__row {
     display: flex;
@@ -86,7 +88,7 @@
 
 @media (min-width: $mobile-width + px) {
   .plugboard {
-    padding: 5vw 0;
+    padding-top: 5vw;
 
     &__row {
       &:nth-child(2n + 1) {
@@ -125,6 +127,7 @@
   .plugboard {
     width: $desktop-width + px;
     margin: 0 auto;
+    padding-top: $desktop-width * 0.05 + px;
 
     &__row {
       &:nth-child(2n + 1) {

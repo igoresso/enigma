@@ -1,0 +1,28 @@
+.copyright {
+  color: #6b7076;
+  font-size: $mobile-width * 0.02 + px;
+
+  &__link {
+    color: inherit;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &:active {
+      color: #373b3e;
+    }
+  }
+}
+
+@media (min-width: $mobile-width + px) {
+  .copyright {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: $desktop-width + px) {
+  .copyright {
+    font-size: $desktop-width * 0.02 + px;
+  }
+}

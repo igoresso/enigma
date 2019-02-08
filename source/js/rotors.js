@@ -32,6 +32,16 @@ class Rotors {
     this.valueIndex[rotorIndex] = valueIndex;
   }
 
+  stepRotor(rotorIndex) {
+    const newValueIndex = (this.valueIndex[rotorIndex] + 1 > 25) ? 0 : (this.valueIndex[rotorIndex] + 1);
+    const newValue = Alphabet[newValueIndex];
+    this.setValue(rotorIndex, newValue);
+  }
+
+  getCurrentState() {
+    return this.valueIndex;
+  }
+
   bind() {
     for (let [index, rotor] of this.rotors.entries()) {
       const btnNext = rotor.querySelector('.rotors__btn--next');
