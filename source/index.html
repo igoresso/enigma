@@ -14,12 +14,41 @@
   <header class="page-header">
 
     <div class="page-header__wrapper">
-      <img class="page-header__logo" src="img/logo.svg" width="200px" alt="Enigma logo">
+      <a class="page-header__logo">
+        <img src="img/logo.svg" width="200" alt="Enigma logo">
+      </a>
     </div>
 
   </header>
 
   <main>
+
+    <section class="settings">
+      <h2 class="visually-hidden">Settings</h2>
+      <button class="settings__toggle">
+        <svg viewBox="0 0 48 48">
+          <path d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97L29 4.84c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3a14.8 14.8 0 0 0-3.38 1.97L9.9 10.1a1 1 0 0 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31C9.06 22.69 9 23.34 9 24s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3a14.8 14.8 0 0 0 3.38-1.97l4.98 2.01a1 1 0 0 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zM24 31c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+        </svg>
+      </button>
+      <form class="settings__dialogue">
+        <div class="settings__field">
+          <label class="settings__label" for="reflector">Reflector</label>
+          <select class="settings__select" name="reflector" id="reflector"></select>
+        </div>
+        <div class="settings__field">
+          <label class="settings__label" for="rotor-1">Rotor 1</label>
+          <select class="settings__select" name="rotor-1" id="rotor-1"></select>
+        </div>
+        <div class="settings__field">
+          <label class="settings__label" for="rotor-2">Rotor 2</label>
+          <select class="settings__select" name="rotor-2" id="rotor-2"></select>
+        </div>
+        <div class="settings__field">
+          <label class="settings__label" for="rotor-3">Rotor 3</label>
+          <select class="settings__select" name="rotor-3" id="rotor-3"></select>
+        </div>
+      </form>
+    </section>
 
     <section class="rotors">
       <h2 class="visually-hidden">Rotors</h2>
@@ -28,7 +57,7 @@
           <button class="rotors__btn rotors__btn--next">Next value</button>
           <span class="rotors__window rotors__window--no-border"></span>
           <span class="rotors__window"></span>
-          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}"></input>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}">
           <span class="rotors__window"></span>
           <span class="rotors__window rotors__window--no-border"></span>
           <button class="rotors__btn rotors__btn--prev">Previous value</button>
@@ -38,7 +67,7 @@
           <button class="rotors__btn rotors__btn--next">Next value</button>
           <span class="rotors__window rotors__window--no-border"></span>
           <span class="rotors__window"></span>
-          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}"></input>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}">
           <span class="rotors__window"></span>
           <span class="rotors__window rotors__window--no-border"></span>
           <button class="rotors__btn rotors__btn--prev">Previous value</button>
@@ -48,7 +77,7 @@
           <button class="rotors__btn rotors__btn--next">Next value</button>
           <span class="rotors__window rotors__window--no-border"></span>
           <span class="rotors__window"></span>
-          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}"></input>
+          <input class="rotors__window rotors__window--active" type="text" size="1" maxlength="1" pattern="[A-Za-z]{1}">
           <span class="rotors__window"></span>
           <span class="rotors__window rotors__window--no-border"></span>
           <button class="rotors__btn rotors__btn--prev">Previous value</button>
@@ -127,88 +156,90 @@
         <button class="keyboard__btn" type="button">L</button>
       </div>
     </section>
+
     <section class="plugboard">
+      <h2 class="visually-hidden">Plugboard</h2>
       <div class="plugboard__row">
-        <div class="plugboard__socket" letter="Q" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>Q</span>
         </div>
-        <div class="plugboard__socket" letter="W" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>W</span>
         </div>
-        <div class="plugboard__socket" letter="E" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>E</span>
         </div>
-        <div class="plugboard__socket" letter="R" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>R</span>
         </div>
-        <div class="plugboard__socket" letter="T" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>T</span>
         </div>
-        <div class="plugboard__socket" letter="Z" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>Z</span>
         </div>
-        <div class="plugboard__socket" letter="U" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>U</span>
         </div>
-        <div class="plugboard__socket" letter="I" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>I</span>
         </div>
-        <div class="plugboard__socket" letter="O" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>O</span>
         </div>
       </div>
       <div class="plugboard__row">
-        <div class="plugboard__socket" letter="A" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>A</span>
         </div>
-        <div class="plugboard__socket" letter="S" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>S</span>
         </div>
-        <div class="plugboard__socket" letter="D" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>D</span>
         </div>
-        <div class="plugboard__socket" letter="F" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>F</span>
         </div>
-        <div class="plugboard__socket" letter="G" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>G</span>
         </div>
-        <div class="plugboard__socket" letter="H" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>H</span>
         </div>
-        <div class="plugboard__socket" letter="J" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>J</span>
         </div>
-        <div class="plugboard__socket" letter="K" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>K</span>
         </div>
       </div>
       <div class="plugboard__row">
-        <div class="plugboard__socket" letter="F" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>F</span>
         </div>
-        <div class="plugboard__socket" letter="Y" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>Y</span>
         </div>
-        <div class="plugboard__socket" letter="X" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>X</span>
         </div>
-        <div class="plugboard__socket" letter="C" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>C</span>
         </div>
-        <div class="plugboard__socket" letter="V" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>V</span>
         </div>
-        <div class="plugboard__socket" letter="B" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>B</span>
         </div>
-        <div class="plugboard__socket" letter="N" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>N</span>
         </div>
-        <div class="plugboard__socket" letter="M" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>M</span>
         </div>
-        <div class="plugboard__socket" letter="L" tabindex="0">
+        <div class="plugboard__socket" tabindex="0" role="button">
           <span>L</span>
         </div>
       </div>
@@ -218,8 +249,19 @@
 
   <footer class="page-footer">
 
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a class="nav__link" href="https://en.wikipedia.org/wiki/Enigma_machine">Wiki</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="https://github.com/igoresso/enigma/issues">Found a mistake?</a>
+        </li>
+      </ul>
+    </nav>
+
     <span class="copyright">
-      &copy; 2019 <a href="https://github.com/igoresso/enigma" class="copyright__link">@igoresso</a>
+      &copy; 2019 <a class="copyright__link" href="https://github.com/igoresso/enigma">@igoresso</a>
     </span>
 
   </footer>

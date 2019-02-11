@@ -3,6 +3,7 @@ import Rotors from './rotors';
 import Lampboard from './lampboard';
 import Keyboard from './keyboard';
 import Plugboard from './plugboard';
+import Settings from './settings';
 import Enigma from './enigma';
 
 class App {
@@ -16,6 +17,13 @@ class App {
     Keyboard.init();
     Plugboard.init();
     Rotors.init();
+    Settings.init();
+  }
+
+  reset() {
+    Rotors.reset();
+    Lampboard.reset();
+    Plugboard.reset();
   }
 
   changeRotor(rotor, notch, rotorIndex) {
@@ -57,9 +65,20 @@ class App {
   }
 }
 
-const app = new App([RotorOption.iii.letter, RotorOption.ii.letter, RotorOption.i.letter], [RotorOption.iii.notch, RotorOption.ii.notch, RotorOption.i.notch], ReflectorOption.B);
+const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
 app.init();
 
 Keyboard.inputAction = (letter) => {
   app.inputAction(letter);
+};
+
+Settings.changeReflector = (value) => {
+  app.reflector = ReflectorOption[value];
+  app.reset();
+};
+
+Settings.changeRotor = (rotor, value) => {
+  app.rotorSet[rotor] = RotorOption[value]['alphabet'];
+  app.rotorSetNotch[rotor] = RotorOption[value]['notch'];
+  app.reset();
 };

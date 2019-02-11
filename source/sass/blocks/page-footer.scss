@@ -1,19 +1,20 @@
 .page-footer {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   width: 100%;
   margin: 0;
-  padding: $mobile-width * 0.03 + px 0;
+  padding: $mobile-width * 0.03 + px $mobile-width * 0.05 + px;
 }
 
 @media (min-width: $mobile-width + px) {
   .page-footer {
-    padding: 3vw 0;
+    padding: 3vw 5vw;
   }
 }
 
 @media (min-width: $desktop-width + px) {
   .page-footer {
-    padding: $desktop-width * 0.03 + px 0;
+    padding: $desktop-width * 0.03 + px $desktop-width * 0.05 + px;
   }
 }

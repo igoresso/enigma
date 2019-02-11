@@ -1,0 +1,131 @@
+.settings {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+
+  &__dialogue {
+    visibility: hidden;
+    height: 50px;
+    padding-right: 25px;
+    margin-right: -25px;
+    background-color: #f2f2f2;
+    border-top-left-radius: 4px;
+    opacity: 0;
+    overflow-y: visible;
+    transform: scaleX(0) translateX(0%);
+    transform-origin: right center;
+    transition: 0.2s;
+    transition-delay: 0s;
+
+    &--active {
+      visibility: visible;
+      transform: scaleX(1) translateX(0%);
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+  }
+
+  &__field {
+    position: relative;
+    height: 51px;
+  }
+
+  &__label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #090a0c;
+    font-size: 8px;
+    line-height: 8px;
+  }
+
+  &__select {
+    width: 75px;
+    height: 100%;
+    margin: 0;
+    padding: 12px 0 0 10px;
+    font-size: 18px;
+    line-height: 18px;
+    background: #f2f2f2 url("../img/dropdown.svg") no-repeat right center;
+    background-size: 24px;
+    border: none;
+    border-bottom: 1px solid $color-bg;
+    appearance: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-image: url("../img/dropdown-active.svg");
+    }
+  }
+
+  &__toggle {
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    transition: 0.2s;
+    transition-delay: 0.2s;
+    cursor: pointer;
+
+    svg {
+      width: 75%;
+      fill: #f1f1fc;
+      opacity: 0.4;
+      transition-delay: 0.2s;
+    }
+
+    &--active {
+      background-color: #f2f2f2;
+      transform: rotate(-60deg);
+      transition-delay: 0s;
+
+      svg {
+        fill: #090a0c;
+        transition-delay: 0s;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (min-width: $mobile-width + px) {
+  .settings {
+    right: 3.1vw;
+  }
+}
+
+@media (min-width: $tablet-width + px) {
+  .settings {
+    top: 20px;
+    right: 20px;
+
+    &__dialogue {
+      display: flex;
+    }
+
+    &__field {
+      height: 50px;
+    }
+
+    &__select {
+      border-bottom: none;
+      border-right: 1px solid $color-bg;
+    }
+  }
+}

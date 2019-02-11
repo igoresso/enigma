@@ -6,22 +6,32 @@
   const Layout = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
 
   const RotorOption = {
-    'i': {
-      'letter': ['E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J'],
+    'I': {
+      'alphabet': ['E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J'],
       'notch': 'Q'
     },
-    'ii': {
-      'letter': ['A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E'],
+    'II': {
+      'alphabet': ['A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E'],
       'notch': 'E'
     },
-    'iii': {
-      'letter': ['B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O'],
+    'III': {
+      'alphabet': ['B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O'],
       'notch': 'V'
+    },
+    'IV': {
+      'alphabet': ['E','S','O','V','P','Z','J','A','Y','Q','U','I','R','H','X','L','N','F','T','G','K','D','C','M','W','B'],
+      'notch': 'J'
+    },
+    'V': {
+      'alphabet': ['V','Z','B','R','G','I','T','Y','U','P','S','D','N','H','L','X','A','W','M','J','Q','O','F','E','C','K'],
+      'notch': 'Z'
     }
   };
 
   const ReflectorOption = {
-    'B': ['Y','R','U','H','Q','S','L','D','P','X','N','G','O','K','M','I','E','B','F','Z','C','W','V','J','A','T']
+    'A': ['E','J','M','Z','A','L','Y','X','V','B','W','F','C','R','Q','U','O','N','T','S','P','I','K','H','G','D'],
+    'B': ['Y','R','U','H','Q','S','L','D','P','X','N','G','O','K','M','I','E','B','F','Z','C','W','V','J','A','T'],
+    'C': ['F','V','P','J','I','A','O','Y','E','D','R','Z','X','W','G','C','T','K','U','Q','S','B','N','M','H','L']
   };
 
   class Rotors {
@@ -142,10 +152,21 @@
 
     bind() {
       for (let key of this.keys) {
+        const letter = key.innerText.toUpperCase();
+
         key.onclick = () => {
-          this.inputAction(key.innerText.toUpperCase());
+          this.inputAction(letter);
         };
       }
+
+      document.onkeypress = (evt) => {
+        const re = /^[A-Z]{1}/;
+        const key = evt.key.toUpperCase();
+
+        if (re.test(key) && key.length == 1) {
+          this.inputAction(key);
+        }
+      };
     }
 
     init() {
@@ -165,6 +186,8 @@
     createPlug(pairLetter) {
       const plug = document.createElement('div');
       plug.classList.add('plugboard__plug');
+      plug.tabIndex = 0;
+      plug.setAttribute('role', 'button');
       plug.innerText = pairLetter.toUpperCase();
       return plug;
     }
@@ -177,8 +200,8 @@
     }
 
     connectSockets(socket1, socket2) {
-      const letter1 = socket2.getAttribute('letter');
-      const letter2 = socket1.getAttribute('letter');
+      const letter1 = socket2.querySelector('span').innerText;
+      const letter2 = socket1.querySelector('span').innerText;
       const plug1 = this.createPlug(letter1);
       const plug2 = this.createPlug(letter2);
 
@@ -200,8 +223,11 @@
 
     reset() {
       for (let socket of this.sockets) {
-        const plug = socket.querySelector('.plugboard__socket');
-        plug.remove;
+        const plug = socket.querySelector('.plugboard__plug');
+        if (!plug) {
+          continue;
+        }
+        plug.remove();
       }
 
       this.connections = {};
@@ -227,6 +253,78 @@
   }
 
   const plugboard = new Plugboard('.plugboard__socket');
+
+  class Settings {
+    constructor(classDialogue, classToggle, classSelect) {
+      this.dialogueClass = classDialogue;
+      this.toggleClass = classToggle;
+      this.selectClass = classSelect;
+    }
+
+    changeRotor(rotor, value) {
+      return [rotor, value];
+    }
+
+    changeReflector(value) {
+      return value;
+    }
+
+    createOption(value) {
+      const option = document.createElement('option');
+      option.value = value;
+      option.innerText = value;
+      return option;
+    }
+
+    bind() {
+      const dialogue = document.querySelector(`.${this.dialogueClass}`);
+      const toggle = document.querySelector(`.${this.toggleClass}`);
+      const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));
+
+      const reflectors = Object.keys(ReflectorOption);
+      const rotors = Object.keys(RotorOption);
+
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle(`${this.toggleClass}--active`);
+        dialogue.classList.toggle(`${this.dialogueClass}--active`);
+      });
+
+      reflectors.forEach((item) => {
+        selects[0].appendChild(this.createOption(item));
+      });
+
+      selects[0].onchange = () => {
+        this.changeReflector(selects[0].value);
+        selects[0].blur();
+      };
+
+      for (let i = 1; i < selects.length; i++) {
+        rotors.forEach((item) => {
+          selects[i].appendChild(this.createOption(item));
+        });
+
+        selects[i].onchange = () => {
+          this.changeRotor(3 - i, selects[i].value);
+          selects[i].blur();
+        };
+      }
+    }
+
+    init() {
+      this.bind();
+      this.reset();
+    }
+
+    reset() {
+      const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));
+      selects[0].value = 'B';
+      selects[1].value = 'I';
+      selects[2].value = 'II';
+      selects[3].value = 'III';
+    }
+  }
+
+  const settings = new Settings('settings__dialogue', 'settings__toggle', 'settings__select');
 
   class Enigma {
     constructor() {
@@ -283,6 +381,13 @@
       keyboard.init();
       plugboard.init();
       rotors.init();
+      settings.init();
+    }
+
+    reset() {
+      rotors.reset();
+      lampboard.reset();
+      plugboard.reset();
     }
 
     changeRotor(rotor, notch, rotorIndex) {
@@ -324,11 +429,22 @@
     }
   }
 
-  const app = new App([RotorOption.iii.letter, RotorOption.ii.letter, RotorOption.i.letter], [RotorOption.iii.notch, RotorOption.ii.notch, RotorOption.i.notch], ReflectorOption.B);
+  const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
   app.init();
 
   keyboard.inputAction = (letter) => {
     app.inputAction(letter);
+  };
+
+  settings.changeReflector = (value) => {
+    app.reflector = ReflectorOption[value];
+    app.reset();
+  };
+
+  settings.changeRotor = (rotor, value) => {
+    app.rotorSet[rotor] = RotorOption[value]['alphabet'];
+    app.rotorSetNotch[rotor] = RotorOption[value]['notch'];
+    app.reset();
   };
 
 }());

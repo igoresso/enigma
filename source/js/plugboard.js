@@ -8,6 +8,8 @@ class Plugboard {
   createPlug(pairLetter) {
     const plug = document.createElement('div');
     plug.classList.add('plugboard__plug');
+    plug.tabIndex = 0;
+    plug.setAttribute('role', 'button');
     plug.innerText = pairLetter.toUpperCase();
     return plug;
   }
@@ -20,8 +22,8 @@ class Plugboard {
   }
 
   connectSockets(socket1, socket2) {
-    const letter1 = socket2.getAttribute('letter');
-    const letter2 = socket1.getAttribute('letter');
+    const letter1 = socket2.querySelector('span').innerText;
+    const letter2 = socket1.querySelector('span').innerText;
     const plug1 = this.createPlug(letter1);
     const plug2 = this.createPlug(letter2);
 
@@ -43,8 +45,11 @@ class Plugboard {
 
   reset() {
     for (let socket of this.sockets) {
-      const plug = socket.querySelector('.plugboard__socket');
-      plug.remove;
+      const plug = socket.querySelector('.plugboard__plug');
+      if (!plug) {
+        continue;
+      }
+      plug.remove();
     }
 
     this.connections = {};

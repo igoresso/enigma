@@ -9,10 +9,21 @@ class Keyboard {
 
   bind() {
     for (let key of this.keys) {
+      const letter = key.innerText.toUpperCase();
+
       key.onclick = () => {
-        this.inputAction(key.innerText.toUpperCase());
+        this.inputAction(letter);
       };
     }
+
+    document.onkeypress = (evt) => {
+      const re = /^[A-Z]{1}/;
+      const key = evt.key.toUpperCase();
+
+      if (re.test(key) && key.length == 1) {
+        this.inputAction(key);
+      }
+    };
   }
 
   init() {
