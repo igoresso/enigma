@@ -4,6 +4,7 @@ import Lampboard from './lampboard';
 import Keyboard from './keyboard';
 import Plugboard from './plugboard';
 import Settings from './settings';
+import Message from './message';
 import Enigma from './enigma';
 
 class App {
@@ -18,6 +19,7 @@ class App {
     Plugboard.init();
     Rotors.init();
     Settings.init();
+    Message.init();
   }
 
   reset() {
@@ -62,6 +64,8 @@ class App {
     }
 
     Lampboard.newOutput(result);
+
+    return result;
   }
 }
 
@@ -81,4 +85,18 @@ Settings.changeRotor = (rotor, value) => {
   app.rotorSet[rotor] = RotorOption[value]['alphabet'];
   app.rotorSetNotch[rotor] = RotorOption[value]['notch'];
   app.reset();
+};
+
+Message.encryptText = (text) => {
+  let output = '';
+
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] == ' ') {
+      output += text[i];
+    } else {
+      output += app.inputAction(text[i]);
+    }
+  }
+
+  return output;
 };

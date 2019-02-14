@@ -30,10 +30,10 @@ class Settings {
     const reflectors = Object.keys(ReflectorOption);
     const rotors = Object.keys(RotorOption);
 
-    toggle.addEventListener('click', () => {
+    toggle.onclick = () => {
       toggle.classList.toggle(`${this.toggleClass}--active`);
       dialogue.classList.toggle(`${this.dialogueClass}--active`);
-    });
+    };
 
     reflectors.forEach((item) => {
       selects[0].appendChild(this.createOption(item));

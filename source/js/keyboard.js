@@ -16,7 +16,7 @@ class Keyboard {
       };
     }
 
-    document.onkeypress = (evt) => {
+    document.onkeyup = (evt) => {
       const re = /^[A-Z]{1}/;
       const key = evt.key.toUpperCase();
 

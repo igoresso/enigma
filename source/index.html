@@ -5,7 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Enigma Emulator</title>
+  <meta name="author" content="Igor Tyshchenko">
+  <meta name="description" content="Modern web version of one of the most iconic cipher machine.">
+  <title>Enigma I Emulator</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#171b27">
+  <meta name="msapplication-TileColor" content="#171b27">
+  <meta name="theme-color" content="#171b27">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -245,6 +254,39 @@
       </div>
     </section>
 
+    <button class="modal__toggle">
+      <svg viewBox="0 0 48 48">
+        <path d="M43.98 8c0-2.21-1.77-4-3.98-4H8C5.79 4 4 5.79 4 8v24c0 2.21 1.79 4 4 4h28l8 8-.02-36zM36 28H12v-4h24v4zm0-6H12v-4h24v4zm0-6H12v-4h24v4z"/>
+      </svg>
+    </button>
+
+    <section class="modal">
+      <div class="modal__background">
+        <div class="message modal__content">
+          <svg class="modal__svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
+          </svg>
+          <h2 class="visually-hidden">Encrypt/decrypt your message</h2>
+          <div class="modal__wrapper">
+            <div class="message__row">
+              <span class="message__date">Date: <time id="date"></time></span>
+              <time class="message__time" id="time"></time>
+            </div>
+            <form class="message__form">
+              <label class="message__label" for="user-input">Message</label>
+              <textarea class="message__input" name="user-input" id="user-input" rows="10"></textarea>
+              <div class="message__row">
+                <input class="message__checkbox" type="checkbox" name="keep-formatting" id="keep-formatting">
+                <label for="keep-formatting">Preserve formatting</label>
+                <button class="message__btn" type="button">Encrypt</button>
+              </div>
+            </form>
+            <p class="message__output"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="page-footer">
@@ -266,7 +308,7 @@
 
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.min.js"></script>
 
 </body>
 
