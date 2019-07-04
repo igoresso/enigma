@@ -12,8 +12,9 @@ const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
 const server = require('browser-sync').create();
 const del = require('del');
-const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
+const rollup = require('gulp-better-rollup');
+const babel = require('rollup-plugin-babel');
 
 gulp.task('clean', () => del('build'));
 
@@ -67,7 +68,7 @@ gulp.task('scripts', () =>
     .src('source/js/main.js')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(rollup({}, 'iife'))
+    .pipe(rollup({plugins: [babel()]}, 'iife'))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/js'))
 );
@@ -81,7 +82,7 @@ function browserSync(done) {
     server: {
       baseDir: 'build/'
     },
-  port: 3000
+    port: 3000
   });
   done();
 }
