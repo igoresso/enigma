@@ -1,37 +1,34 @@
 (function () {
   'use strict';
 
-  const Alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
-  const Layout = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
-
+  const Alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const Layout = ['Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'P', 'Y', 'X', 'C', 'V', 'B', 'N', 'M', 'L'];
   const RotorOption = {
     'I': {
-      'alphabet': ['E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J'],
+      'alphabet': ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J'],
       'notch': 'Q'
     },
     'II': {
-      'alphabet': ['A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E'],
+      'alphabet': ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E'],
       'notch': 'E'
     },
     'III': {
-      'alphabet': ['B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O'],
+      'alphabet': ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O'],
       'notch': 'V'
     },
     'IV': {
-      'alphabet': ['E','S','O','V','P','Z','J','A','Y','Q','U','I','R','H','X','L','N','F','T','G','K','D','C','M','W','B'],
+      'alphabet': ['E', 'S', 'O', 'V', 'P', 'Z', 'J', 'A', 'Y', 'Q', 'U', 'I', 'R', 'H', 'X', 'L', 'N', 'F', 'T', 'G', 'K', 'D', 'C', 'M', 'W', 'B'],
       'notch': 'J'
     },
     'V': {
-      'alphabet': ['V','Z','B','R','G','I','T','Y','U','P','S','D','N','H','L','X','A','W','M','J','Q','O','F','E','C','K'],
+      'alphabet': ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 'X', 'A', 'W', 'M', 'J', 'Q', 'O', 'F', 'E', 'C', 'K'],
       'notch': 'Z'
     }
   };
-
   const ReflectorOption = {
-    'A': ['E','J','M','Z','A','L','Y','X','V','B','W','F','C','R','Q','U','O','N','T','S','P','I','K','H','G','D'],
-    'B': ['Y','R','U','H','Q','S','L','D','P','X','N','G','O','K','M','I','E','B','F','Z','C','W','V','J','A','T'],
-    'C': ['F','V','P','J','I','A','O','Y','E','D','R','Z','X','W','G','C','T','K','U','Q','S','B','N','M','H','L']
+    'A': ['E', 'J', 'M', 'Z', 'A', 'L', 'Y', 'X', 'V', 'B', 'W', 'F', 'C', 'R', 'Q', 'U', 'O', 'N', 'T', 'S', 'P', 'I', 'K', 'H', 'G', 'D'],
+    'B': ['Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O', 'K', 'M', 'I', 'E', 'B', 'F', 'Z', 'C', 'W', 'V', 'J', 'A', 'T'],
+    'C': ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', 'W', 'G', 'C', 'T', 'K', 'U', 'Q', 'S', 'B', 'N', 'M', 'H', 'L']
   };
 
   class Rotors {
@@ -43,31 +40,27 @@
     setValue(rotorIndex, value) {
       const rotor = this.rotors[rotorIndex];
       const valueIndex = Alphabet.indexOf(value);
-
       const mainWindow = rotor.querySelector('.rotors__window--active');
       const firstNextWindow = mainWindow.previousElementSibling;
       const secondNextWindow = firstNextWindow.previousElementSibling;
       const firstPrevWindow = mainWindow.nextElementSibling;
       const secondPrevWindow = firstPrevWindow.nextElementSibling;
       const wheel = rotor.querySelector('.rotors__wheel');
-
-      const firstNextValueIndex = (valueIndex + 1 > 25) ? 0 : valueIndex + 1;
-      const secondNextValueIndex = (valueIndex + 2 > 25) ? valueIndex - 26 + 2 : valueIndex + 2;
-      const firstPrevValueIndex = (valueIndex - 1 < 0) ? 25 : valueIndex - 1;
-      const secondPrevValueIndex = (valueIndex - 2 < 0) ? valueIndex + 26 - 2 : valueIndex - 2;
-
+      const firstNextValueIndex = valueIndex + 1 > 25 ? 0 : valueIndex + 1;
+      const secondNextValueIndex = valueIndex + 2 > 25 ? valueIndex - 26 + 2 : valueIndex + 2;
+      const firstPrevValueIndex = valueIndex - 1 < 0 ? 25 : valueIndex - 1;
+      const secondPrevValueIndex = valueIndex - 2 < 0 ? valueIndex + 26 - 2 : valueIndex - 2;
       mainWindow.value = Alphabet[valueIndex];
       firstNextWindow.innerText = Alphabet[firstNextValueIndex];
       secondNextWindow.innerText = Alphabet[secondNextValueIndex];
       firstPrevWindow.innerText = Alphabet[firstPrevValueIndex];
       secondPrevWindow.innerText = Alphabet[secondPrevValueIndex];
-
-      wheel.style.backgroundPositionY = (valueIndex * 100 / 26) * 7 + '%';
+      wheel.style.backgroundPositionY = valueIndex * 100 / 26 * 7 + '%';
       this.valueIndex[rotorIndex] = valueIndex;
     }
 
     stepRotor(rotorIndex) {
-      const newValueIndex = (this.valueIndex[rotorIndex] + 1 > 25) ? 0 : (this.valueIndex[rotorIndex] + 1);
+      const newValueIndex = this.valueIndex[rotorIndex] + 1 > 25 ? 0 : this.valueIndex[rotorIndex] + 1;
       const newValue = Alphabet[newValueIndex];
       this.setValue(rotorIndex, newValue);
     }
@@ -84,13 +77,13 @@
 
         btnNext.onclick = () => {
           const currentValueIndex = this.valueIndex[index];
-          const newValueIndex = (currentValueIndex + 1 > 25) ? 0 : currentValueIndex + 1;
+          const newValueIndex = currentValueIndex + 1 > 25 ? 0 : currentValueIndex + 1;
           this.setValue(index, Alphabet[newValueIndex]);
         };
 
         btnPrev.onclick = () => {
           const currentValueIndex = this.valueIndex[index];
-          const newValueIndex = (currentValueIndex - 1 < 0) ? 25 : currentValueIndex - 1;
+          const newValueIndex = currentValueIndex - 1 < 0 ? 25 : currentValueIndex - 1;
           this.setValue(index, Alphabet[newValueIndex]);
         };
 
@@ -115,6 +108,7 @@
       this.reset();
       this.bind();
     }
+
   }
 
   const rotors = new Rotors('.rotors__item');
@@ -137,6 +131,7 @@
       this.lamps[currentIndex].classList.remove('lampboard__lamp--active');
       this.lastIndex = null;
     }
+
   }
 
   const lampboard = new Lampboard('.lampboard__lamp');
@@ -159,7 +154,7 @@
         };
       }
 
-      document.onkeyup = (evt) => {
+      document.onkeyup = evt => {
         const re = /^[A-Z]{1}/;
         const key = evt.key.toUpperCase();
 
@@ -172,6 +167,7 @@
     init() {
       this.bind();
     }
+
   }
 
   const keyboard = new Keyboard('.keyboard__btn');
@@ -205,12 +201,12 @@
       const plug1 = this.createPlug(letter1);
       const plug2 = this.createPlug(letter2);
 
-      plug1.onclick = (evt) => {
+      plug1.onclick = evt => {
         evt.stopPropagation();
         this.disconnectSockets(plug1, plug2, letter1, letter2);
       };
 
-      plug2.onclick = (evt) => {
+      plug2.onclick = evt => {
         evt.stopPropagation();
         this.disconnectSockets(plug1, plug2, letter1, letter2);
       };
@@ -224,9 +220,11 @@
     reset() {
       for (let socket of this.sockets) {
         const plug = socket.querySelector('.plugboard__plug');
+
         if (!plug) {
           continue;
         }
+
         plug.remove();
       }
 
@@ -250,6 +248,7 @@
     init() {
       this.bind();
     }
+
   }
 
   const plugboard = new Plugboard('.plugboard__socket');
@@ -280,7 +279,6 @@
       const dialogue = document.querySelector(`.${this.dialogueClass}`);
       const toggle = document.querySelector(`.${this.toggleClass}`);
       const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));
-
       const reflectors = Object.keys(ReflectorOption);
       const rotors = Object.keys(RotorOption);
 
@@ -289,7 +287,7 @@
         dialogue.classList.toggle(`${this.dialogueClass}--active`);
       };
 
-      reflectors.forEach((item) => {
+      reflectors.forEach(item => {
         selects[0].appendChild(this.createOption(item));
       });
 
@@ -299,7 +297,7 @@
       };
 
       for (let i = 1; i < selects.length; i++) {
-        rotors.forEach((item) => {
+        rotors.forEach(item => {
           selects[i].appendChild(this.createOption(item));
         });
 
@@ -322,6 +320,7 @@
       selects[2].value = 'II';
       selects[3].value = 'III';
     }
+
   }
 
   const settings = new Settings('settings__dialogue', 'settings__toggle', 'settings__select');
@@ -342,23 +341,21 @@
     setTime() {
       const dateArea = document.getElementById(this.dateID);
       const timeArea = document.getElementById(this.timeID);
-
       let today = new Date();
       let dd = today.getDate();
       let mm = today.getMonth();
       let yyyy = today.getFullYear();
       let hours = today.getHours();
       let minutes = today.getMinutes();
-
       dateArea.innerText = `${dd} ${this.month[mm]} ${yyyy}`;
 
-      if(dd < 10) {
+      if (dd < 10) {
         dd = '0' + dd;
       }
 
       mm += 1;
 
-      if(mm < 10) {
+      if (mm < 10) {
         mm = '0' + mm;
       }
 
@@ -389,11 +386,11 @@
         modal.classList.remove(`${this.modalClass}--active`);
       };
 
-      content.onclick = (evt) => {
+      content.onclick = evt => {
         evt.stopPropagation();
       };
 
-      input.onkeyup = (evt) => {
+      input.onkeyup = evt => {
         evt.stopPropagation();
         const re = /[^A-Za-z\s]/g;
         input.value = input.value.replace(re, '');
@@ -402,6 +399,7 @@
 
       submit.onclick = () => {
         let text = input.value;
+
         if (!checkbox.checked) {
           text = text.replace(/ /g, '').match(/.{1,5}/g).join(' ');
         }
@@ -413,21 +411,20 @@
     init() {
       this.bind();
     }
+
   }
 
   const message = new Message('modal', 'modal__toggle', 'date', 'time', 'message__input', 'keep-formatting', 'message__btn', 'message__output');
 
   class Enigma {
-    constructor() {
-
-    }
+    constructor() {}
 
     sumValues(a, b) {
-      return (a + b > 25) ? (a - 26 + b) : (a + b);
+      return a + b > 25 ? a - 26 + b : a + b;
     }
 
     subValues(a, b) {
-      return (a - b < 0) ? (a + 26 - b) : (a - b);
+      return a - b < 0 ? a + 26 - b : a - b;
     }
 
     encrypt(letter, rotors, rotorPositions, reflector) {
@@ -454,9 +451,9 @@
       }
 
       result = Alphabet[result];
-
       return result;
     }
+
   }
 
   const enigma = new Enigma();
@@ -500,6 +497,7 @@
 
       for (let i = 0; i < this.rotorSet.length - 1; i++) {
         const currentValue = Alphabet[rotors.valueIndex[i]];
+
         if (currentValue == this.rotorSetNotch[i]) {
           rotorsToStep.push(i + 1);
         } else {
@@ -507,10 +505,9 @@
         }
       }
 
-      rotorsToStep.forEach((item) => {
+      rotorsToStep.forEach(item => {
         rotors.stepRotor(item);
       });
-
       let result = enigma.encrypt(letter, this.rotorSet, rotors.valueIndex, this.reflector);
 
       if (result in plugboard.connections) {
@@ -518,19 +515,19 @@
       }
 
       lampboard.newOutput(result);
-
       return result;
     }
+
   }
 
   const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
   app.init();
 
-  keyboard.inputAction = (letter) => {
+  keyboard.inputAction = letter => {
     app.inputAction(letter);
   };
 
-  settings.changeReflector = (value) => {
+  settings.changeReflector = value => {
     app.reflector = ReflectorOption[value];
     app.reset();
   };
@@ -541,7 +538,7 @@
     app.reset();
   };
 
-  message.encryptText = (text) => {
+  message.encryptText = text => {
     let output = '';
 
     for (let i = 0; i < text.length; i++) {

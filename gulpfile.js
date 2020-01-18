@@ -1,20 +1,19 @@
 'use strict';
 
 const gulp = require('gulp');
-const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
-const postcss = require('gulp-postcss');
-const posthtml = require('gulp-posthtml');
-const include = require('posthtml-include');
-const autoprefixer = require('autoprefixer');
-const minify = require('gulp-csso');
-const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
 const server = require('browser-sync').create();
 const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
 const rollup = require('gulp-better-rollup');
 const babel = require('rollup-plugin-babel');
+const sass = require('gulp-sass');
+const postcss = require("gulp-postcss");
+const csso = require("gulp-csso");
+const autoprefixer = require("autoprefixer");
+const posthtml = require("gulp-posthtml");
+const include = require("posthtml-include");
 
 gulp.task('clean', () => del('build'));
 
@@ -29,27 +28,17 @@ gulp.task('copy', () =>
     .pipe(gulp.dest('build'))
 );
 
-gulp.task('images', () =>
-  gulp
-    .src('source/img/**/*.{png,jpg,svg}')
-    .pipe(imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true}),
-      imagemin.svgo()
-    ]))
-    .pipe(gulp.dest('source/img'))
-);
-
 gulp.task('html', () =>
   gulp
     .src('source/*.html')
+    .pipe(plumber())
     .pipe(posthtml([
       include()
     ]))
     .pipe(gulp.dest('build'))
 );
 
-gulp.task('style', () =>
+gulp.task('styles', () =>
   gulp
     .src('source/sass/style.scss')
     .pipe(plumber())
@@ -58,7 +47,7 @@ gulp.task('style', () =>
       autoprefixer()
     ]))
     .pipe(gulp.dest('build/css'))
-    .pipe(minify())
+    .pipe(csso())
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest('build/css'))
 );
@@ -73,7 +62,7 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('build/js'))
 );
 
-gulp.task('build', gulp.series('clean', gulp.parallel('copy', 'style', 'html', 'scripts')));
+gulp.task('build', gulp.series('clean', gulp.parallel('copy', 'html', 'styles', 'scripts')));
 
 gulp.task('serve', gulp.parallel(browserSync, watchFiles));
 
@@ -93,7 +82,7 @@ function browserSyncReload(done) {
 }
 
 function watchFiles() {
-  gulp.watch('source/sass/**/*.{scss,sass}', gulp.series('style', browserSyncReload));
-  gulp.watch('source/*.html', gulp.series('html', browserSyncReload));
   gulp.watch('source/js/**/*.js', gulp.series('scripts', browserSyncReload));
+  gulp.watch('source/sass/**/*.scss', gulp.series('styles', browserSyncReload));
+  gulp.watch('source/*.html', gulp.series('html', browserSyncReload));
 }
