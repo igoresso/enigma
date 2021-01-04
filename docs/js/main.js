@@ -87,12 +87,16 @@
           this.setValue(index, Alphabet[newValueIndex]);
         };
 
+        input.onkeypress = e => {
+          e.stopPropagation();
+        };
+
         input.onchange = () => {
-          if (input.validity.valid) {
+          if (input.validity.valid && input.value.length > 0) {
             input.value = input.value.toUpperCase();
             this.setValue(index, input.value);
           } else {
-            input.value = '';
+            this.setValue(index, Alphabet[this.valueIndex[index]]);
           }
         };
       }
@@ -154,11 +158,11 @@
         };
       }
 
-      document.onkeyup = evt => {
+      document.onkeypress = e => {
         const re = /^[A-Z]{1}/;
-        const key = evt.key.toUpperCase();
+        const key = e.key.toUpperCase();
 
-        if (re.test(key) && key.length == 1) {
+        if (re.test(key)) {
           this.inputAction(key);
         }
       };
@@ -471,6 +475,19 @@
       rotors.init();
       settings.init();
       message.init();
+      const resetButton = document.querySelector('.reset');
+
+      resetButton.onclick = () => {
+        resetButton.disabled = true;
+        resetButton.style.transitionDuration = '0.5s';
+        resetButton.style.transform = 'rotate(360deg)';
+        this.reset();
+        setTimeout(() => {
+          resetButton.disabled = false;
+          resetButton.style.transitionDuration = '0s';
+          resetButton.style.transform = '';
+        }, 500);
+      };
     }
 
     reset() {

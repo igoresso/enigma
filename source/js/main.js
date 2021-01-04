@@ -20,6 +20,21 @@ class App {
     Rotors.init();
     Settings.init();
     Message.init();
+
+    const resetButton = document.querySelector('.reset');
+    resetButton.onclick = () => {
+      resetButton.disabled = true;
+      resetButton.style.transitionDuration = '0.5s';
+      resetButton.style.transform = 'rotate(360deg)';
+
+      this.reset();
+
+      setTimeout(() => {
+        resetButton.disabled = false;
+        resetButton.style.transitionDuration = '0s';
+        resetButton.style.transform = '';
+      }, 500);
+    };
   }
 
   reset() {

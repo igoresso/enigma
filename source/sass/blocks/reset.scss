@@ -1,0 +1,30 @@
+.reset {
+  position: absolute;
+  top: 125px;
+  right: 20px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+
+  cursor: pointer;
+
+  svg {
+    width: 75%;
+    fill: #f1f1fc;
+    opacity: 0.4;
+  }
+
+  &:hover,
+  &:focus {
+    svg {
+      opacity: 1;
+    }
+  }
+}

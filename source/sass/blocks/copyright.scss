@@ -1,28 +1,17 @@
 .copyright {
-  color: #6b7076;
-  font-size: $mobile-width * 0.02 + px;
-
-  &__link {
-    color: inherit;
-
-    &:hover {
-      color: #fff;
-    }
-
-    &:active {
-      color: #373b3e;
-    }
-  }
+  margin-top: $mobile-width * 0.03 + px;
+  color: #44474B;
+  font-size: $mobile-width * 0.015 + px;
 }
 
 @media (min-width: $mobile-width + px) {
   .copyright {
-    font-size: 2vw;
+    font-size: 1.5vw;
   }
 }
 
 @media (min-width: $desktop-width + px) {
   .copyright {
-    font-size: $desktop-width * 0.02 + px;
+    font-size: $desktop-width * 0.015 + px;
   }
 }

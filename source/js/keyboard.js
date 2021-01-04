@@ -16,11 +16,11 @@ class Keyboard {
       };
     }
 
-    document.onkeyup = (evt) => {
+    document.onkeypress = e => {
       const re = /^[A-Z]{1}/;
-      const key = evt.key.toUpperCase();
+      const key = e.key.toUpperCase();
 
-      if (re.test(key) && key.length == 1) {
+      if (re.test(key)) {
         this.inputAction(key);
       }
     };

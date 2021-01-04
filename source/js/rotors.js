@@ -60,12 +60,16 @@ class Rotors {
         this.setValue(index, Alphabet[newValueIndex]);
       };
 
+      input.onkeypress = e => {
+        e.stopPropagation();
+      };
+
       input.onchange = () => {
-        if (input.validity.valid) {
+        if (input.validity.valid && input.value.length>0) {
           input.value = input.value.toUpperCase();
           this.setValue(index, input.value);
         } else {
-          input.value = '';
+          this.setValue(index,Alphabet[this.valueIndex[index]]);
         }
       };
     }
