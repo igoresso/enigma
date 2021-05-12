@@ -20,7 +20,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "postcss": "^8.2.2",
+    "postcss": "^8.2.10",
     "posthtml-include": "^1.6.0",
     "rollup": "^2.35.1",
     "rollup-plugin-babel": "^4.3.3",
