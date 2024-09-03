@@ -1,6 +1,6 @@
-# Enigma Emulator [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
+# Enigma Emulator
 
-This is a modern web version of one of the most iconic cipher machine. 
+This is a modern web version of one of the most iconic cipher machines. 
 
 ## Usage
 
@@ -25,12 +25,7 @@ This is a modern web version of one of the most iconic cipher machine.
 | C           | FVPJIAOYEDRZXWGCTKUQSBNMHL |
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to talk about what you'd like to change.
 
 ## License
 This project is licensed under the terms of the [MIT](https://choosealicense.com/licenses/mit/) license.
-
-[travis-image]: https://travis-ci.org/igoresso/enigma.svg?branch=master
-[travis-url]: https://travis-ci.org/igoresso/enigma
-[dependency-image]: https://david-dm.org/igoresso/enigma.svg
-[dependency-url]: https://david-dm.org/igoresso/enigma?type=dev
