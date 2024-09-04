@@ -1,4 +1,6 @@
 .lampboard {
+  padding: 10px 0;
+
   &__lamp {
     width: $mobile-width * 0.074 + px;
     padding: $mobile-width * 0.022 + px $mobile-width * 0.01 + px;
@@ -38,7 +40,7 @@
   }
 }
 
-@media (min-width: ($desktop-width + px)) {
+@media (min-width: ($tablet-width + px)) {
   .lampboard {
     &__lamp {
       width: $desktop-width * 0.074 + px;
@@ -50,5 +52,11 @@
         margin-right: $desktop-width * 0.027 + px;
       }
     }
+  }
+}
+
+@media (min-width: ($desktop-width + px)) {
+  .lampboard {
+    padding: 25px 0;
   }
 }

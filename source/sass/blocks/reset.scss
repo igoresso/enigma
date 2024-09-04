@@ -1,11 +1,10 @@
 .reset {
-  position: absolute;
-  top: 125px;
-  right: 20px;
+  position: relative;
   z-index: 10;
   width: 50px;
   height: 50px;
   margin: 0;
+  margin-bottom: 2px;
   padding: 0;
   background: none;
   border: none;
@@ -26,5 +25,11 @@
     svg {
       opacity: 1;
     }
+  }
+}
+
+@media (min-width: ($tablet-width + px)) {
+  .reset {
+    margin-bottom: 5px;
   }
 }

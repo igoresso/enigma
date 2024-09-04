@@ -1,7 +1,7 @@
 .plugboard {
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 10px 0;
   padding-top: $mobile-width * 0.05 + px;
 
   &__row {
@@ -123,6 +123,12 @@
       line-height: 2.5vw;
       border-radius: calc(3.6vw + 1px);
     }
+  }
+}
+
+@media (min-width: ($desktop-width + px)) {
+  .plugboard {
+    padding: 25px 0;
   }
 }
 

@@ -9,13 +9,12 @@
   height: 100%;
 
   &__toggle {
-    position: absolute;
-    top: 95px;
-    right: 10px;
+    position: relative;
     z-index: 10;
     width: 50px;
     height: 50px;
     margin: 0;
+    margin-bottom: 2px;
     padding: 0;
     background: none;
     border: none;
@@ -101,23 +100,6 @@
   }
 }
 
-@media (min-width: ($mobile-width + px)) {
-  .modal {
-    &__toggle {
-      right: 3.1vw;
-    }
-  }
-}
-
-@media (min-width: ($tablet-width + px)) {
-  .modal {
-    &__toggle {
-      top: 75px;
-      right: 20px;
-    }
-  }
-}
-
 @keyframes fadeIn {
   0% {
     background: rgba(0, 0, 0, 0);
@@ -157,5 +139,13 @@
   100% {
     opacity: 1;
     top: 0;
+  }
+}
+
+@media (min-width: ($tablet-width + px)) {
+  .modal {
+    &__toggle {
+      margin-bottom: 5px;
+    }
   }
 }

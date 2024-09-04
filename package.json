@@ -41,7 +41,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
-    "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
+    "stylelint": "stylelint 'source/sass/**/*.scss'",
     "eslint": "eslint source/js/",
     "build": "gulp build",
     "start": "npm run build && gulp serve"

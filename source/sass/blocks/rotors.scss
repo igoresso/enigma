@@ -1,6 +1,6 @@
 .rotors {
   margin: 0;
-  padding: 0;
+  padding: 25px 0;
 
   &__wrapper {
     display: flex;
@@ -115,11 +115,11 @@
       border-width: 0 0.26vw 0.26vw 0;
 
       &--next {
-        transform: translateY(2.3vw) rotate(-135deg);
+        transform: translateY(2vw) rotate(-135deg);
       }
 
       &--prev {
-        transform: translateY(-2.3vw) rotate(45deg);
+        transform: translateY(-2vw) rotate(45deg);
       }
 
       &:hover,
@@ -158,11 +158,11 @@
       border-width: 0 $desktop-width * 0.0026 + px $desktop-width * 0.0026 + px 0;
 
       &--next {
-        transform: translateY($desktop-width * 0.023 + px) rotate(-135deg);
+        transform: translateY($desktop-width * 0.02 + px) rotate(-135deg);
       }
 
       &--prev {
-        transform: translateY(-$desktop-width * 0.023 + px) rotate(45deg);
+        transform: translateY(-$desktop-width * 0.02 + px) rotate(45deg);
       }
 
       &:hover,

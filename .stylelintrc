@@ -6,8 +6,6 @@
     "block-no-empty": true,
     "color-no-invalid-hex": true,
     "declaration-block-no-duplicate-properties": true,
-    "declaration-block-trailing-semicolon": "always",
-    "no-extra-semicolons": true,
     "selector-pseudo-element-no-unknown": true,
     "selector-type-no-unknown": true,
     "unit-no-unknown": true

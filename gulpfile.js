@@ -51,7 +51,8 @@ gulp.task('styles', () =>
     .pipe(csso())
     .pipe(rename('style.min.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/css')),
+    .pipe(gulp.dest('build/css'))
+    .pipe(browserSync.stream())
 );
 
 // Scripts task to bundle JS files with Rollup and Babel
@@ -69,7 +70,8 @@ gulp.task('scripts', () =>
     .pipe(buffer())
     .pipe(minify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('build/js')),
+    .pipe(gulp.dest('build/js'))
+    .pipe(browserSync.stream())
 );
 
 // Build task to run clean, copy, html, styles, and scripts in series

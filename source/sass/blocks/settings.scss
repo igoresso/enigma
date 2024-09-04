@@ -1,14 +1,15 @@
 .settings {
   display: flex;
   flex-direction: row-reverse;
-  position: absolute;
-  top: 40px;
-  right: 10px;
+  position: relative;
   z-index: 10;
   margin: 0;
+  margin-bottom: 2px;
   padding: 0;
 
   &__dialogue {
+    position: absolute;
+    right: 100%;
     visibility: hidden;
     height: 50px;
     padding-right: 25px;
@@ -104,16 +105,9 @@
   }
 }
 
-@media (min-width: ($mobile-width + px)) {
-  .settings {
-    right: 3.1vw;
-  }
-}
-
 @media (min-width: ($tablet-width + px)) {
   .settings {
-    top: 20px;
-    right: 20px;
+    margin-bottom: 5px;
 
     &__dialogue {
       display: flex;

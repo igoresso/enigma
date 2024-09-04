@@ -24,38 +24,55 @@
           <img src="img/logo.svg" width="200" alt="Enigma logo" />
         </a>
       </div>
-    </header>
 
-    <main>
-      <section class="settings">
-        <h2 class="visually-hidden">Settings</h2>
-        <button class="settings__toggle">
+      <div class="controls">
+        <section class="settings">
+          <h2 class="visually-hidden">Settings</h2>
+          <button class="settings__toggle">
+            <svg viewBox="0 0 48 48">
+              <path
+                d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97L29 4.84c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3a14.8 14.8 0 0 0-3.38 1.97L9.9 10.1a1 1 0 0 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31C9.06 22.69 9 23.34 9 24s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3a14.8 14.8 0 0 0 3.38-1.97l4.98 2.01a1 1 0 0 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zM24 31c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+              />
+            </svg>
+          </button>
+          <form class="settings__dialogue">
+            <div class="settings__field">
+              <label class="settings__label" for="reflector">Reflector</label>
+              <select class="settings__select" name="reflector" id="reflector"></select>
+            </div>
+            <div class="settings__field">
+              <label class="settings__label" for="rotor-1">Rotor 1</label>
+              <select class="settings__select" name="rotor-1" id="rotor-1"></select>
+            </div>
+            <div class="settings__field">
+              <label class="settings__label" for="rotor-2">Rotor 2</label>
+              <select class="settings__select" name="rotor-2" id="rotor-2"></select>
+            </div>
+            <div class="settings__field">
+              <label class="settings__label" for="rotor-3">Rotor 3</label>
+              <select class="settings__select" name="rotor-3" id="rotor-3"></select>
+            </div>
+          </form>
+        </section>
+        <button class="modal__toggle">
           <svg viewBox="0 0 48 48">
             <path
-              d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97L29 4.84c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3a14.8 14.8 0 0 0-3.38 1.97L9.9 10.1a1 1 0 0 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31C9.06 22.69 9 23.34 9 24s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3a14.8 14.8 0 0 0 3.38-1.97l4.98 2.01a1 1 0 0 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zM24 31c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+              d="M43.98 8c0-2.21-1.77-4-3.98-4H8C5.79 4 4 5.79 4 8v24c0 2.21 1.79 4 4 4h28l8 8-.02-36zM36 28H12v-4h24v4zm0-6H12v-4h24v4zm0-6H12v-4h24v4z"
             />
           </svg>
         </button>
-        <form class="settings__dialogue">
-          <div class="settings__field">
-            <label class="settings__label" for="reflector">Reflector</label>
-            <select class="settings__select" name="reflector" id="reflector"></select>
-          </div>
-          <div class="settings__field">
-            <label class="settings__label" for="rotor-1">Rotor 1</label>
-            <select class="settings__select" name="rotor-1" id="rotor-1"></select>
-          </div>
-          <div class="settings__field">
-            <label class="settings__label" for="rotor-2">Rotor 2</label>
-            <select class="settings__select" name="rotor-2" id="rotor-2"></select>
-          </div>
-          <div class="settings__field">
-            <label class="settings__label" for="rotor-3">Rotor 3</label>
-            <select class="settings__select" name="rotor-3" id="rotor-3"></select>
-          </div>
-        </form>
-      </section>
 
+        <button class="reset">
+          <svg viewBox="2 2 20 20">
+            <path
+              d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
       <section class="rotors">
         <h2 class="visually-hidden">Rotors</h2>
         <div class="rotors__wrapper">
@@ -269,22 +286,6 @@
         </div>
       </section>
 
-      <button class="modal__toggle">
-        <svg viewBox="0 0 48 48">
-          <path
-            d="M43.98 8c0-2.21-1.77-4-3.98-4H8C5.79 4 4 5.79 4 8v24c0 2.21 1.79 4 4 4h28l8 8-.02-36zM36 28H12v-4h24v4zm0-6H12v-4h24v4zm0-6H12v-4h24v4z"
-          />
-        </svg>
-      </button>
-
-      <button class="reset">
-        <svg viewBox="2 2 20 20">
-          <path
-            d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
-          />
-        </svg>
-      </button>
-
       <section class="modal">
         <div class="modal__background">
           <div class="message modal__content">
@@ -343,13 +344,7 @@
       </nav>
 
       <span class="copyright">
-        Made with <span className="copyright__heart">&#9829;</span> by
-        <a href="https://github.com/igoresso" rel="noopener noreferrer" target="_blank"> @igoresso </a>
-        &copy;
-        <script>
-          const date = new Date();
-          document.write(`2019-${date.getFullYear()}`);
-        </script>
+        Made by <a href="https://github.com/igoresso" rel="noopener noreferrer" target="_blank"> @igoresso </a>
       </span>
     </footer>
 
