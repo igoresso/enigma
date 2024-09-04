@@ -1,304 +1,34 @@
 (function () {
   'use strict';
 
-  const Alphabet = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-  ];
-  const Layout = [
-    'Q',
-    'W',
-    'E',
-    'R',
-    'T',
-    'Z',
-    'U',
-    'I',
-    'O',
-    'A',
-    'S',
-    'D',
-    'F',
-    'G',
-    'H',
-    'J',
-    'K',
-    'P',
-    'Y',
-    'X',
-    'C',
-    'V',
-    'B',
-    'N',
-    'M',
-    'L',
-  ];
+  const Alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const Layout = ['Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'P', 'Y', 'X', 'C', 'V', 'B', 'N', 'M', 'L'];
   const RotorOption = {
     I: {
-      alphabet: [
-        'E',
-        'K',
-        'M',
-        'F',
-        'L',
-        'G',
-        'D',
-        'Q',
-        'V',
-        'Z',
-        'N',
-        'T',
-        'O',
-        'W',
-        'Y',
-        'H',
-        'X',
-        'U',
-        'S',
-        'P',
-        'A',
-        'I',
-        'B',
-        'R',
-        'C',
-        'J',
-      ],
-      notch: 'Q',
+      alphabet: ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J'],
+      notch: 'Q'
     },
     II: {
-      alphabet: [
-        'A',
-        'J',
-        'D',
-        'K',
-        'S',
-        'I',
-        'R',
-        'U',
-        'X',
-        'B',
-        'L',
-        'H',
-        'W',
-        'T',
-        'M',
-        'C',
-        'Q',
-        'G',
-        'Z',
-        'N',
-        'P',
-        'Y',
-        'F',
-        'V',
-        'O',
-        'E',
-      ],
-      notch: 'E',
+      alphabet: ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E'],
+      notch: 'E'
     },
     III: {
-      alphabet: [
-        'B',
-        'D',
-        'F',
-        'H',
-        'J',
-        'L',
-        'C',
-        'P',
-        'R',
-        'T',
-        'X',
-        'V',
-        'Z',
-        'N',
-        'Y',
-        'E',
-        'I',
-        'W',
-        'G',
-        'A',
-        'K',
-        'M',
-        'U',
-        'S',
-        'Q',
-        'O',
-      ],
-      notch: 'V',
+      alphabet: ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O'],
+      notch: 'V'
     },
     IV: {
-      alphabet: [
-        'E',
-        'S',
-        'O',
-        'V',
-        'P',
-        'Z',
-        'J',
-        'A',
-        'Y',
-        'Q',
-        'U',
-        'I',
-        'R',
-        'H',
-        'X',
-        'L',
-        'N',
-        'F',
-        'T',
-        'G',
-        'K',
-        'D',
-        'C',
-        'M',
-        'W',
-        'B',
-      ],
-      notch: 'J',
+      alphabet: ['E', 'S', 'O', 'V', 'P', 'Z', 'J', 'A', 'Y', 'Q', 'U', 'I', 'R', 'H', 'X', 'L', 'N', 'F', 'T', 'G', 'K', 'D', 'C', 'M', 'W', 'B'],
+      notch: 'J'
     },
     V: {
-      alphabet: [
-        'V',
-        'Z',
-        'B',
-        'R',
-        'G',
-        'I',
-        'T',
-        'Y',
-        'U',
-        'P',
-        'S',
-        'D',
-        'N',
-        'H',
-        'L',
-        'X',
-        'A',
-        'W',
-        'M',
-        'J',
-        'Q',
-        'O',
-        'F',
-        'E',
-        'C',
-        'K',
-      ],
-      notch: 'Z',
-    },
+      alphabet: ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 'X', 'A', 'W', 'M', 'J', 'Q', 'O', 'F', 'E', 'C', 'K'],
+      notch: 'Z'
+    }
   };
   const ReflectorOption = {
-    A: [
-      'E',
-      'J',
-      'M',
-      'Z',
-      'A',
-      'L',
-      'Y',
-      'X',
-      'V',
-      'B',
-      'W',
-      'F',
-      'C',
-      'R',
-      'Q',
-      'U',
-      'O',
-      'N',
-      'T',
-      'S',
-      'P',
-      'I',
-      'K',
-      'H',
-      'G',
-      'D',
-    ],
-    B: [
-      'Y',
-      'R',
-      'U',
-      'H',
-      'Q',
-      'S',
-      'L',
-      'D',
-      'P',
-      'X',
-      'N',
-      'G',
-      'O',
-      'K',
-      'M',
-      'I',
-      'E',
-      'B',
-      'F',
-      'Z',
-      'C',
-      'W',
-      'V',
-      'J',
-      'A',
-      'T',
-    ],
-    C: [
-      'F',
-      'V',
-      'P',
-      'J',
-      'I',
-      'A',
-      'O',
-      'Y',
-      'E',
-      'D',
-      'R',
-      'Z',
-      'X',
-      'W',
-      'G',
-      'C',
-      'T',
-      'K',
-      'U',
-      'Q',
-      'S',
-      'B',
-      'N',
-      'M',
-      'H',
-      'L',
-    ],
+    A: ['E', 'J', 'M', 'Z', 'A', 'L', 'Y', 'X', 'V', 'B', 'W', 'F', 'C', 'R', 'Q', 'U', 'O', 'N', 'T', 'S', 'P', 'I', 'K', 'H', 'G', 'D'],
+    B: ['Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O', 'K', 'M', 'I', 'E', 'B', 'F', 'Z', 'C', 'W', 'V', 'J', 'A', 'T'],
+    C: ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', 'W', 'G', 'C', 'T', 'K', 'U', 'Q', 'S', 'B', 'N', 'M', 'H', 'L']
   };
 
   class Rotors {
@@ -306,7 +36,6 @@
       this.rotors = Array.from(document.querySelectorAll(classAttribute)).reverse();
       this.valueIndex = [];
     }
-
     setValue(rotorIndex, value) {
       const rotor = this.rotors[rotorIndex];
       const valueIndex = Alphabet.indexOf(value);
@@ -325,42 +54,35 @@
       secondNextWindow.innerText = Alphabet[secondNextValueIndex];
       firstPrevWindow.innerText = Alphabet[firstPrevValueIndex];
       secondPrevWindow.innerText = Alphabet[secondPrevValueIndex];
-      wheel.style.backgroundPositionY = ((valueIndex * 100) / 26) * 7 + '%';
+      wheel.style.backgroundPositionY = valueIndex * 100 / 26 * 7 + '%';
       this.valueIndex[rotorIndex] = valueIndex;
     }
-
     stepRotor(rotorIndex) {
       const newValueIndex = this.valueIndex[rotorIndex] + 1 > 25 ? 0 : this.valueIndex[rotorIndex] + 1;
       const newValue = Alphabet[newValueIndex];
       this.setValue(rotorIndex, newValue);
     }
-
     getCurrentState() {
       return this.valueIndex;
     }
-
     bind() {
       for (let [index, rotor] of this.rotors.entries()) {
         const btnNext = rotor.querySelector('.rotors__btn--next');
         const btnPrev = rotor.querySelector('.rotors__btn--prev');
         const input = rotor.querySelector('input');
-
         btnNext.onclick = () => {
           const currentValueIndex = this.valueIndex[index];
           const newValueIndex = currentValueIndex + 1 > 25 ? 0 : currentValueIndex + 1;
           this.setValue(index, Alphabet[newValueIndex]);
         };
-
         btnPrev.onclick = () => {
           const currentValueIndex = this.valueIndex[index];
           const newValueIndex = currentValueIndex - 1 < 0 ? 25 : currentValueIndex - 1;
           this.setValue(index, Alphabet[newValueIndex]);
         };
-
         input.onkeypress = e => {
           e.stopPropagation();
         };
-
         input.onchange = () => {
           if (input.validity.valid && input.value.length > 0) {
             input.value = input.value.toUpperCase();
@@ -371,19 +93,16 @@
         };
       }
     }
-
     reset() {
       for (let i = 0; i < this.rotors.length; i++) {
         this.setValue(i, 'A');
       }
     }
-
     init() {
       this.reset();
       this.bind();
     }
   }
-
   const rotors = new Rotors('.rotors__item');
 
   class Lampboard {
@@ -391,56 +110,46 @@
       this.lamps = document.querySelectorAll(classAttribute);
       this.lastIndex = null;
     }
-
     newOutput(letter) {
       const newIndex = Layout.indexOf(letter);
       this.reset();
       this.lamps[newIndex].classList.add('lampboard__lamp--active');
       this.lastIndex = newIndex;
     }
-
     reset() {
       const currentIndex = this.lastIndex || 0;
       this.lamps[currentIndex].classList.remove('lampboard__lamp--active');
       this.lastIndex = null;
     }
   }
-
   const lampboard = new Lampboard('.lampboard__lamp');
 
   class Keyboard {
     constructor(classAttribute) {
       this.keys = document.querySelectorAll(classAttribute);
     }
-
     inputAction(letter) {
       return letter;
     }
-
     bind() {
       for (let key of this.keys) {
         const letter = key.innerText.toUpperCase();
-
         key.onclick = () => {
           this.inputAction(letter);
         };
       }
-
-      document.onkeypress = e => {
+      document.onkeydown = e => {
         const re = /^[A-Z]{1}/;
         const key = e.key.toUpperCase();
-
         if (re.test(key)) {
           this.inputAction(key);
         }
       };
     }
-
     init() {
       this.bind();
     }
   }
-
   const keyboard = new Keyboard('.keyboard__btn');
 
   class Plugboard {
@@ -449,7 +158,6 @@
       this.connections = {};
       this.prevSocket = null;
     }
-
     createPlug(pairLetter) {
       const plug = document.createElement('div');
       plug.classList.add('plugboard__plug');
@@ -458,50 +166,40 @@
       plug.innerText = pairLetter.toUpperCase();
       return plug;
     }
-
     disconnectSockets(plug1, plug2, letter1, letter2) {
       plug1.remove();
       plug2.remove();
       delete this.connections[letter1];
       delete this.connections[letter2];
     }
-
     connectSockets(socket1, socket2) {
       const letter1 = socket2.querySelector('span').innerText;
       const letter2 = socket1.querySelector('span').innerText;
       const plug1 = this.createPlug(letter1);
       const plug2 = this.createPlug(letter2);
-
-      plug1.onclick = evt => {
-        evt.stopPropagation();
+      plug1.onclick = e => {
+        e.stopPropagation();
         this.disconnectSockets(plug1, plug2, letter1, letter2);
       };
-
-      plug2.onclick = evt => {
-        evt.stopPropagation();
+      plug2.onclick = e => {
+        e.stopPropagation();
         this.disconnectSockets(plug1, plug2, letter1, letter2);
       };
-
       socket1.appendChild(plug1);
       socket2.appendChild(plug2);
       this.connections[letter1] = letter2;
       this.connections[letter2] = letter1;
     }
-
     reset() {
       for (let socket of this.sockets) {
         const plug = socket.querySelector('.plugboard__plug');
-
         if (!plug) {
           continue;
         }
-
         plug.remove();
       }
-
       this.connections = {};
     }
-
     bind() {
       for (let socket of this.sockets) {
         socket.onclick = () => {
@@ -515,12 +213,10 @@
         };
       }
     }
-
     init() {
       this.bind();
     }
   }
-
   const plugboard = new Plugboard('.plugboard__socket');
 
   class Settings {
@@ -529,60 +225,49 @@
       this.toggleClass = classToggle;
       this.selectClass = classSelect;
     }
-
     changeRotor(rotor, value) {
       return [rotor, value];
     }
-
     changeReflector(value) {
       return value;
     }
-
     createOption(value) {
       const option = document.createElement('option');
       option.value = value;
       option.innerText = value;
       return option;
     }
-
     bind() {
       const dialogue = document.querySelector(`.${this.dialogueClass}`);
       const toggle = document.querySelector(`.${this.toggleClass}`);
       const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));
       const reflectors = Object.keys(ReflectorOption);
       const rotors = Object.keys(RotorOption);
-
       toggle.onclick = () => {
         toggle.classList.toggle(`${this.toggleClass}--active`);
         dialogue.classList.toggle(`${this.dialogueClass}--active`);
       };
-
       reflectors.forEach(item => {
         selects[0].appendChild(this.createOption(item));
       });
-
       selects[0].onchange = () => {
         this.changeReflector(selects[0].value);
         selects[0].blur();
       };
-
       for (let i = 1; i < selects.length; i++) {
         rotors.forEach(item => {
           selects[i].appendChild(this.createOption(item));
         });
-
         selects[i].onchange = () => {
           this.changeRotor(3 - i, selects[i].value);
           selects[i].blur();
         };
       }
     }
-
     init() {
       this.bind();
       this.reset();
     }
-
     reset() {
       const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));
       selects[0].value = 'B';
@@ -591,7 +276,6 @@
       selects[3].value = 'III';
     }
   }
-
   const settings = new Settings('settings__dialogue', 'settings__toggle', 'settings__select');
 
   class Message {
@@ -604,22 +288,8 @@
       this.checkboxID = idCheckbox;
       this.submitClass = classSubmit;
       this.outputClass = classOutput;
-      this.month = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ];
+      this.month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     }
-
     setTime() {
       const dateArea = document.getElementById(this.dateID);
       const timeArea = document.getElementById(this.timeID);
@@ -630,26 +300,20 @@
       let hours = today.getHours();
       let minutes = today.getMinutes();
       dateArea.innerText = `${dd} ${this.month[mm]} ${yyyy}`;
-
       if (dd < 10) {
         dd = '0' + dd;
       }
-
       mm += 1;
-
       if (mm < 10) {
         mm = '0' + mm;
       }
-
       dateArea.dateTime = `${yyyy}-${mm}-${dd}`;
       timeArea.innerText = `${hours}:${minutes}`;
       timeArea.dateTime = `${hours}:${minutes}`;
     }
-
     encryptText(text) {
       return text;
     }
-
     bind() {
       const modal = document.querySelector(`.${this.modalClass}`);
       const toggle = document.querySelector(`.${this.toggleClass}`);
@@ -658,107 +322,67 @@
       const checkbox = document.getElementById(this.checkboxID);
       const submit = document.querySelector(`.${this.submitClass}`);
       const output = document.querySelector(`.${this.outputClass}`);
-
       toggle.onclick = () => {
         modal.classList.add(`${this.modalClass}--active`);
         this.setTime();
       };
-
       modal.onclick = () => {
         modal.classList.remove(`${this.modalClass}--active`);
       };
-
-      content.onclick = evt => {
-        evt.stopPropagation();
+      content.onclick = e => {
+        e.stopPropagation();
       };
-
-      input.onkeyup = evt => {
-        evt.stopPropagation();
+      input.onkeyup = e => {
+        e.stopPropagation();
         const re = /[^A-Za-z\s]/g;
         input.value = input.value.replace(re, '');
         input.value = input.value.toUpperCase();
       };
-
       submit.onclick = () => {
         let text = input.value;
-
         if (!checkbox.checked) {
-          text = text
-            .replace(/ /g, '')
-            .match(/.{1,5}/g)
-            .join(' ');
+          text = text.replace(/ /g, '').match(/.{1,5}/g).join(' ');
         }
-
         output.innerText = this.encryptText(text);
       };
     }
-
     init() {
       this.bind();
     }
   }
-
-  const message = new Message(
-    'modal',
-    'modal__toggle',
-    'date',
-    'time',
-    'message__input',
-    'keep-formatting',
-    'message__btn',
-    'message__output',
-  );
+  const message = new Message('modal', 'modal__toggle', 'date', 'time', 'message__input', 'keep-formatting', 'message__btn', 'message__output');
 
   class Enigma {
     constructor() {}
-
     sumValues(a, b) {
       return a + b > 25 ? a - 26 + b : a + b;
     }
-
     subValues(a, b) {
       return a - b < 0 ? a + 26 - b : a - b;
     }
-
     encrypt(letter, rotors, rotorPositions, reflector) {
       let result;
       const letterIndex = Alphabet.indexOf(letter);
       const numberOfRotors = rotorPositions.length;
-
       for (let i = 0; i < numberOfRotors; i++) {
         if (i == 0) {
           result = Alphabet.indexOf(rotors[i][this.sumValues(rotorPositions[i], letterIndex)]);
         } else {
-          result = Alphabet.indexOf(
-            rotors[i][this.sumValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],
-          );
+          result = Alphabet.indexOf(rotors[i][this.sumValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))]);
         }
       }
-
-      result = rotors[numberOfRotors - 1].indexOf(
-        Alphabet[
-          this.sumValues(
-            Alphabet.indexOf(reflector[this.subValues(result, rotorPositions[numberOfRotors - 1])]),
-            rotorPositions[numberOfRotors - 1],
-          )
-        ],
-      );
-
+      result = rotors[numberOfRotors - 1].indexOf(Alphabet[this.sumValues(Alphabet.indexOf(reflector[this.subValues(result, rotorPositions[numberOfRotors - 1])]), rotorPositions[numberOfRotors - 1])]);
       for (let i = numberOfRotors - 1; i >= 0; i--) {
         if (i == 0) {
           result = this.subValues(result, rotorPositions[0]);
         } else {
-          result = rotors[i - 1].indexOf(
-            Alphabet[this.subValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],
-          );
+          result = rotors[i - 1].indexOf(Alphabet[this.subValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))]);
         }
       }
-
       result = Alphabet[result];
       return result;
     }
   }
-
   const enigma = new Enigma();
 
   class App {
@@ -767,7 +391,6 @@
       this.rotorSetNotch = rotorSetNotch;
       this.reflector = reflector;
     }
-
     init() {
       keyboard.init();
       plugboard.init();
@@ -775,7 +398,6 @@
       settings.init();
       message.init();
       const resetButton = document.querySelector('.reset');
-
       resetButton.onclick = () => {
         resetButton.disabled = true;
         resetButton.style.transitionDuration = '0.5s';
@@ -788,78 +410,58 @@
         }, 500);
       };
     }
-
     reset() {
       rotors.reset();
       lampboard.reset();
       plugboard.reset();
     }
-
     changeRotor(rotor, notch, rotorIndex) {
       this.rotorSet[rotorIndex] = rotor;
       this.rotorSetNotch[rotorIndex] = notch;
     }
-
     changeReflector(reflector) {
       this.reflector = reflector;
     }
-
     inputAction(letter) {
       if (letter in plugboard.connections) {
         letter = plugboard.connections[letter];
       }
-
       const rotorsToStep = [0];
-
       for (let i = 0; i < this.rotorSet.length - 1; i++) {
         const currentValue = Alphabet[rotors.valueIndex[i]];
-
         if (currentValue == this.rotorSetNotch[i]) {
           rotorsToStep.push(i + 1);
         } else {
           break;
         }
       }
-
       rotorsToStep.forEach(item => {
         rotors.stepRotor(item);
       });
       let result = enigma.encrypt(letter, this.rotorSet, rotors.valueIndex, this.reflector);
-
       if (result in plugboard.connections) {
         result = plugboard.connections[result];
       }
-
       lampboard.newOutput(result);
       return result;
     }
   }
-
-  const app = new App(
-    [RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet],
-    [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch],
-    ReflectorOption.B,
-  );
+  const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
   app.init();
-
   keyboard.inputAction = letter => {
     app.inputAction(letter);
   };
-
   settings.changeReflector = value => {
     app.reflector = ReflectorOption[value];
     app.reset();
   };
-
   settings.changeRotor = (rotor, value) => {
     app.rotorSet[rotor] = RotorOption[value]['alphabet'];
     app.rotorSetNotch[rotor] = RotorOption[value]['notch'];
     app.reset();
   };
-
   message.encryptText = text => {
     let output = '';
-
     for (let i = 0; i < text.length; i++) {
       if (text[i] == ' ') {
         output += text[i];
@@ -867,9 +469,10 @@
         output += app.inputAction(text[i]);
       }
     }
-
     return output;
   };
-})();
 
+})();
 //# sourceMappingURL=main.js.map
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZXMiOlsic291cmNlL2pzL2RhdGEuanMiLCJzb3VyY2UvanMvcm90b3JzLmpzIiwic291cmNlL2pzL2xhbXBib2FyZC5qcyIsInNvdXJjZS9qcy9rZXlib2FyZC5qcyIsInNvdXJjZS9qcy9wbHVnYm9hcmQuanMiLCJzb3VyY2UvanMvc2V0dGluZ3MuanMiLCJzb3VyY2UvanMvbWVzc2FnZS5qcyIsInNvdXJjZS9qcy9lbmlnbWEuanMiLCJzb3VyY2UvanMvbWFpbi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgQWxwaGFiZXQgPSBbXG4gICdBJyxcbiAgJ0InLFxuICAnQycsXG4gICdEJyxcbiAgJ0UnLFxuICAnRicsXG4gICdHJyxcbiAgJ0gnLFxuICAnSScsXG4gICdKJyxcbiAgJ0snLFxuICAnTCcsXG4gICdNJyxcbiAgJ04nLFxuICAnTycsXG4gICdQJyxcbiAgJ1EnLFxuICAnUicsXG4gICdTJyxcbiAgJ1QnLFxuICAnVScsXG4gICdWJyxcbiAgJ1cnLFxuICAnWCcsXG4gICdZJyxcbiAgJ1onLFxuXTtcblxuZXhwb3J0IGNvbnN0IExheW91dCA9IFtcbiAgJ1EnLFxuICAnVycsXG4gICdFJyxcbiAgJ1InLFxuICAnVCcsXG4gICdaJyxcbiAgJ1UnLFxuICAnSScsXG4gICdPJyxcbiAgJ0EnLFxuICAnUycsXG4gICdEJyxcbiAgJ0YnLFxuICAnRycsXG4gICdIJyxcbiAgJ0onLFxuICAnSycsXG4gICdQJyxcbiAgJ1knLFxuICAnWCcsXG4gICdDJyxcbiAgJ1YnLFxuICAnQicsXG4gICdOJyxcbiAgJ00nLFxuICAnTCcsXG5dO1xuXG5leHBvcnQgY29uc3QgUm90b3JPcHRpb24gPSB7XG4gIEk6IHtcbiAgICBhbHBoYWJldDogW1xuICAgICAgJ0UnLFxuICAgICAgJ0snLFxuICAgICAgJ00nLFxuICAgICAgJ0YnLFxuICAgICAgJ0wnLFxuICAgICAgJ0cnLFxuICAgICAgJ0QnLFxuICAgICAgJ1EnLFxuICAgICAgJ1YnLFxuICAgICAgJ1onLFxuICAgICAgJ04nLFxuICAgICAgJ1QnLFxuICAgICAgJ08nLFxuICAgICAgJ1cnLFxuICAgICAgJ1knLFxuICAgICAgJ0gnLFxuICAgICAgJ1gnLFxuICAgICAgJ1UnLFxuICAgICAgJ1MnLFxuICAgICAgJ1AnLFxuICAgICAgJ0EnLFxuICAgICAgJ0knLFxuICAgICAgJ0InLFxuICAgICAgJ1InLFxuICAgICAgJ0MnLFxuICAgICAgJ0onLFxuICAgIF0sXG4gICAgbm90Y2g6ICdRJyxcbiAgfSxcbiAgSUk6IHtcbiAgICBhbHBoYWJldDogW1xuICAgICAgJ0EnLFxuICAgICAgJ0onLFxuICAgICAgJ0QnLFxuICAgICAgJ0snLFxuICAgICAgJ1MnLFxuICAgICAgJ0knLFxuICAgICAgJ1InLFxuICAgICAgJ1UnLFxuICAgICAgJ1gnLFxuICAgICAgJ0InLFxuICAgICAgJ0wnLFxuICAgICAgJ0gnLFxuICAgICAgJ1cnLFxuICAgICAgJ1QnLFxuICAgICAgJ00nLFxuICAgICAgJ0MnLFxuICAgICAgJ1EnLFxuICAgICAgJ0cnLFxuICAgICAgJ1onLFxuICAgICAgJ04nLFxuICAgICAgJ1AnLFxuICAgICAgJ1knLFxuICAgICAgJ0YnLFxuICAgICAgJ1YnLFxuICAgICAgJ08nLFxuICAgICAgJ0UnLFxuICAgIF0sXG4gICAgbm90Y2g6ICdFJyxcbiAgfSxcbiAgSUlJOiB7XG4gICAgYWxwaGFiZXQ6IFtcbiAgICAgICdCJyxcbiAgICAgICdEJyxcbiAgICAgICdGJyxcbiAgICAgICdIJyxcbiAgICAgICdKJyxcbiAgICAgICdMJyxcbiAgICAgICdDJyxcbiAgICAgICdQJyxcbiAgICAgICdSJyxcbiAgICAgICdUJyxcbiAgICAgICdYJyxcbiAgICAgICdWJyxcbiAgICAgICdaJyxcbiAgICAgICdOJyxcbiAgICAgICdZJyxcbiAgICAgICdFJyxcbiAgICAgICdJJyxcbiAgICAgICdXJyxcbiAgICAgICdHJyxcbiAgICAgICdBJyxcbiAgICAgICdLJyxcbiAgICAgICdNJyxcbiAgICAgICdVJyxcbiAgICAgICdTJyxcbiAgICAgICdRJyxcbiAgICAgICdPJyxcbiAgICBdLFxuICAgIG5vdGNoOiAnVicsXG4gIH0sXG4gIElWOiB7XG4gICAgYWxwaGFiZXQ6IFtcbiAgICAgICdFJyxcbiAgICAgICdTJyxcbiAgICAgICdPJyxcbiAgICAgICdWJyxcbiAgICAgICdQJyxcbiAgICAgICdaJyxcbiAgICAgICdKJyxcbiAgICAgICdBJyxcbiAgICAgICdZJyxcbiAgICAgICdRJyxcbiAgICAgICdVJyxcbiAgICAgICdJJyxcbiAgICAgICdSJyxcbiAgICAgICdIJyxcbiAgICAgICdYJyxcbiAgICAgICdMJyxcbiAgICAgICdOJyxcbiAgICAgICdGJyxcbiAgICAgICdUJyxcbiAgICAgICdHJyxcbiAgICAgICdLJyxcbiAgICAgICdEJyxcbiAgICAgICdDJyxcbiAgICAgICdNJyxcbiAgICAgICdXJyxcbiAgICAgICdCJyxcbiAgICBdLFxuICAgIG5vdGNoOiAnSicsXG4gIH0sXG4gIFY6IHtcbiAgICBhbHBoYWJldDogW1xuICAgICAgJ1YnLFxuICAgICAgJ1onLFxuICAgICAgJ0InLFxuICAgICAgJ1InLFxuICAgICAgJ0cnLFxuICAgICAgJ0knLFxuICAgICAgJ1QnLFxuICAgICAgJ1knLFxuICAgICAgJ1UnLFxuICAgICAgJ1AnLFxuICAgICAgJ1MnLFxuICAgICAgJ0QnLFxuICAgICAgJ04nLFxuICAgICAgJ0gnLFxuICAgICAgJ0wnLFxuICAgICAgJ1gnLFxuICAgICAgJ0EnLFxuICAgICAgJ1cnLFxuICAgICAgJ00nLFxuICAgICAgJ0onLFxuICAgICAgJ1EnLFxuICAgICAgJ08nLFxuICAgICAgJ0YnLFxuICAgICAgJ0UnLFxuICAgICAgJ0MnLFxuICAgICAgJ0snLFxuICAgIF0sXG4gICAgbm90Y2g6ICdaJyxcbiAgfSxcbn07XG5cbmV4cG9ydCBjb25zdCBSZWZsZWN0b3JPcHRpb24gPSB7XG4gIEE6IFtcbiAgICAnRScsXG4gICAgJ0onLFxuICAgICdNJyxcbiAgICAnWicsXG4gICAgJ0EnLFxuICAgICdMJyxcbiAgICAnWScsXG4gICAgJ1gnLFxuICAgICdWJyxcbiAgICAnQicsXG4gICAgJ1cnLFxuICAgICdGJyxcbiAgICAnQycsXG4gICAgJ1InLFxuICAgICdRJyxcbiAgICAnVScsXG4gICAgJ08nLFxuICAgICdOJyxcbiAgICAnVCcsXG4gICAgJ1MnLFxuICAgICdQJyxcbiAgICAnSScsXG4gICAgJ0snLFxuICAgICdIJyxcbiAgICAnRycsXG4gICAgJ0QnLFxuICBdLFxuICBCOiBbXG4gICAgJ1knLFxuICAgICdSJyxcbiAgICAnVScsXG4gICAgJ0gnLFxuICAgICdRJyxcbiAgICAnUycsXG4gICAgJ0wnLFxuICAgICdEJyxcbiAgICAnUCcsXG4gICAgJ1gnLFxuICAgICdOJyxcbiAgICAnRycsXG4gICAgJ08nLFxuICAgICdLJyxcbiAgICAnTScsXG4gICAgJ0knLFxuICAgICdFJyxcbiAgICAnQicsXG4gICAgJ0YnLFxuICAgICdaJyxcbiAgICAnQycsXG4gICAgJ1cnLFxuICAgICdWJyxcbiAgICAnSicsXG4gICAgJ0EnLFxuICAgICdUJyxcbiAgXSxcbiAgQzogW1xuICAgICdGJyxcbiAgICAnVicsXG4gICAgJ1AnLFxuICAgICdKJyxcbiAgICAnSScsXG4gICAgJ0EnLFxuICAgICdPJyxcbiAgICAnWScsXG4gICAgJ0UnLFxuICAgICdEJyxcbiAgICAnUicsXG4gICAgJ1onLFxuICAgICdYJyxcbiAgICAnVycsXG4gICAgJ0cnLFxuICAgICdDJyxcbiAgICAnVCcsXG4gICAgJ0snLFxuICAgICdVJyxcbiAgICAnUScsXG4gICAgJ1MnLFxuICAgICdCJyxcbiAgICAnTicsXG4gICAgJ00nLFxuICAgICdIJyxcbiAgICAnTCcsXG4gIF0sXG59O1xuIiwiaW1wb3J0IHsgQWxwaGFiZXQgfSBmcm9tICcuL2RhdGEnO1xuXG5jbGFzcyBSb3RvcnMge1xuICBjb25zdHJ1Y3RvcihjbGFzc0F0dHJpYnV0ZSkge1xuICAgIHRoaXMucm90b3JzID0gQXJyYXkuZnJvbShkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGNsYXNzQXR0cmlidXRlKSkucmV2ZXJzZSgpO1xuICAgIHRoaXMudmFsdWVJbmRleCA9IFtdO1xuICB9XG5cbiAgc2V0VmFsdWUocm90b3JJbmRleCwgdmFsdWUpIHtcbiAgICBjb25zdCByb3RvciA9IHRoaXMucm90b3JzW3JvdG9ySW5kZXhdO1xuICAgIGNvbnN0IHZhbHVlSW5kZXggPSBBbHBoYWJldC5pbmRleE9mKHZhbHVlKTtcblxuICAgIGNvbnN0IG1haW5XaW5kb3cgPSByb3Rvci5xdWVyeVNlbGVjdG9yKCcucm90b3JzX193aW5kb3ctLWFjdGl2ZScpO1xuICAgIGNvbnN0IGZpcnN0TmV4dFdpbmRvdyA9IG1haW5XaW5kb3cucHJldmlvdXNFbGVtZW50U2libGluZztcbiAgICBjb25zdCBzZWNvbmROZXh0V2luZG93ID0gZmlyc3ROZXh0V2luZG93LnByZXZpb3VzRWxlbWVudFNpYmxpbmc7XG4gICAgY29uc3QgZmlyc3RQcmV2V2luZG93ID0gbWFpbldpbmRvdy5uZXh0RWxlbWVudFNpYmxpbmc7XG4gICAgY29uc3Qgc2Vjb25kUHJldldpbmRvdyA9IGZpcnN0UHJldldpbmRvdy5uZXh0RWxlbWVudFNpYmxpbmc7XG4gICAgY29uc3Qgd2hlZWwgPSByb3Rvci5xdWVyeVNlbGVjdG9yKCcucm90b3JzX193aGVlbCcpO1xuXG4gICAgY29uc3QgZmlyc3ROZXh0VmFsdWVJbmRleCA9IHZhbHVlSW5kZXggKyAxID4gMjUgPyAwIDogdmFsdWVJbmRleCArIDE7XG4gICAgY29uc3Qgc2Vjb25kTmV4dFZhbHVlSW5kZXggPSB2YWx1ZUluZGV4ICsgMiA+IDI1ID8gdmFsdWVJbmRleCAtIDI2ICsgMiA6IHZhbHVlSW5kZXggKyAyO1xuICAgIGNvbnN0IGZpcnN0UHJldlZhbHVlSW5kZXggPSB2YWx1ZUluZGV4IC0gMSA8IDAgPyAyNSA6IHZhbHVlSW5kZXggLSAxO1xuICAgIGNvbnN0IHNlY29uZFByZXZWYWx1ZUluZGV4ID0gdmFsdWVJbmRleCAtIDIgPCAwID8gdmFsdWVJbmRleCArIDI2IC0gMiA6IHZhbHVlSW5kZXggLSAyO1xuXG4gICAgbWFpbldpbmRvdy52YWx1ZSA9IEFscGhhYmV0W3ZhbHVlSW5kZXhdO1xuICAgIGZpcnN0TmV4dFdpbmRvdy5pbm5lclRleHQgPSBBbHBoYWJldFtmaXJzdE5leHRWYWx1ZUluZGV4XTtcbiAgICBzZWNvbmROZXh0V2luZG93LmlubmVyVGV4dCA9IEFscGhhYmV0W3NlY29uZE5leHRWYWx1ZUluZGV4XTtcbiAgICBmaXJzdFByZXZXaW5kb3cuaW5uZXJUZXh0ID0gQWxwaGFiZXRbZmlyc3RQcmV2VmFsdWVJbmRleF07XG4gICAgc2Vjb25kUHJldldpbmRvdy5pbm5lclRleHQgPSBBbHBoYWJldFtzZWNvbmRQcmV2VmFsdWVJbmRleF07XG5cbiAgICB3aGVlbC5zdHlsZS5iYWNrZ3JvdW5kUG9zaXRpb25ZID0gKCh2YWx1ZUluZGV4ICogMTAwKSAvIDI2KSAqIDcgKyAnJSc7XG4gICAgdGhpcy52YWx1ZUluZGV4W3JvdG9ySW5kZXhdID0gdmFsdWVJbmRleDtcbiAgfVxuXG4gIHN0ZXBSb3Rvcihyb3RvckluZGV4KSB7XG4gICAgY29uc3QgbmV3VmFsdWVJbmRleCA9IHRoaXMudmFsdWVJbmRleFtyb3RvckluZGV4XSArIDEgPiAyNSA/IDAgOiB0aGlzLnZhbHVlSW5kZXhbcm90b3JJbmRleF0gKyAxO1xuICAgIGNvbnN0IG5ld1ZhbHVlID0gQWxwaGFiZXRbbmV3VmFsdWVJbmRleF07XG4gICAgdGhpcy5zZXRWYWx1ZShyb3RvckluZGV4LCBuZXdWYWx1ZSk7XG4gIH1cblxuICBnZXRDdXJyZW50U3RhdGUoKSB7XG4gICAgcmV0dXJuIHRoaXMudmFsdWVJbmRleDtcbiAgfVxuXG4gIGJpbmQoKSB7XG4gICAgZm9yIChsZXQgW2luZGV4LCByb3Rvcl0gb2YgdGhpcy5yb3RvcnMuZW50cmllcygpKSB7XG4gICAgICBjb25zdCBidG5OZXh0ID0gcm90b3IucXVlcnlTZWxlY3RvcignLnJvdG9yc19fYnRuLS1uZXh0Jyk7XG4gICAgICBjb25zdCBidG5QcmV2ID0gcm90b3IucXVlcnlTZWxlY3RvcignLnJvdG9yc19fYnRuLS1wcmV2Jyk7XG4gICAgICBjb25zdCBpbnB1dCA9IHJvdG9yLnF1ZXJ5U2VsZWN0b3IoJ2lucHV0Jyk7XG5cbiAgICAgIGJ0bk5leHQub25jbGljayA9ICgpID0+IHtcbiAgICAgICAgY29uc3QgY3VycmVudFZhbHVlSW5kZXggPSB0aGlzLnZhbHVlSW5kZXhbaW5kZXhdO1xuICAgICAgICBjb25zdCBuZXdWYWx1ZUluZGV4ID0gY3VycmVudFZhbHVlSW5kZXggKyAxID4gMjUgPyAwIDogY3VycmVudFZhbHVlSW5kZXggKyAxO1xuICAgICAgICB0aGlzLnNldFZhbHVlKGluZGV4LCBBbHBoYWJldFtuZXdWYWx1ZUluZGV4XSk7XG4gICAgICB9O1xuXG4gICAgICBidG5QcmV2Lm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgICAgIGNvbnN0IGN1cnJlbnRWYWx1ZUluZGV4ID0gdGhpcy52YWx1ZUluZGV4W2luZGV4XTtcbiAgICAgICAgY29uc3QgbmV3VmFsdWVJbmRleCA9IGN1cnJlbnRWYWx1ZUluZGV4IC0gMSA8IDAgPyAyNSA6IGN1cnJlbnRWYWx1ZUluZGV4IC0gMTtcbiAgICAgICAgdGhpcy5zZXRWYWx1ZShpbmRleCwgQWxwaGFiZXRbbmV3VmFsdWVJbmRleF0pO1xuICAgICAgfTtcblxuICAgICAgaW5wdXQub25rZXlwcmVzcyA9IGUgPT4ge1xuICAgICAgICBlLnN0b3BQcm9wYWdhdGlvbigpO1xuICAgICAgfTtcblxuICAgICAgaW5wdXQub25jaGFuZ2UgPSAoKSA9PiB7XG4gICAgICAgIGlmIChpbnB1dC52YWxpZGl0eS52YWxpZCAmJiBpbnB1dC52YWx1ZS5sZW5ndGggPiAwKSB7XG4gICAgICAgICAgaW5wdXQudmFsdWUgPSBpbnB1dC52YWx1ZS50b1VwcGVyQ2FzZSgpO1xuICAgICAgICAgIHRoaXMuc2V0VmFsdWUoaW5kZXgsIGlucHV0LnZhbHVlKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICB0aGlzLnNldFZhbHVlKGluZGV4LCBBbHBoYWJldFt0aGlzLnZhbHVlSW5kZXhbaW5kZXhdXSk7XG4gICAgICAgIH1cbiAgICAgIH07XG4gICAgfVxuICB9XG5cbiAgcmVzZXQoKSB7XG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCB0aGlzLnJvdG9ycy5sZW5ndGg7IGkrKykge1xuICAgICAgdGhpcy5zZXRWYWx1ZShpLCAnQScpO1xuICAgIH1cbiAgfVxuXG4gIGluaXQoKSB7XG4gICAgdGhpcy5yZXNldCgpO1xuICAgIHRoaXMuYmluZCgpO1xuICB9XG59XG5cbmNvbnN0IHJvdG9ycyA9IG5ldyBSb3RvcnMoJy5yb3RvcnNfX2l0ZW0nKTtcbmV4cG9ydCBkZWZhdWx0IHJvdG9ycztcbiIsImltcG9ydCB7IExheW91dCB9IGZyb20gJy4vZGF0YSc7XG5cbmNsYXNzIExhbXBib2FyZCB7XG4gIGNvbnN0cnVjdG9yKGNsYXNzQXR0cmlidXRlKSB7XG4gICAgdGhpcy5sYW1wcyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoY2xhc3NBdHRyaWJ1dGUpO1xuICAgIHRoaXMubGFzdEluZGV4ID0gbnVsbDtcbiAgfVxuXG4gIG5ld091dHB1dChsZXR0ZXIpIHtcbiAgICBjb25zdCBuZXdJbmRleCA9IExheW91dC5pbmRleE9mKGxldHRlcik7XG4gICAgdGhpcy5yZXNldCgpO1xuICAgIHRoaXMubGFtcHNbbmV3SW5kZXhdLmNsYXNzTGlzdC5hZGQoJ2xhbXBib2FyZF9fbGFtcC0tYWN0aXZlJyk7XG4gICAgdGhpcy5sYXN0SW5kZXggPSBuZXdJbmRleDtcbiAgfVxuXG4gIHJlc2V0KCkge1xuICAgIGNvbnN0IGN1cnJlbnRJbmRleCA9IHRoaXMubGFzdEluZGV4IHx8IDA7XG4gICAgdGhpcy5sYW1wc1tjdXJyZW50SW5kZXhdLmNsYXNzTGlzdC5yZW1vdmUoJ2xhbXBib2FyZF9fbGFtcC0tYWN0aXZlJyk7XG4gICAgdGhpcy5sYXN0SW5kZXggPSBudWxsO1xuICB9XG59XG5cbmNvbnN0IGxhbXBib2FyZCA9IG5ldyBMYW1wYm9hcmQoJy5sYW1wYm9hcmRfX2xhbXAnKTtcbmV4cG9ydCBkZWZhdWx0IGxhbXBib2FyZDtcbiIsImNsYXNzIEtleWJvYXJkIHtcbiAgY29uc3RydWN0b3IoY2xhc3NBdHRyaWJ1dGUpIHtcbiAgICB0aGlzLmtleXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGNsYXNzQXR0cmlidXRlKTtcbiAgfVxuXG4gIGlucHV0QWN0aW9uKGxldHRlcikge1xuICAgIHJldHVybiBsZXR0ZXI7XG4gIH1cblxuICBiaW5kKCkge1xuICAgIGZvciAobGV0IGtleSBvZiB0aGlzLmtleXMpIHtcbiAgICAgIGNvbnN0IGxldHRlciA9IGtleS5pbm5lclRleHQudG9VcHBlckNhc2UoKTtcblxuICAgICAga2V5Lm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgICAgIHRoaXMuaW5wdXRBY3Rpb24obGV0dGVyKTtcbiAgICAgIH07XG4gICAgfVxuXG4gICAgZG9jdW1lbnQub25rZXlkb3duID0gZSA9PiB7XG4gICAgICBjb25zdCByZSA9IC9eW0EtWl17MX0vO1xuICAgICAgY29uc3Qga2V5ID0gZS5rZXkudG9VcHBlckNhc2UoKTtcblxuICAgICAgaWYgKHJlLnRlc3Qoa2V5KSkge1xuICAgICAgICB0aGlzLmlucHV0QWN0aW9uKGtleSk7XG4gICAgICB9XG4gICAgfTtcbiAgfVxuXG4gIGluaXQoKSB7XG4gICAgdGhpcy5iaW5kKCk7XG4gIH1cbn1cblxuY29uc3Qga2V5Ym9hcmQgPSBuZXcgS2V5Ym9hcmQoJy5rZXlib2FyZF9fYnRuJyk7XG5leHBvcnQgZGVmYXVsdCBrZXlib2FyZDtcbiIsImNsYXNzIFBsdWdib2FyZCB7XG4gIGNvbnN0cnVjdG9yKGNsYXNzQXR0cmlidXRlKSB7XG4gICAgdGhpcy5zb2NrZXRzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChjbGFzc0F0dHJpYnV0ZSk7XG4gICAgdGhpcy5jb25uZWN0aW9ucyA9IHt9O1xuICAgIHRoaXMucHJldlNvY2tldCA9IG51bGw7XG4gIH1cblxuICBjcmVhdGVQbHVnKHBhaXJMZXR0ZXIpIHtcbiAgICBjb25zdCBwbHVnID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG4gICAgcGx1Zy5jbGFzc0xpc3QuYWRkKCdwbHVnYm9hcmRfX3BsdWcnKTtcbiAgICBwbHVnLnRhYkluZGV4ID0gMDtcbiAgICBwbHVnLnNldEF0dHJpYnV0ZSgncm9sZScsICdidXR0b24nKTtcbiAgICBwbHVnLmlubmVyVGV4dCA9IHBhaXJMZXR0ZXIudG9VcHBlckNhc2UoKTtcbiAgICByZXR1cm4gcGx1ZztcbiAgfVxuXG4gIGRpc2Nvbm5lY3RTb2NrZXRzKHBsdWcxLCBwbHVnMiwgbGV0dGVyMSwgbGV0dGVyMikge1xuICAgIHBsdWcxLnJlbW92ZSgpO1xuICAgIHBsdWcyLnJlbW92ZSgpO1xuICAgIGRlbGV0ZSB0aGlzLmNvbm5lY3Rpb25zW2xldHRlcjFdO1xuICAgIGRlbGV0ZSB0aGlzLmNvbm5lY3Rpb25zW2xldHRlcjJdO1xuICB9XG5cbiAgY29ubmVjdFNvY2tldHMoc29ja2V0MSwgc29ja2V0Mikge1xuICAgIGNvbnN0IGxldHRlcjEgPSBzb2NrZXQyLnF1ZXJ5U2VsZWN0b3IoJ3NwYW4nKS5pbm5lclRleHQ7XG4gICAgY29uc3QgbGV0dGVyMiA9IHNvY2tldDEucXVlcnlTZWxlY3Rvcignc3BhbicpLmlubmVyVGV4dDtcbiAgICBjb25zdCBwbHVnMSA9IHRoaXMuY3JlYXRlUGx1ZyhsZXR0ZXIxKTtcbiAgICBjb25zdCBwbHVnMiA9IHRoaXMuY3JlYXRlUGx1ZyhsZXR0ZXIyKTtcblxuICAgIHBsdWcxLm9uY2xpY2sgPSBlID0+IHtcbiAgICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgICB0aGlzLmRpc2Nvbm5lY3RTb2NrZXRzKHBsdWcxLCBwbHVnMiwgbGV0dGVyMSwgbGV0dGVyMik7XG4gICAgfTtcblxuICAgIHBsdWcyLm9uY2xpY2sgPSBlID0+IHtcbiAgICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgICB0aGlzLmRpc2Nvbm5lY3RTb2NrZXRzKHBsdWcxLCBwbHVnMiwgbGV0dGVyMSwgbGV0dGVyMik7XG4gICAgfTtcblxuICAgIHNvY2tldDEuYXBwZW5kQ2hpbGQocGx1ZzEpO1xuICAgIHNvY2tldDIuYXBwZW5kQ2hpbGQocGx1ZzIpO1xuICAgIHRoaXMuY29ubmVjdGlvbnNbbGV0dGVyMV0gPSBsZXR0ZXIyO1xuICAgIHRoaXMuY29ubmVjdGlvbnNbbGV0dGVyMl0gPSBsZXR0ZXIxO1xuICB9XG5cbiAgcmVzZXQoKSB7XG4gICAgZm9yIChsZXQgc29ja2V0IG9mIHRoaXMuc29ja2V0cykge1xuICAgICAgY29uc3QgcGx1ZyA9IHNvY2tldC5xdWVyeVNlbGVjdG9yKCcucGx1Z2JvYXJkX19wbHVnJyk7XG4gICAgICBpZiAoIXBsdWcpIHtcbiAgICAgICAgY29udGludWU7XG4gICAgICB9XG4gICAgICBwbHVnLnJlbW92ZSgpO1xuICAgIH1cblxuICAgIHRoaXMuY29ubmVjdGlvbnMgPSB7fTtcbiAgfVxuXG4gIGJpbmQoKSB7XG4gICAgZm9yIChsZXQgc29ja2V0IG9mIHRoaXMuc29ja2V0cykge1xuICAgICAgc29ja2V0Lm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgICAgIGlmICh0aGlzLnByZXZTb2NrZXQgJiYgdGhpcy5wcmV2U29ja2V0ICE9PSBzb2NrZXQpIHtcbiAgICAgICAgICB0aGlzLmNvbm5lY3RTb2NrZXRzKHNvY2tldCwgdGhpcy5wcmV2U29ja2V0KTtcbiAgICAgICAgICBzb2NrZXQuYmx1cigpO1xuICAgICAgICAgIHRoaXMucHJldlNvY2tldCA9IG51bGw7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgdGhpcy5wcmV2U29ja2V0ID0gc29ja2V0O1xuICAgICAgICB9XG4gICAgICB9O1xuICAgIH1cbiAgfVxuXG4gIGluaXQoKSB7XG4gICAgdGhpcy5iaW5kKCk7XG4gIH1cbn1cblxuY29uc3QgcGx1Z2JvYXJkID0gbmV3IFBsdWdib2FyZCgnLnBsdWdib2FyZF9fc29ja2V0Jyk7XG5leHBvcnQgZGVmYXVsdCBwbHVnYm9hcmQ7XG4iLCJpbXBvcnQgeyBSb3Rvck9wdGlvbiwgUmVmbGVjdG9yT3B0aW9uIH0gZnJvbSAnLi9kYXRhJztcblxuY2xhc3MgU2V0dGluZ3Mge1xuICBjb25zdHJ1Y3RvcihjbGFzc0RpYWxvZ3VlLCBjbGFzc1RvZ2dsZSwgY2xhc3NTZWxlY3QpIHtcbiAgICB0aGlzLmRpYWxvZ3VlQ2xhc3MgPSBjbGFzc0RpYWxvZ3VlO1xuICAgIHRoaXMudG9nZ2xlQ2xhc3MgPSBjbGFzc1RvZ2dsZTtcbiAgICB0aGlzLnNlbGVjdENsYXNzID0gY2xhc3NTZWxlY3Q7XG4gIH1cblxuICBjaGFuZ2VSb3Rvcihyb3RvciwgdmFsdWUpIHtcbiAgICByZXR1cm4gW3JvdG9yLCB2YWx1ZV07XG4gIH1cblxuICBjaGFuZ2VSZWZsZWN0b3IodmFsdWUpIHtcbiAgICByZXR1cm4gdmFsdWU7XG4gIH1cblxuICBjcmVhdGVPcHRpb24odmFsdWUpIHtcbiAgICBjb25zdCBvcHRpb24gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdvcHRpb24nKTtcbiAgICBvcHRpb24udmFsdWUgPSB2YWx1ZTtcbiAgICBvcHRpb24uaW5uZXJUZXh0ID0gdmFsdWU7XG4gICAgcmV0dXJuIG9wdGlvbjtcbiAgfVxuXG4gIGJpbmQoKSB7XG4gICAgY29uc3QgZGlhbG9ndWUgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGAuJHt0aGlzLmRpYWxvZ3VlQ2xhc3N9YCk7XG4gICAgY29uc3QgdG9nZ2xlID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihgLiR7dGhpcy50b2dnbGVDbGFzc31gKTtcbiAgICBjb25zdCBzZWxlY3RzID0gQXJyYXkuZnJvbShkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGAuJHt0aGlzLnNlbGVjdENsYXNzfWApKTtcblxuICAgIGNvbnN0IHJlZmxlY3RvcnMgPSBPYmplY3Qua2V5cyhSZWZsZWN0b3JPcHRpb24pO1xuICAgIGNvbnN0IHJvdG9ycyA9IE9iamVjdC5rZXlzKFJvdG9yT3B0aW9uKTtcblxuICAgIHRvZ2dsZS5vbmNsaWNrID0gKCkgPT4ge1xuICAgICAgdG9nZ2xlLmNsYXNzTGlzdC50b2dnbGUoYCR7dGhpcy50b2dnbGVDbGFzc30tLWFjdGl2ZWApO1xuICAgICAgZGlhbG9ndWUuY2xhc3NMaXN0LnRvZ2dsZShgJHt0aGlzLmRpYWxvZ3VlQ2xhc3N9LS1hY3RpdmVgKTtcbiAgICB9O1xuXG4gICAgcmVmbGVjdG9ycy5mb3JFYWNoKGl0ZW0gPT4ge1xuICAgICAgc2VsZWN0c1swXS5hcHBlbmRDaGlsZCh0aGlzLmNyZWF0ZU9wdGlvbihpdGVtKSk7XG4gICAgfSk7XG5cbiAgICBzZWxlY3RzWzBdLm9uY2hhbmdlID0gKCkgPT4ge1xuICAgICAgdGhpcy5jaGFuZ2VSZWZsZWN0b3Ioc2VsZWN0c1swXS52YWx1ZSk7XG4gICAgICBzZWxlY3RzWzBdLmJsdXIoKTtcbiAgICB9O1xuXG4gICAgZm9yIChsZXQgaSA9IDE7IGkgPCBzZWxlY3RzLmxlbmd0aDsgaSsrKSB7XG4gICAgICByb3RvcnMuZm9yRWFjaChpdGVtID0+IHtcbiAgICAgICAgc2VsZWN0c1tpXS5hcHBlbmRDaGlsZCh0aGlzLmNyZWF0ZU9wdGlvbihpdGVtKSk7XG4gICAgICB9KTtcblxuICAgICAgc2VsZWN0c1tpXS5vbmNoYW5nZSA9ICgpID0+IHtcbiAgICAgICAgdGhpcy5jaGFuZ2VSb3RvcigzIC0gaSwgc2VsZWN0c1tpXS52YWx1ZSk7XG4gICAgICAgIHNlbGVjdHNbaV0uYmx1cigpO1xuICAgICAgfTtcbiAgICB9XG4gIH1cblxuICBpbml0KCkge1xuICAgIHRoaXMuYmluZCgpO1xuICAgIHRoaXMucmVzZXQoKTtcbiAgfVxuXG4gIHJlc2V0KCkge1xuICAgIGNvbnN0IHNlbGVjdHMgPSBBcnJheS5mcm9tKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoYC4ke3RoaXMuc2VsZWN0Q2xhc3N9YCkpO1xuICAgIHNlbGVjdHNbMF0udmFsdWUgPSAnQic7XG4gICAgc2VsZWN0c1sxXS52YWx1ZSA9ICdJJztcbiAgICBzZWxlY3RzWzJdLnZhbHVlID0gJ0lJJztcbiAgICBzZWxlY3RzWzNdLnZhbHVlID0gJ0lJSSc7XG4gIH1cbn1cblxuY29uc3Qgc2V0dGluZ3MgPSBuZXcgU2V0dGluZ3MoJ3NldHRpbmdzX19kaWFsb2d1ZScsICdzZXR0aW5nc19fdG9nZ2xlJywgJ3NldHRpbmdzX19zZWxlY3QnKTtcbmV4cG9ydCBkZWZhdWx0IHNldHRpbmdzO1xuIiwiY2xhc3MgTWVzc2FnZSB7XG4gIGNvbnN0cnVjdG9yKGNsYXNzTW9kYWwsIGNsYXNzVG9nZ2xlLCBpZERhdGUsIGlkVGltZSwgY2xhc3NJbnB1dCwgaWRDaGVja2JveCwgY2xhc3NTdWJtaXQsIGNsYXNzT3V0cHV0KSB7XG4gICAgdGhpcy5tb2RhbENsYXNzID0gY2xhc3NNb2RhbDtcbiAgICB0aGlzLnRvZ2dsZUNsYXNzID0gY2xhc3NUb2dnbGU7XG4gICAgdGhpcy5kYXRlSUQgPSBpZERhdGU7XG4gICAgdGhpcy50aW1lSUQgPSBpZFRpbWU7XG4gICAgdGhpcy5pbnB1dENsYXNzID0gY2xhc3NJbnB1dDtcbiAgICB0aGlzLmNoZWNrYm94SUQgPSBpZENoZWNrYm94O1xuICAgIHRoaXMuc3VibWl0Q2xhc3MgPSBjbGFzc1N1Ym1pdDtcbiAgICB0aGlzLm91dHB1dENsYXNzID0gY2xhc3NPdXRwdXQ7XG4gICAgdGhpcy5tb250aCA9IFtcbiAgICAgICdKYW51YXJ5JyxcbiAgICAgICdGZWJydWFyeScsXG4gICAgICAnTWFyY2gnLFxuICAgICAgJ0FwcmlsJyxcbiAgICAgICdNYXknLFxuICAgICAgJ0p1bmUnLFxuICAgICAgJ0p1bHknLFxuICAgICAgJ0F1Z3VzdCcsXG4gICAgICAnU2VwdGVtYmVyJyxcbiAgICAgICdPY3RvYmVyJyxcbiAgICAgICdOb3ZlbWJlcicsXG4gICAgICAnRGVjZW1iZXInLFxuICAgIF07XG4gIH1cblxuICBzZXRUaW1lKCkge1xuICAgIGNvbnN0IGRhdGVBcmVhID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQodGhpcy5kYXRlSUQpO1xuICAgIGNvbnN0IHRpbWVBcmVhID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQodGhpcy50aW1lSUQpO1xuXG4gICAgbGV0IHRvZGF5ID0gbmV3IERhdGUoKTtcbiAgICBsZXQgZGQgPSB0b2RheS5nZXREYXRlKCk7XG4gICAgbGV0IG1tID0gdG9kYXkuZ2V0TW9udGgoKTtcbiAgICBsZXQgeXl5eSA9IHRvZGF5LmdldEZ1bGxZZWFyKCk7XG4gICAgbGV0IGhvdXJzID0gdG9kYXkuZ2V0SG91cnMoKTtcbiAgICBsZXQgbWludXRlcyA9IHRvZGF5LmdldE1pbnV0ZXMoKTtcblxuICAgIGRhdGVBcmVhLmlubmVyVGV4dCA9IGAke2RkfSAke3RoaXMubW9udGhbbW1dfSAke3l5eXl9YDtcblxuICAgIGlmIChkZCA8IDEwKSB7XG4gICAgICBkZCA9ICcwJyArIGRkO1xuICAgIH1cblxuICAgIG1tICs9IDE7XG5cbiAgICBpZiAobW0gPCAxMCkge1xuICAgICAgbW0gPSAnMCcgKyBtbTtcbiAgICB9XG5cbiAgICBkYXRlQXJlYS5kYXRlVGltZSA9IGAke3l5eXl9LSR7bW19LSR7ZGR9YDtcbiAgICB0aW1lQXJlYS5pbm5lclRleHQgPSBgJHtob3Vyc306JHttaW51dGVzfWA7XG4gICAgdGltZUFyZWEuZGF0ZVRpbWUgPSBgJHtob3Vyc306JHttaW51dGVzfWA7XG4gIH1cblxuICBlbmNyeXB0VGV4dCh0ZXh0KSB7XG4gICAgcmV0dXJuIHRleHQ7XG4gIH1cblxuICBiaW5kKCkge1xuICAgIGNvbnN0IG1vZGFsID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihgLiR7dGhpcy5tb2RhbENsYXNzfWApO1xuICAgIGNvbnN0IHRvZ2dsZSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYC4ke3RoaXMudG9nZ2xlQ2xhc3N9YCk7XG4gICAgY29uc3QgY29udGVudCA9IG1vZGFsLnF1ZXJ5U2VsZWN0b3IoYC4ke3RoaXMubW9kYWxDbGFzc31fX2NvbnRlbnRgKTtcbiAgICBjb25zdCBpbnB1dCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYC4ke3RoaXMuaW5wdXRDbGFzc31gKTtcbiAgICBjb25zdCBjaGVja2JveCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKHRoaXMuY2hlY2tib3hJRCk7XG4gICAgY29uc3Qgc3VibWl0ID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihgLiR7dGhpcy5zdWJtaXRDbGFzc31gKTtcbiAgICBjb25zdCBvdXRwdXQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGAuJHt0aGlzLm91dHB1dENsYXNzfWApO1xuXG4gICAgdG9nZ2xlLm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgICBtb2RhbC5jbGFzc0xpc3QuYWRkKGAke3RoaXMubW9kYWxDbGFzc30tLWFjdGl2ZWApO1xuICAgICAgdGhpcy5zZXRUaW1lKCk7XG4gICAgfTtcblxuICAgIG1vZGFsLm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgICBtb2RhbC5jbGFzc0xpc3QucmVtb3ZlKGAke3RoaXMubW9kYWxDbGFzc30tLWFjdGl2ZWApO1xuICAgIH07XG5cbiAgICBjb250ZW50Lm9uY2xpY2sgPSBlID0+IHtcbiAgICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgfTtcblxuICAgIGlucHV0Lm9ua2V5dXAgPSBlID0+IHtcbiAgICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgICBjb25zdCByZSA9IC9bXkEtWmEtelxcc10vZztcbiAgICAgIGlucHV0LnZhbHVlID0gaW5wdXQudmFsdWUucmVwbGFjZShyZSwgJycpO1xuICAgICAgaW5wdXQudmFsdWUgPSBpbnB1dC52YWx1ZS50b1VwcGVyQ2FzZSgpO1xuICAgIH07XG5cbiAgICBzdWJtaXQub25jbGljayA9ICgpID0+IHtcbiAgICAgIGxldCB0ZXh0ID0gaW5wdXQudmFsdWU7XG4gICAgICBpZiAoIWNoZWNrYm94LmNoZWNrZWQpIHtcbiAgICAgICAgdGV4dCA9IHRleHRcbiAgICAgICAgICAucmVwbGFjZSgvIC9nLCAnJylcbiAgICAgICAgICAubWF0Y2goLy57MSw1fS9nKVxuICAgICAgICAgIC5qb2luKCcgJyk7XG4gICAgICB9XG5cbiAgICAgIG91dHB1dC5pbm5lclRleHQgPSB0aGlzLmVuY3J5cHRUZXh0KHRleHQpO1xuICAgIH07XG4gIH1cblxuICBpbml0KCkge1xuICAgIHRoaXMuYmluZCgpO1xuICB9XG59XG5cbmNvbnN0IG1lc3NhZ2UgPSBuZXcgTWVzc2FnZShcbiAgJ21vZGFsJyxcbiAgJ21vZGFsX190b2dnbGUnLFxuICAnZGF0ZScsXG4gICd0aW1lJyxcbiAgJ21lc3NhZ2VfX2lucHV0JyxcbiAgJ2tlZXAtZm9ybWF0dGluZycsXG4gICdtZXNzYWdlX19idG4nLFxuICAnbWVzc2FnZV9fb3V0cHV0Jyxcbik7XG5leHBvcnQgZGVmYXVsdCBtZXNzYWdlO1xuIiwiaW1wb3J0IHsgQWxwaGFiZXQgfSBmcm9tICcuL2RhdGEnO1xuXG5jbGFzcyBFbmlnbWEge1xuICBjb25zdHJ1Y3RvcigpIHt9XG5cbiAgc3VtVmFsdWVzKGEsIGIpIHtcbiAgICByZXR1cm4gYSArIGIgPiAyNSA/IGEgLSAyNiArIGIgOiBhICsgYjtcbiAgfVxuXG4gIHN1YlZhbHVlcyhhLCBiKSB7XG4gICAgcmV0dXJuIGEgLSBiIDwgMCA/IGEgKyAyNiAtIGIgOiBhIC0gYjtcbiAgfVxuXG4gIGVuY3J5cHQobGV0dGVyLCByb3RvcnMsIHJvdG9yUG9zaXRpb25zLCByZWZsZWN0b3IpIHtcbiAgICBsZXQgcmVzdWx0O1xuICAgIGNvbnN0IGxldHRlckluZGV4ID0gQWxwaGFiZXQuaW5kZXhPZihsZXR0ZXIpO1xuICAgIGNvbnN0IG51bWJlck9mUm90b3JzID0gcm90b3JQb3NpdGlvbnMubGVuZ3RoO1xuXG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCBudW1iZXJPZlJvdG9yczsgaSsrKSB7XG4gICAgICBpZiAoaSA9PSAwKSB7XG4gICAgICAgIHJlc3VsdCA9IEFscGhhYmV0LmluZGV4T2Yocm90b3JzW2ldW3RoaXMuc3VtVmFsdWVzKHJvdG9yUG9zaXRpb25zW2ldLCBsZXR0ZXJJbmRleCldKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHJlc3VsdCA9IEFscGhhYmV0LmluZGV4T2YoXG4gICAgICAgICAgcm90b3JzW2ldW3RoaXMuc3VtVmFsdWVzKHJlc3VsdCwgdGhpcy5zdWJWYWx1ZXMocm90b3JQb3NpdGlvbnNbaV0sIHJvdG9yUG9zaXRpb25zW2kgLSAxXSkpXSxcbiAgICAgICAgKTtcbiAgICAgIH1cbiAgICB9XG5cbiAgICByZXN1bHQgPSByb3RvcnNbbnVtYmVyT2ZSb3RvcnMgLSAxXS5pbmRleE9mKFxuICAgICAgQWxwaGFiZXRbXG4gICAgICAgIHRoaXMuc3VtVmFsdWVzKFxuICAgICAgICAgIEFscGhhYmV0LmluZGV4T2YocmVmbGVjdG9yW3RoaXMuc3ViVmFsdWVzKHJlc3VsdCwgcm90b3JQb3NpdGlvbnNbbnVtYmVyT2ZSb3RvcnMgLSAxXSldKSxcbiAgICAgICAgICByb3RvclBvc2l0aW9uc1tudW1iZXJPZlJvdG9ycyAtIDFdLFxuICAgICAgICApXG4gICAgICBdLFxuICAgICk7XG5cbiAgICBmb3IgKGxldCBpID0gbnVtYmVyT2ZSb3RvcnMgLSAxOyBpID49IDA7IGktLSkge1xuICAgICAgaWYgKGkgPT0gMCkge1xuICAgICAgICByZXN1bHQgPSB0aGlzLnN1YlZhbHVlcyhyZXN1bHQsIHJvdG9yUG9zaXRpb25zWzBdKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHJlc3VsdCA9IHJvdG9yc1tpIC0gMV0uaW5kZXhPZihcbiAgICAgICAgICBBbHBoYWJldFt0aGlzLnN1YlZhbHVlcyhyZXN1bHQsIHRoaXMuc3ViVmFsdWVzKHJvdG9yUG9zaXRpb25zW2ldLCByb3RvclBvc2l0aW9uc1tpIC0gMV0pKV0sXG4gICAgICAgICk7XG4gICAgICB9XG4gICAgfVxuXG4gICAgcmVzdWx0ID0gQWxwaGFiZXRbcmVzdWx0XTtcblxuICAgIHJldHVybiByZXN1bHQ7XG4gIH1cbn1cblxuY29uc3QgZW5pZ21hID0gbmV3IEVuaWdtYSgpO1xuZXhwb3J0IGRlZmF1bHQgZW5pZ21hO1xuIiwiaW1wb3J0IHsgUm90b3JPcHRpb24sIFJlZmxlY3Rvck9wdGlvbiwgQWxwaGFiZXQgfSBmcm9tICcuL2RhdGEnO1xuaW1wb3J0IFJvdG9ycyBmcm9tICcuL3JvdG9ycyc7XG5pbXBvcnQgTGFtcGJvYXJkIGZyb20gJy4vbGFtcGJvYXJkJztcbmltcG9ydCBLZXlib2FyZCBmcm9tICcuL2tleWJvYXJkJztcbmltcG9ydCBQbHVnYm9hcmQgZnJvbSAnLi9wbHVnYm9hcmQnO1xuaW1wb3J0IFNldHRpbmdzIGZyb20gJy4vc2V0dGluZ3MnO1xuaW1wb3J0IE1lc3NhZ2UgZnJvbSAnLi9tZXNzYWdlJztcbmltcG9ydCBFbmlnbWEgZnJvbSAnLi9lbmlnbWEnO1xuXG5jbGFzcyBBcHAge1xuICBjb25zdHJ1Y3Rvcihyb3RvclNldCwgcm90b3JTZXROb3RjaCwgcmVmbGVjdG9yKSB7XG4gICAgdGhpcy5yb3RvclNldCA9IHJvdG9yU2V0O1xuICAgIHRoaXMucm90b3JTZXROb3RjaCA9IHJvdG9yU2V0Tm90Y2g7XG4gICAgdGhpcy5yZWZsZWN0b3IgPSByZWZsZWN0b3I7XG4gIH1cblxuICBpbml0KCkge1xuICAgIEtleWJvYXJkLmluaXQoKTtcbiAgICBQbHVnYm9hcmQuaW5pdCgpO1xuICAgIFJvdG9ycy5pbml0KCk7XG4gICAgU2V0dGluZ3MuaW5pdCgpO1xuICAgIE1lc3NhZ2UuaW5pdCgpO1xuXG4gICAgY29uc3QgcmVzZXRCdXR0b24gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcucmVzZXQnKTtcbiAgICByZXNldEJ1dHRvbi5vbmNsaWNrID0gKCkgPT4ge1xuICAgICAgcmVzZXRCdXR0b24uZGlzYWJsZWQgPSB0cnVlO1xuICAgICAgcmVzZXRCdXR0b24uc3R5bGUudHJhbnNpdGlvbkR1cmF0aW9uID0gJzAuNXMnO1xuICAgICAgcmVzZXRCdXR0b24uc3R5bGUudHJhbnNmb3JtID0gJ3JvdGF0ZSgzNjBkZWcpJztcblxuICAgICAgdGhpcy5yZXNldCgpO1xuXG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgICAgcmVzZXRCdXR0b24uZGlzYWJsZWQgPSBmYWxzZTtcbiAgICAgICAgcmVzZXRCdXR0b24uc3R5bGUudHJhbnNpdGlvbkR1cmF0aW9uID0gJzBzJztcbiAgICAgICAgcmVzZXRCdXR0b24uc3R5bGUudHJhbnNmb3JtID0gJyc7XG4gICAgICB9LCA1MDApO1xuICAgIH07XG4gIH1cblxuICByZXNldCgpIHtcbiAgICBSb3RvcnMucmVzZXQoKTtcbiAgICBMYW1wYm9hcmQucmVzZXQoKTtcbiAgICBQbHVnYm9hcmQucmVzZXQoKTtcbiAgfVxuXG4gIGNoYW5nZVJvdG9yKHJvdG9yLCBub3RjaCwgcm90b3JJbmRleCkge1xuICAgIHRoaXMucm90b3JTZXRbcm90b3JJbmRleF0gPSByb3RvcjtcbiAgICB0aGlzLnJvdG9yU2V0Tm90Y2hbcm90b3JJbmRleF0gPSBub3RjaDtcbiAgfVxuXG4gIGNoYW5nZVJlZmxlY3RvcihyZWZsZWN0b3IpIHtcbiAgICB0aGlzLnJlZmxlY3RvciA9IHJlZmxlY3RvcjtcbiAgfVxuXG4gIGlucHV0QWN0aW9uKGxldHRlcikge1xuICAgIGlmIChsZXR0ZXIgaW4gUGx1Z2JvYXJkLmNvbm5lY3Rpb25zKSB7XG4gICAgICBsZXR0ZXIgPSBQbHVnYm9hcmQuY29ubmVjdGlvbnNbbGV0dGVyXTtcbiAgICB9XG5cbiAgICBjb25zdCByb3RvcnNUb1N0ZXAgPSBbMF07XG5cbiAgICBmb3IgKGxldCBpID0gMDsgaSA8IHRoaXMucm90b3JTZXQubGVuZ3RoIC0gMTsgaSsrKSB7XG4gICAgICBjb25zdCBjdXJyZW50VmFsdWUgPSBBbHBoYWJldFtSb3RvcnMudmFsdWVJbmRleFtpXV07XG4gICAgICBpZiAoY3VycmVudFZhbHVlID09IHRoaXMucm90b3JTZXROb3RjaFtpXSkge1xuICAgICAgICByb3RvcnNUb1N0ZXAucHVzaChpICsgMSk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICBicmVhaztcbiAgICAgIH1cbiAgICB9XG5cbiAgICByb3RvcnNUb1N0ZXAuZm9yRWFjaChpdGVtID0+IHtcbiAgICAgIFJvdG9ycy5zdGVwUm90b3IoaXRlbSk7XG4gICAgfSk7XG5cbiAgICBsZXQgcmVzdWx0ID0gRW5pZ21hLmVuY3J5cHQobGV0dGVyLCB0aGlzLnJvdG9yU2V0LCBSb3RvcnMudmFsdWVJbmRleCwgdGhpcy5yZWZsZWN0b3IpO1xuXG4gICAgaWYgKHJlc3VsdCBpbiBQbHVnYm9hcmQuY29ubmVjdGlvbnMpIHtcbiAgICAgIHJlc3VsdCA9IFBsdWdib2FyZC5jb25uZWN0aW9uc1tyZXN1bHRdO1xuICAgIH1cblxuICAgIExhbXBib2FyZC5uZXdPdXRwdXQocmVzdWx0KTtcblxuICAgIHJldHVybiByZXN1bHQ7XG4gIH1cbn1cblxuY29uc3QgYXBwID0gbmV3IEFwcChcbiAgW1JvdG9yT3B0aW9uLklJSS5hbHBoYWJldCwgUm90b3JPcHRpb24uSUkuYWxwaGFiZXQsIFJvdG9yT3B0aW9uLkkuYWxwaGFiZXRdLFxuICBbUm90b3JPcHRpb24uSUlJLm5vdGNoLCBSb3Rvck9wdGlvbi5JSS5ub3RjaCwgUm90b3JPcHRpb24uSS5ub3RjaF0sXG4gIFJlZmxlY3Rvck9wdGlvbi5CLFxuKTtcbmFwcC5pbml0KCk7XG5cbktleWJvYXJkLmlucHV0QWN0aW9uID0gbGV0dGVyID0+IHtcbiAgYXBwLmlucHV0QWN0aW9uKGxldHRlcik7XG59O1xuXG5TZXR0aW5ncy5jaGFuZ2VSZWZsZWN0b3IgPSB2YWx1ZSA9PiB7XG4gIGFwcC5yZWZsZWN0b3IgPSBSZWZsZWN0b3JPcHRpb25bdmFsdWVdO1xuICBhcHAucmVzZXQoKTtcbn07XG5cblNldHRpbmdzLmNoYW5nZVJvdG9yID0gKHJvdG9yLCB2YWx1ZSkgPT4ge1xuICBhcHAucm90b3JTZXRbcm90b3JdID0gUm90b3JPcHRpb25bdmFsdWVdWydhbHBoYWJldCddO1xuICBhcHAucm90b3JTZXROb3RjaFtyb3Rvcl0gPSBSb3Rvck9wdGlvblt2YWx1ZV1bJ25vdGNoJ107XG4gIGFwcC5yZXNldCgpO1xufTtcblxuTWVzc2FnZS5lbmNyeXB0VGV4dCA9IHRleHQgPT4ge1xuICBsZXQgb3V0cHV0ID0gJyc7XG5cbiAgZm9yIChsZXQgaSA9IDA7IGkgPCB0ZXh0Lmxlbmd0aDsgaSsrKSB7XG4gICAgaWYgKHRleHRbaV0gPT0gJyAnKSB7XG4gICAgICBvdXRwdXQgKz0gdGV4dFtpXTtcbiAgICB9IGVsc2Uge1xuICAgICAgb3V0cHV0ICs9IGFwcC5pbnB1dEFjdGlvbih0ZXh0W2ldKTtcbiAgICB9XG4gIH1cblxuICByZXR1cm4gb3V0cHV0O1xufTtcbiJdLCJuYW1lcyI6WyJBbHBoYWJldCIsIkxheW91dCIsIlJvdG9yT3B0aW9uIiwiSSIsImFscGhhYmV0Iiwibm90Y2giLCJJSSIsIklJSSIsIklWIiwiViIsIlJlZmxlY3Rvck9wdGlvbiIsIkEiLCJCIiwiQyIsIlJvdG9ycyIsImNvbnN0cnVjdG9yIiwiY2xhc3NBdHRyaWJ1dGUiLCJyb3RvcnMiLCJBcnJheSIsImZyb20iLCJkb2N1bWVudCIsInF1ZXJ5U2VsZWN0b3JBbGwiLCJyZXZlcnNlIiwidmFsdWVJbmRleCIsInNldFZhbHVlIiwicm90b3JJbmRleCIsInZhbHVlIiwicm90b3IiLCJpbmRleE9mIiwibWFpbldpbmRvdyIsInF1ZXJ5U2VsZWN0b3IiLCJmaXJzdE5leHRXaW5kb3ciLCJwcmV2aW91c0VsZW1lbnRTaWJsaW5nIiwic2Vjb25kTmV4dFdpbmRvdyIsImZpcnN0UHJldldpbmRvdyIsIm5leHRFbGVtZW50U2libGluZyIsInNlY29uZFByZXZXaW5kb3ciLCJ3aGVlbCIsImZpcnN0TmV4dFZhbHVlSW5kZXgiLCJzZWNvbmROZXh0VmFsdWVJbmRleCIsImZpcnN0UHJldlZhbHVlSW5kZXgiLCJzZWNvbmRQcmV2VmFsdWVJbmRleCIsImlubmVyVGV4dCIsInN0eWxlIiwiYmFja2dyb3VuZFBvc2l0aW9uWSIsInN0ZXBSb3RvciIsIm5ld1ZhbHVlSW5kZXgiLCJuZXdWYWx1ZSIsImdldEN1cnJlbnRTdGF0ZSIsImJpbmQiLCJpbmRleCIsImVudHJpZXMiLCJidG5OZXh0IiwiYnRuUHJldiIsImlucHV0Iiwib25jbGljayIsImN1cnJlbnRWYWx1ZUluZGV4Iiwib25rZXlwcmVzcyIsImUiLCJzdG9wUHJvcGFnYXRpb24iLCJvbmNoYW5nZSIsInZhbGlkaXR5IiwidmFsaWQiLCJsZW5ndGgiLCJ0b1VwcGVyQ2FzZSIsInJlc2V0IiwiaSIsImluaXQiLCJMYW1wYm9hcmQiLCJsYW1wcyIsImxhc3RJbmRleCIsIm5ld091dHB1dCIsImxldHRlciIsIm5ld0luZGV4IiwiY2xhc3NMaXN0IiwiYWRkIiwiY3VycmVudEluZGV4IiwicmVtb3ZlIiwibGFtcGJvYXJkIiwiS2V5Ym9hcmQiLCJrZXlzIiwiaW5wdXRBY3Rpb24iLCJrZXkiLCJvbmtleWRvd24iLCJyZSIsInRlc3QiLCJrZXlib2FyZCIsIlBsdWdib2FyZCIsInNvY2tldHMiLCJjb25uZWN0aW9ucyIsInByZXZTb2NrZXQiLCJjcmVhdGVQbHVnIiwicGFpckxldHRlciIsInBsdWciLCJjcmVhdGVFbGVtZW50IiwidGFiSW5kZXgiLCJzZXRBdHRyaWJ1dGUiLCJkaXNjb25uZWN0U29ja2V0cyIsInBsdWcxIiwicGx1ZzIiLCJsZXR0ZXIxIiwibGV0dGVyMiIsImNvbm5lY3RTb2NrZXRzIiwic29ja2V0MSIsInNvY2tldDIiLCJhcHBlbmRDaGlsZCIsInNvY2tldCIsImJsdXIiLCJwbHVnYm9hcmQiLCJTZXR0aW5ncyIsImNsYXNzRGlhbG9ndWUiLCJjbGFzc1RvZ2dsZSIsImNsYXNzU2VsZWN0IiwiZGlhbG9ndWVDbGFzcyIsInRvZ2dsZUNsYXNzIiwic2VsZWN0Q2xhc3MiLCJjaGFuZ2VSb3RvciIsImNoYW5nZVJlZmxlY3RvciIsImNyZWF0ZU9wdGlvbiIsIm9wdGlvbiIsImRpYWxvZ3VlIiwidG9nZ2xlIiwic2VsZWN0cyIsInJlZmxlY3RvcnMiLCJPYmplY3QiLCJmb3JFYWNoIiwiaXRlbSIsInNldHRpbmdzIiwiTWVzc2FnZSIsImNsYXNzTW9kYWwiLCJpZERhdGUiLCJpZFRpbWUiLCJjbGFzc0lucHV0IiwiaWRDaGVja2JveCIsImNsYXNzU3VibWl0IiwiY2xhc3NPdXRwdXQiLCJtb2RhbENsYXNzIiwiZGF0ZUlEIiwidGltZUlEIiwiaW5wdXRDbGFzcyIsImNoZWNrYm94SUQiLCJzdWJtaXRDbGFzcyIsIm91dHB1dENsYXNzIiwibW9udGgiLCJzZXRUaW1lIiwiZGF0ZUFyZWEiLCJnZXRFbGVtZW50QnlJZCIsInRpbWVBcmVhIiwidG9kYXkiLCJEYXRlIiwiZGQiLCJnZXREYXRlIiwibW0iLCJnZXRNb250aCIsInl5eXkiLCJnZXRGdWxsWWVhciIsImhvdXJzIiwiZ2V0SG91cnMiLCJtaW51dGVzIiwiZ2V0TWludXRlcyIsImRhdGVUaW1lIiwiZW5jcnlwdFRleHQiLCJ0ZXh0IiwibW9kYWwiLCJjb250ZW50IiwiY2hlY2tib3giLCJzdWJtaXQiLCJvdXRwdXQiLCJvbmtleXVwIiwicmVwbGFjZSIsImNoZWNrZWQiLCJtYXRjaCIsImpvaW4iLCJtZXNzYWdlIiwiRW5pZ21hIiwic3VtVmFsdWVzIiwiYSIsImIiLCJzdWJWYWx1ZXMiLCJlbmNyeXB0Iiwicm90b3JQb3NpdGlvbnMiLCJyZWZsZWN0b3IiLCJyZXN1bHQiLCJsZXR0ZXJJbmRleCIsIm51bWJlck9mUm90b3JzIiwiZW5pZ21hIiwiQXBwIiwicm90b3JTZXQiLCJyb3RvclNldE5vdGNoIiwicmVzZXRCdXR0b24iLCJkaXNhYmxlZCIsInRyYW5zaXRpb25EdXJhdGlvbiIsInRyYW5zZm9ybSIsInNldFRpbWVvdXQiLCJyb3RvcnNUb1N0ZXAiLCJjdXJyZW50VmFsdWUiLCJwdXNoIiwiYXBwIl0sIm1hcHBpbmdzIjoiOzs7RUFBTyxNQUFNQSxRQUFRLEdBQUcsQ0FDdEIsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsQ0FDSixDQUFBO0VBRU0sTUFBTUMsTUFBTSxHQUFHLENBQ3BCLEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLENBQ0osQ0FBQTtFQUVNLE1BQU1DLFdBQVcsR0FBRztFQUN6QkMsRUFBQUEsQ0FBQyxFQUFFO01BQ0RDLFFBQVEsRUFBRSxDQUNSLEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLENBQ0o7RUFDREMsSUFBQUEsS0FBSyxFQUFFLEdBQUE7S0FDUjtFQUNEQyxFQUFBQSxFQUFFLEVBQUU7TUFDRkYsUUFBUSxFQUFFLENBQ1IsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsQ0FDSjtFQUNEQyxJQUFBQSxLQUFLLEVBQUUsR0FBQTtLQUNSO0VBQ0RFLEVBQUFBLEdBQUcsRUFBRTtNQUNISCxRQUFRLEVBQUUsQ0FDUixHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxDQUNKO0VBQ0RDLElBQUFBLEtBQUssRUFBRSxHQUFBO0tBQ1I7RUFDREcsRUFBQUEsRUFBRSxFQUFFO01BQ0ZKLFFBQVEsRUFBRSxDQUNSLEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLENBQ0o7RUFDREMsSUFBQUEsS0FBSyxFQUFFLEdBQUE7S0FDUjtFQUNESSxFQUFBQSxDQUFDLEVBQUU7TUFDREwsUUFBUSxFQUFFLENBQ1IsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsQ0FDSjtFQUNEQyxJQUFBQSxLQUFLLEVBQUUsR0FBQTtFQUNULEdBQUE7RUFDRixDQUFDLENBQUE7RUFFTSxNQUFNSyxlQUFlLEdBQUc7SUFDN0JDLENBQUMsRUFBRSxDQUNELEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLENBQ0o7SUFDREMsQ0FBQyxFQUFFLENBQ0QsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gsR0FBRyxFQUNILEdBQUcsRUFDSCxHQUFHLEVBQ0gs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{"version":3,"file":"main.js","sources":["source/js/data.js","source/js/rotors.js","source/js/lampboard.js","source/js/keyboard.js","source/js/plugboard.js","source/js/settings.js","source/js/message.js","source/js/enigma.js","source/js/main.js"],"sourcesContent":["export const Alphabet = [\n  'A',\n  'B',\n  'C',\n  'D',\n  'E',\n  'F',\n  'G',\n  'H',\n  'I',\n  'J',\n  'K',\n  'L',\n  'M',\n  'N',\n  'O',\n  'P',\n  'Q',\n  'R',\n  'S',\n  'T',\n  'U',\n  'V',\n  'W',\n  'X',\n  'Y',\n  'Z',\n];\n\nexport const Layout = [\n  'Q',\n  'W',\n  'E',\n  'R',\n  'T',\n  'Z',\n  'U',\n  'I',\n  'O',\n  'A',\n  'S',\n  'D',\n  'F',\n  'G',\n  'H',\n  'J',\n  'K',\n  'P',\n  'Y',\n  'X',\n  'C',\n  'V',\n  'B',\n  'N',\n  'M',\n  'L',\n];\n\nexport const RotorOption = {\n  I: {\n    alphabet: [\n      'E',\n      'K',\n      'M',\n      'F',\n      'L',\n      'G',\n      'D',\n      'Q',\n      'V',\n      'Z',\n      'N',\n      'T',\n      'O',\n      'W',\n      'Y',\n      'H',\n      'X',\n      'U',\n      'S',\n      'P',\n      'A',\n      'I',\n      'B',\n      'R',\n      'C',\n      'J',\n    ],\n    notch: 'Q',\n  },\n  II: {\n    alphabet: [\n      'A',\n      'J',\n      'D',\n      'K',\n      'S',\n      'I',\n      'R',\n      'U',\n      'X',\n      'B',\n      'L',\n      'H',\n      'W',\n      'T',\n      'M',\n      'C',\n      'Q',\n      'G',\n      'Z',\n      'N',\n      'P',\n      'Y',\n      'F',\n      'V',\n      'O',\n      'E',\n    ],\n    notch: 'E',\n  },\n  III: {\n    alphabet: [\n      'B',\n      'D',\n      'F',\n      'H',\n      'J',\n      'L',\n      'C',\n      'P',\n      'R',\n      'T',\n      'X',\n      'V',\n      'Z',\n      'N',\n      'Y',\n      'E',\n      'I',\n      'W',\n      'G',\n      'A',\n      'K',\n      'M',\n      'U',\n      'S',\n      'Q',\n      'O',\n    ],\n    notch: 'V',\n  },\n  IV: {\n    alphabet: [\n      'E',\n      'S',\n      'O',\n      'V',\n      'P',\n      'Z',\n      'J',\n      'A',\n      'Y',\n      'Q',\n      'U',\n      'I',\n      'R',\n      'H',\n      'X',\n      'L',\n      'N',\n      'F',\n      'T',\n      'G',\n      'K',\n      'D',\n      'C',\n      'M',\n      'W',\n      'B',\n    ],\n    notch: 'J',\n  },\n  V: {\n    alphabet: [\n      'V',\n      'Z',\n      'B',\n      'R',\n      'G',\n      'I',\n      'T',\n      'Y',\n      'U',\n      'P',\n      'S',\n      'D',\n      'N',\n      'H',\n      'L',\n      'X',\n      'A',\n      'W',\n      'M',\n      'J',\n      'Q',\n      'O',\n      'F',\n      'E',\n      'C',\n      'K',\n    ],\n    notch: 'Z',\n  },\n};\n\nexport const ReflectorOption = {\n  A: [\n    'E',\n    'J',\n    'M',\n    'Z',\n    'A',\n    'L',\n    'Y',\n    'X',\n    'V',\n    'B',\n    'W',\n    'F',\n    'C',\n    'R',\n    'Q',\n    'U',\n    'O',\n    'N',\n    'T',\n    'S',\n    'P',\n    'I',\n    'K',\n    'H',\n    'G',\n    'D',\n  ],\n  B: [\n    'Y',\n    'R',\n    'U',\n    'H',\n    'Q',\n    'S',\n    'L',\n    'D',\n    'P',\n    'X',\n    'N',\n    'G',\n    'O',\n    'K',\n    'M',\n    'I',\n    'E',\n    'B',\n    'F',\n    'Z',\n    'C',\n    'W',\n    'V',\n    'J',\n    'A',\n    'T',\n  ],\n  C: [\n    'F',\n    'V',\n    'P',\n    'J',\n    'I',\n    'A',\n    'O',\n    'Y',\n    'E',\n    'D',\n    'R',\n    'Z',\n    'X',\n    'W',\n    'G',\n    'C',\n    'T',\n    'K',\n    'U',\n    'Q',\n    'S',\n    'B',\n    'N',\n    'M',\n    'H',\n    'L',\n  ],\n};\n","import { Alphabet } from './data';\n\nclass Rotors {\n  constructor(classAttribute) {\n    this.rotors = Array.from(document.querySelectorAll(classAttribute)).reverse();\n    this.valueIndex = [];\n  }\n\n  setValue(rotorIndex, value) {\n    const rotor = this.rotors[rotorIndex];\n    const valueIndex = Alphabet.indexOf(value);\n\n    const mainWindow = rotor.querySelector('.rotors__window--active');\n    const firstNextWindow = mainWindow.previousElementSibling;\n    const secondNextWindow = firstNextWindow.previousElementSibling;\n    const firstPrevWindow = mainWindow.nextElementSibling;\n    const secondPrevWindow = firstPrevWindow.nextElementSibling;\n    const wheel = rotor.querySelector('.rotors__wheel');\n\n    const firstNextValueIndex = valueIndex + 1 > 25 ? 0 : valueIndex + 1;\n    const secondNextValueIndex = valueIndex + 2 > 25 ? valueIndex - 26 + 2 : valueIndex + 2;\n    const firstPrevValueIndex = valueIndex - 1 < 0 ? 25 : valueIndex - 1;\n    const secondPrevValueIndex = valueIndex - 2 < 0 ? valueIndex + 26 - 2 : valueIndex - 2;\n\n    mainWindow.value = Alphabet[valueIndex];\n    firstNextWindow.innerText = Alphabet[firstNextValueIndex];\n    secondNextWindow.innerText = Alphabet[secondNextValueIndex];\n    firstPrevWindow.innerText = Alphabet[firstPrevValueIndex];\n    secondPrevWindow.innerText = Alphabet[secondPrevValueIndex];\n\n    wheel.style.backgroundPositionY = ((valueIndex * 100) / 26) * 7 + '%';\n    this.valueIndex[rotorIndex] = valueIndex;\n  }\n\n  stepRotor(rotorIndex) {\n    const newValueIndex = this.valueIndex[rotorIndex] + 1 > 25 ? 0 : this.valueIndex[rotorIndex] + 1;\n    const newValue = Alphabet[newValueIndex];\n    this.setValue(rotorIndex, newValue);\n  }\n\n  getCurrentState() {\n    return this.valueIndex;\n  }\n\n  bind() {\n    for (let [index, rotor] of this.rotors.entries()) {\n      const btnNext = rotor.querySelector('.rotors__btn--next');\n      const btnPrev = rotor.querySelector('.rotors__btn--prev');\n      const input = rotor.querySelector('input');\n\n      btnNext.onclick = () => {\n        const currentValueIndex = this.valueIndex[index];\n        const newValueIndex = currentValueIndex + 1 > 25 ? 0 : currentValueIndex + 1;\n        this.setValue(index, Alphabet[newValueIndex]);\n      };\n\n      btnPrev.onclick = () => {\n        const currentValueIndex = this.valueIndex[index];\n        const newValueIndex = currentValueIndex - 1 < 0 ? 25 : currentValueIndex - 1;\n        this.setValue(index, Alphabet[newValueIndex]);\n      };\n\n      input.onkeypress = e => {\n        e.stopPropagation();\n      };\n\n      input.onchange = () => {\n        if (input.validity.valid && input.value.length > 0) {\n          input.value = input.value.toUpperCase();\n          this.setValue(index, input.value);\n        } else {\n          this.setValue(index, Alphabet[this.valueIndex[index]]);\n        }\n      };\n    }\n  }\n\n  reset() {\n    for (let i = 0; i < this.rotors.length; i++) {\n      this.setValue(i, 'A');\n    }\n  }\n\n  init() {\n    this.reset();\n    this.bind();\n  }\n}\n\nconst rotors = new Rotors('.rotors__item');\nexport default rotors;\n","import { Layout } from './data';\n\nclass Lampboard {\n  constructor(classAttribute) {\n    this.lamps = document.querySelectorAll(classAttribute);\n    this.lastIndex = null;\n  }\n\n  newOutput(letter) {\n    const newIndex = Layout.indexOf(letter);\n    this.reset();\n    this.lamps[newIndex].classList.add('lampboard__lamp--active');\n    this.lastIndex = newIndex;\n  }\n\n  reset() {\n    const currentIndex = this.lastIndex || 0;\n    this.lamps[currentIndex].classList.remove('lampboard__lamp--active');\n    this.lastIndex = null;\n  }\n}\n\nconst lampboard = new Lampboard('.lampboard__lamp');\nexport default lampboard;\n","class Keyboard {\n  constructor(classAttribute) {\n    this.keys = document.querySelectorAll(classAttribute);\n  }\n\n  inputAction(letter) {\n    return letter;\n  }\n\n  bind() {\n    for (let key of this.keys) {\n      const letter = key.innerText.toUpperCase();\n\n      key.onclick = () => {\n        this.inputAction(letter);\n      };\n    }\n\n    document.onkeydown = e => {\n      const re = /^[A-Z]{1}/;\n      const key = e.key.toUpperCase();\n\n      if (re.test(key)) {\n        this.inputAction(key);\n      }\n    };\n  }\n\n  init() {\n    this.bind();\n  }\n}\n\nconst keyboard = new Keyboard('.keyboard__btn');\nexport default keyboard;\n","class Plugboard {\n  constructor(classAttribute) {\n    this.sockets = document.querySelectorAll(classAttribute);\n    this.connections = {};\n    this.prevSocket = null;\n  }\n\n  createPlug(pairLetter) {\n    const plug = document.createElement('div');\n    plug.classList.add('plugboard__plug');\n    plug.tabIndex = 0;\n    plug.setAttribute('role', 'button');\n    plug.innerText = pairLetter.toUpperCase();\n    return plug;\n  }\n\n  disconnectSockets(plug1, plug2, letter1, letter2) {\n    plug1.remove();\n    plug2.remove();\n    delete this.connections[letter1];\n    delete this.connections[letter2];\n  }\n\n  connectSockets(socket1, socket2) {\n    const letter1 = socket2.querySelector('span').innerText;\n    const letter2 = socket1.querySelector('span').innerText;\n    const plug1 = this.createPlug(letter1);\n    const plug2 = this.createPlug(letter2);\n\n    plug1.onclick = e => {\n      e.stopPropagation();\n      this.disconnectSockets(plug1, plug2, letter1, letter2);\n    };\n\n    plug2.onclick = e => {\n      e.stopPropagation();\n      this.disconnectSockets(plug1, plug2, letter1, letter2);\n    };\n\n    socket1.appendChild(plug1);\n    socket2.appendChild(plug2);\n    this.connections[letter1] = letter2;\n    this.connections[letter2] = letter1;\n  }\n\n  reset() {\n    for (let socket of this.sockets) {\n      const plug = socket.querySelector('.plugboard__plug');\n      if (!plug) {\n        continue;\n      }\n      plug.remove();\n    }\n\n    this.connections = {};\n  }\n\n  bind() {\n    for (let socket of this.sockets) {\n      socket.onclick = () => {\n        if (this.prevSocket && this.prevSocket !== socket) {\n          this.connectSockets(socket, this.prevSocket);\n          socket.blur();\n          this.prevSocket = null;\n        } else {\n          this.prevSocket = socket;\n        }\n      };\n    }\n  }\n\n  init() {\n    this.bind();\n  }\n}\n\nconst plugboard = new Plugboard('.plugboard__socket');\nexport default plugboard;\n","import { RotorOption, ReflectorOption } from './data';\n\nclass Settings {\n  constructor(classDialogue, classToggle, classSelect) {\n    this.dialogueClass = classDialogue;\n    this.toggleClass = classToggle;\n    this.selectClass = classSelect;\n  }\n\n  changeRotor(rotor, value) {\n    return [rotor, value];\n  }\n\n  changeReflector(value) {\n    return value;\n  }\n\n  createOption(value) {\n    const option = document.createElement('option');\n    option.value = value;\n    option.innerText = value;\n    return option;\n  }\n\n  bind() {\n    const dialogue = document.querySelector(`.${this.dialogueClass}`);\n    const toggle = document.querySelector(`.${this.toggleClass}`);\n    const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));\n\n    const reflectors = Object.keys(ReflectorOption);\n    const rotors = Object.keys(RotorOption);\n\n    toggle.onclick = () => {\n      toggle.classList.toggle(`${this.toggleClass}--active`);\n      dialogue.classList.toggle(`${this.dialogueClass}--active`);\n    };\n\n    reflectors.forEach(item => {\n      selects[0].appendChild(this.createOption(item));\n    });\n\n    selects[0].onchange = () => {\n      this.changeReflector(selects[0].value);\n      selects[0].blur();\n    };\n\n    for (let i = 1; i < selects.length; i++) {\n      rotors.forEach(item => {\n        selects[i].appendChild(this.createOption(item));\n      });\n\n      selects[i].onchange = () => {\n        this.changeRotor(3 - i, selects[i].value);\n        selects[i].blur();\n      };\n    }\n  }\n\n  init() {\n    this.bind();\n    this.reset();\n  }\n\n  reset() {\n    const selects = Array.from(document.querySelectorAll(`.${this.selectClass}`));\n    selects[0].value = 'B';\n    selects[1].value = 'I';\n    selects[2].value = 'II';\n    selects[3].value = 'III';\n  }\n}\n\nconst settings = new Settings('settings__dialogue', 'settings__toggle', 'settings__select');\nexport default settings;\n","class Message {\n  constructor(classModal, classToggle, idDate, idTime, classInput, idCheckbox, classSubmit, classOutput) {\n    this.modalClass = classModal;\n    this.toggleClass = classToggle;\n    this.dateID = idDate;\n    this.timeID = idTime;\n    this.inputClass = classInput;\n    this.checkboxID = idCheckbox;\n    this.submitClass = classSubmit;\n    this.outputClass = classOutput;\n    this.month = [\n      'January',\n      'February',\n      'March',\n      'April',\n      'May',\n      'June',\n      'July',\n      'August',\n      'September',\n      'October',\n      'November',\n      'December',\n    ];\n  }\n\n  setTime() {\n    const dateArea = document.getElementById(this.dateID);\n    const timeArea = document.getElementById(this.timeID);\n\n    let today = new Date();\n    let dd = today.getDate();\n    let mm = today.getMonth();\n    let yyyy = today.getFullYear();\n    let hours = today.getHours();\n    let minutes = today.getMinutes();\n\n    dateArea.innerText = `${dd} ${this.month[mm]} ${yyyy}`;\n\n    if (dd < 10) {\n      dd = '0' + dd;\n    }\n\n    mm += 1;\n\n    if (mm < 10) {\n      mm = '0' + mm;\n    }\n\n    dateArea.dateTime = `${yyyy}-${mm}-${dd}`;\n    timeArea.innerText = `${hours}:${minutes}`;\n    timeArea.dateTime = `${hours}:${minutes}`;\n  }\n\n  encryptText(text) {\n    return text;\n  }\n\n  bind() {\n    const modal = document.querySelector(`.${this.modalClass}`);\n    const toggle = document.querySelector(`.${this.toggleClass}`);\n    const content = modal.querySelector(`.${this.modalClass}__content`);\n    const input = document.querySelector(`.${this.inputClass}`);\n    const checkbox = document.getElementById(this.checkboxID);\n    const submit = document.querySelector(`.${this.submitClass}`);\n    const output = document.querySelector(`.${this.outputClass}`);\n\n    toggle.onclick = () => {\n      modal.classList.add(`${this.modalClass}--active`);\n      this.setTime();\n    };\n\n    modal.onclick = () => {\n      modal.classList.remove(`${this.modalClass}--active`);\n    };\n\n    content.onclick = e => {\n      e.stopPropagation();\n    };\n\n    input.onkeyup = e => {\n      e.stopPropagation();\n      const re = /[^A-Za-z\\s]/g;\n      input.value = input.value.replace(re, '');\n      input.value = input.value.toUpperCase();\n    };\n\n    submit.onclick = () => {\n      let text = input.value;\n      if (!checkbox.checked) {\n        text = text\n          .replace(/ /g, '')\n          .match(/.{1,5}/g)\n          .join(' ');\n      }\n\n      output.innerText = this.encryptText(text);\n    };\n  }\n\n  init() {\n    this.bind();\n  }\n}\n\nconst message = new Message(\n  'modal',\n  'modal__toggle',\n  'date',\n  'time',\n  'message__input',\n  'keep-formatting',\n  'message__btn',\n  'message__output',\n);\nexport default message;\n","import { Alphabet } from './data';\n\nclass Enigma {\n  constructor() {}\n\n  sumValues(a, b) {\n    return a + b > 25 ? a - 26 + b : a + b;\n  }\n\n  subValues(a, b) {\n    return a - b < 0 ? a + 26 - b : a - b;\n  }\n\n  encrypt(letter, rotors, rotorPositions, reflector) {\n    let result;\n    const letterIndex = Alphabet.indexOf(letter);\n    const numberOfRotors = rotorPositions.length;\n\n    for (let i = 0; i < numberOfRotors; i++) {\n      if (i == 0) {\n        result = Alphabet.indexOf(rotors[i][this.sumValues(rotorPositions[i], letterIndex)]);\n      } else {\n        result = Alphabet.indexOf(\n          rotors[i][this.sumValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],\n        );\n      }\n    }\n\n    result = rotors[numberOfRotors - 1].indexOf(\n      Alphabet[\n        this.sumValues(\n          Alphabet.indexOf(reflector[this.subValues(result, rotorPositions[numberOfRotors - 1])]),\n          rotorPositions[numberOfRotors - 1],\n        )\n      ],\n    );\n\n    for (let i = numberOfRotors - 1; i >= 0; i--) {\n      if (i == 0) {\n        result = this.subValues(result, rotorPositions[0]);\n      } else {\n        result = rotors[i - 1].indexOf(\n          Alphabet[this.subValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],\n        );\n      }\n    }\n\n    result = Alphabet[result];\n\n    return result;\n  }\n}\n\nconst enigma = new Enigma();\nexport default enigma;\n","import { RotorOption, ReflectorOption, Alphabet } from './data';\nimport Rotors from './rotors';\nimport Lampboard from './lampboard';\nimport Keyboard from './keyboard';\nimport Plugboard from './plugboard';\nimport Settings from './settings';\nimport Message from './message';\nimport Enigma from './enigma';\n\nclass App {\n  constructor(rotorSet, rotorSetNotch, reflector) {\n    this.rotorSet = rotorSet;\n    this.rotorSetNotch = rotorSetNotch;\n    this.reflector = reflector;\n  }\n\n  init() {\n    Keyboard.init();\n    Plugboard.init();\n    Rotors.init();\n    Settings.init();\n    Message.init();\n\n    const resetButton = document.querySelector('.reset');\n    resetButton.onclick = () => {\n      resetButton.disabled = true;\n      resetButton.style.transitionDuration = '0.5s';\n      resetButton.style.transform = 'rotate(360deg)';\n\n      this.reset();\n\n      setTimeout(() => {\n        resetButton.disabled = false;\n        resetButton.style.transitionDuration = '0s';\n        resetButton.style.transform = '';\n      }, 500);\n    };\n  }\n\n  reset() {\n    Rotors.reset();\n    Lampboard.reset();\n    Plugboard.reset();\n  }\n\n  changeRotor(rotor, notch, rotorIndex) {\n    this.rotorSet[rotorIndex] = rotor;\n    this.rotorSetNotch[rotorIndex] = notch;\n  }\n\n  changeReflector(reflector) {\n    this.reflector = reflector;\n  }\n\n  inputAction(letter) {\n    if (letter in Plugboard.connections) {\n      letter = Plugboard.connections[letter];\n    }\n\n    const rotorsToStep = [0];\n\n    for (let i = 0; i < this.rotorSet.length - 1; i++) {\n      const currentValue = Alphabet[Rotors.valueIndex[i]];\n      if (currentValue == this.rotorSetNotch[i]) {\n        rotorsToStep.push(i + 1);\n      } else {\n        break;\n      }\n    }\n\n    rotorsToStep.forEach(item => {\n      Rotors.stepRotor(item);\n    });\n\n    let result = Enigma.encrypt(letter, this.rotorSet, Rotors.valueIndex, this.reflector);\n\n    if (result in Plugboard.connections) {\n      result = Plugboard.connections[result];\n    }\n\n    Lampboard.newOutput(result);\n\n    return result;\n  }\n}\n\nconst app = new App(\n  [RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet],\n  [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch],\n  ReflectorOption.B,\n);\napp.init();\n\nKeyboard.inputAction = letter => {\n  app.inputAction(letter);\n};\n\nSettings.changeReflector = value => {\n  app.reflector = ReflectorOption[value];\n  app.reset();\n};\n\nSettings.changeRotor = (rotor, value) => {\n  app.rotorSet[rotor] = RotorOption[value]['alphabet'];\n  app.rotorSetNotch[rotor] = RotorOption[value]['notch'];\n  app.reset();\n};\n\nMessage.encryptText = text => {\n  let output = '';\n\n  for (let i = 0; i < text.length; i++) {\n    if (text[i] == ' ') {\n      output += text[i];\n    } else {\n      output += app.inputAction(text[i]);\n    }\n  }\n\n  return output;\n};\n"],"names":["Alphabet","Layout","RotorOption","I","alphabet","notch","II","III","IV","V","ReflectorOption","A","B","C","Rotors","constructor","classAttribute","rotors","Array","from","document","querySelectorAll","reverse","valueIndex","setValue","rotorIndex","value","rotor","indexOf","mainWindow","querySelector","firstNextWindow","previousElementSibling","secondNextWindow","firstPrevWindow","nextElementSibling","secondPrevWindow","wheel","firstNextValueIndex","secondNextValueIndex","firstPrevValueIndex","secondPrevValueIndex","innerText","style","backgroundPositionY","stepRotor","newValueIndex","newValue","getCurrentState","bind","index","entries","btnNext","btnPrev","input","onclick","currentValueIndex","onkeypress","e","stopPropagation","onchange","validity","valid","length","toUpperCase","reset","i","init","Lampboard","lamps","lastIndex","newOutput","letter","newIndex","classList","add","currentIndex","remove","lampboard","Keyboard","keys","inputAction","key","onkeydown","re","test","keyboard","Plugboard","sockets","connections","prevSocket","createPlug","pairLetter","plug","createElement","tabIndex","setAttribute","disconnectSockets","plug1","plug2","letter1","letter2","connectSockets","socket1","socket2","appendChild","socket","blur","plugboard","Settings","classDialogue","classToggle","classSelect","dialogueClass","toggleClass","selectClass","changeRotor","changeReflector","createOption","option","dialogue","toggle","selects","reflectors","Object","forEach","item","settings","Message","classModal","idDate","idTime","classInput","idCheckbox","classSubmit","classOutput","modalClass","dateID","timeID","inputClass","checkboxID","submitClass","outputClass","month","setTime","dateArea","getElementById","timeArea","today","Date","dd","getDate","mm","getMonth","yyyy","getFullYear","hours","getHours","minutes","getMinutes","dateTime","encryptText","text","modal","content","checkbox","submit","output","onkeyup","replace","checked","match","join","message","Enigma","sumValues","a","b","subValues","encrypt","rotorPositions","reflector","result","letterIndex","numberOfRotors","enigma","App","rotorSet","rotorSetNotch","resetButton","disabled","transitionDuration","transform","setTimeout","rotorsToStep","currentValue","push","app"],"mappings":"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"}
