@@ -1,4 +1,4 @@
-import {Layout} from './data';
+import { Layout } from './data';
 
 class Lampboard {
   constructor(classAttribute) {

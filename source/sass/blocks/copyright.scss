@@ -1,16 +1,20 @@
 .copyright {
   margin-top: $mobile-width * 0.03 + px;
-  color: #44474B;
+  color: #44474b;
   font-size: $mobile-width * 0.015 + px;
+
+  &__heart {
+    color: #ff5a5f;
+  }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .copyright {
     font-size: 1.5vw;
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .copyright {
     font-size: $desktop-width * 0.015 + px;
   }

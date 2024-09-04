@@ -23,7 +23,7 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .lampboard {
     &__lamp {
       width: 7.4vw;
@@ -38,7 +38,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .lampboard {
     &__lamp {
       width: $desktop-width * 0.074 + px;

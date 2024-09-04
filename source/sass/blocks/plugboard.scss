@@ -57,7 +57,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       z-index: -1;
@@ -89,7 +89,7 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .plugboard {
     padding-top: 5vw;
 
@@ -126,7 +126,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .plugboard {
     width: $desktop-width + px;
     margin: 0 auto;

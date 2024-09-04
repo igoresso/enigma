@@ -85,7 +85,7 @@
   }
 }
 
-@media (min-width: $tablet-width + px) {
+@media (min-width: ($tablet-width + px)) {
   .rotors {
     &__wrapper {
       width: 50%;
@@ -131,7 +131,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .rotors {
     width: $desktop-width + px;
     margin: 0 auto;

@@ -1,4 +1,4 @@
-import {RotorOption, ReflectorOption, Alphabet} from './data';
+import { RotorOption, ReflectorOption, Alphabet } from './data';
 import Rotors from './rotors';
 import Lampboard from './lampboard';
 import Keyboard from './keyboard';
@@ -68,7 +68,7 @@ class App {
       }
     }
 
-    rotorsToStep.forEach((item) => {
+    rotorsToStep.forEach(item => {
       Rotors.stepRotor(item);
     });
 
@@ -84,14 +84,18 @@ class App {
   }
 }
 
-const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
+const app = new App(
+  [RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet],
+  [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch],
+  ReflectorOption.B,
+);
 app.init();
 
-Keyboard.inputAction = (letter) => {
+Keyboard.inputAction = letter => {
   app.inputAction(letter);
 };
 
-Settings.changeReflector = (value) => {
+Settings.changeReflector = value => {
   app.reflector = ReflectorOption[value];
   app.reset();
 };
@@ -102,7 +106,7 @@ Settings.changeRotor = (rotor, value) => {
   app.reset();
 };
 
-Message.encryptText = (text) => {
+Message.encryptText = text => {
   let output = '';
 
   for (let i = 0; i < text.length; i++) {

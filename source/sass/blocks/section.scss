@@ -24,7 +24,7 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .section {
     padding: 1vw 0;
 
@@ -48,7 +48,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .section {
     width: $desktop-width + px;
     margin: 0 auto;

@@ -8,7 +8,20 @@ class Message {
     this.checkboxID = idCheckbox;
     this.submitClass = classSubmit;
     this.outputClass = classOutput;
-    this.month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    this.month = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
   }
 
   setTime() {
@@ -24,13 +37,13 @@ class Message {
 
     dateArea.innerText = `${dd} ${this.month[mm]} ${yyyy}`;
 
-    if(dd < 10) {
+    if (dd < 10) {
       dd = '0' + dd;
     }
 
     mm += 1;
 
-    if(mm < 10) {
+    if (mm < 10) {
       mm = '0' + mm;
     }
 
@@ -61,12 +74,12 @@ class Message {
       modal.classList.remove(`${this.modalClass}--active`);
     };
 
-    content.onclick = (evt) => {
-      evt.stopPropagation();
+    content.onclick = e => {
+      e.stopPropagation();
     };
 
-    input.onkeyup = (evt) => {
-      evt.stopPropagation();
+    input.onkeyup = e => {
+      e.stopPropagation();
       const re = /[^A-Za-z\s]/g;
       input.value = input.value.replace(re, '');
       input.value = input.value.toUpperCase();
@@ -75,7 +88,10 @@ class Message {
     submit.onclick = () => {
       let text = input.value;
       if (!checkbox.checked) {
-        text = text.replace(/ /g, '').match(/.{1,5}/g).join(' ');
+        text = text
+          .replace(/ /g, '')
+          .match(/.{1,5}/g)
+          .join(' ');
       }
 
       output.innerText = this.encryptText(text);
@@ -87,5 +103,14 @@ class Message {
   }
 }
 
-const message = new Message('modal', 'modal__toggle', 'date', 'time', 'message__input', 'keep-formatting', 'message__btn', 'message__output');
+const message = new Message(
+  'modal',
+  'modal__toggle',
+  'date',
+  'time',
+  'message__input',
+  'keep-formatting',
+  'message__btn',
+  'message__output',
+);
 export default message;

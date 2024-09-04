@@ -7,13 +7,13 @@
   padding: $mobile-width * 0.03 + px $mobile-width * 0.05 + px $desktop-width * 0.015 + px;
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .page-footer {
     padding: 3vw 5vw 1.5vw;
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .page-footer {
     padding: $desktop-width * 0.03 + px $desktop-width * 0.05 + px $desktop-width * 0.015 + px;
   }

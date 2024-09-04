@@ -51,7 +51,7 @@
     padding: 12px 0 0 10px;
     font-size: 18px;
     line-height: 18px;
-    background: #f2f2f2 url("../img/dropdown.svg") no-repeat right center;
+    background: #f2f2f2 url('../img/dropdown.svg') no-repeat right center;
     background-size: 24px;
     border: none;
     border-bottom: 1px solid $color-bg;
@@ -60,7 +60,7 @@
 
     &:hover,
     &:focus {
-      background-image: url("../img/dropdown-active.svg");
+      background-image: url('../img/dropdown-active.svg');
     }
   }
 
@@ -104,13 +104,13 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .settings {
     right: 3.1vw;
   }
 }
 
-@media (min-width: $tablet-width + px) {
+@media (min-width: ($tablet-width + px)) {
   .settings {
     top: 20px;
     right: 20px;

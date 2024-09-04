@@ -1,7 +1,7 @@
 .message {
   padding: 20px;
   color: #090a0c;
-  font-family: "Courier New", "Lucida Sans Typewriter", monospace;
+  font-family: 'Courier New', 'Lucida Sans Typewriter', monospace;
   font-size: 14px;
   line-height: 14px;
   font-weight: 600;
@@ -61,7 +61,9 @@
         height: 18px;
         border: 1px solid #090a0c;
         opacity: 0.6;
-        transition: all 0.12s, border-color 0.08s;
+        transition:
+          all 0.12s,
+          border-color 0.08s;
       }
     }
 

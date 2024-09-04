@@ -1,4 +1,4 @@
-import {RotorOption, ReflectorOption} from './data';
+import { RotorOption, ReflectorOption } from './data';
 
 class Settings {
   constructor(classDialogue, classToggle, classSelect) {
@@ -35,7 +35,7 @@ class Settings {
       dialogue.classList.toggle(`${this.dialogueClass}--active`);
     };
 
-    reflectors.forEach((item) => {
+    reflectors.forEach(item => {
       selects[0].appendChild(this.createOption(item));
     });
 
@@ -45,7 +45,7 @@ class Settings {
     };
 
     for (let i = 1; i < selects.length; i++) {
-      rotors.forEach((item) => {
+      rotors.forEach(item => {
         selects[i].appendChild(this.createOption(item));
       });
 

@@ -27,13 +27,13 @@ class Plugboard {
     const plug1 = this.createPlug(letter1);
     const plug2 = this.createPlug(letter2);
 
-    plug1.onclick = (evt) => {
-      evt.stopPropagation();
+    plug1.onclick = e => {
+      e.stopPropagation();
       this.disconnectSockets(plug1, plug2, letter1, letter2);
     };
 
-    plug2.onclick = (evt) => {
-      evt.stopPropagation();
+    plug2.onclick = e => {
+      e.stopPropagation();
       this.disconnectSockets(plug1, plug2, letter1, letter2);
     };
 

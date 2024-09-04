@@ -1,4 +1,4 @@
-import {Alphabet} from './data';
+import { Alphabet } from './data';
 
 class Rotors {
   constructor(classAttribute) {
@@ -17,10 +17,10 @@ class Rotors {
     const secondPrevWindow = firstPrevWindow.nextElementSibling;
     const wheel = rotor.querySelector('.rotors__wheel');
 
-    const firstNextValueIndex = (valueIndex + 1 > 25) ? 0 : valueIndex + 1;
-    const secondNextValueIndex = (valueIndex + 2 > 25) ? valueIndex - 26 + 2 : valueIndex + 2;
-    const firstPrevValueIndex = (valueIndex - 1 < 0) ? 25 : valueIndex - 1;
-    const secondPrevValueIndex = (valueIndex - 2 < 0) ? valueIndex + 26 - 2 : valueIndex - 2;
+    const firstNextValueIndex = valueIndex + 1 > 25 ? 0 : valueIndex + 1;
+    const secondNextValueIndex = valueIndex + 2 > 25 ? valueIndex - 26 + 2 : valueIndex + 2;
+    const firstPrevValueIndex = valueIndex - 1 < 0 ? 25 : valueIndex - 1;
+    const secondPrevValueIndex = valueIndex - 2 < 0 ? valueIndex + 26 - 2 : valueIndex - 2;
 
     mainWindow.value = Alphabet[valueIndex];
     firstNextWindow.innerText = Alphabet[firstNextValueIndex];
@@ -28,12 +28,12 @@ class Rotors {
     firstPrevWindow.innerText = Alphabet[firstPrevValueIndex];
     secondPrevWindow.innerText = Alphabet[secondPrevValueIndex];
 
-    wheel.style.backgroundPositionY = (valueIndex * 100 / 26) * 7 + '%';
+    wheel.style.backgroundPositionY = ((valueIndex * 100) / 26) * 7 + '%';
     this.valueIndex[rotorIndex] = valueIndex;
   }
 
   stepRotor(rotorIndex) {
-    const newValueIndex = (this.valueIndex[rotorIndex] + 1 > 25) ? 0 : (this.valueIndex[rotorIndex] + 1);
+    const newValueIndex = this.valueIndex[rotorIndex] + 1 > 25 ? 0 : this.valueIndex[rotorIndex] + 1;
     const newValue = Alphabet[newValueIndex];
     this.setValue(rotorIndex, newValue);
   }
@@ -50,13 +50,13 @@ class Rotors {
 
       btnNext.onclick = () => {
         const currentValueIndex = this.valueIndex[index];
-        const newValueIndex = (currentValueIndex + 1 > 25) ? 0 : currentValueIndex + 1;
+        const newValueIndex = currentValueIndex + 1 > 25 ? 0 : currentValueIndex + 1;
         this.setValue(index, Alphabet[newValueIndex]);
       };
 
       btnPrev.onclick = () => {
         const currentValueIndex = this.valueIndex[index];
-        const newValueIndex = (currentValueIndex - 1 < 0) ? 25 : currentValueIndex - 1;
+        const newValueIndex = currentValueIndex - 1 < 0 ? 25 : currentValueIndex - 1;
         this.setValue(index, Alphabet[newValueIndex]);
       };
 
@@ -65,11 +65,11 @@ class Rotors {
       };
 
       input.onchange = () => {
-        if (input.validity.valid && input.value.length>0) {
+        if (input.validity.valid && input.value.length > 0) {
           input.value = input.value.toUpperCase();
           this.setValue(index, input.value);
         } else {
-          this.setValue(index,Alphabet[this.valueIndex[index]]);
+          this.setValue(index, Alphabet[this.valueIndex[index]]);
         }
       };
     }

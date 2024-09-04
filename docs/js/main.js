@@ -1,34 +1,304 @@
 (function () {
   'use strict';
 
-  const Alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  const Layout = ['Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'P', 'Y', 'X', 'C', 'V', 'B', 'N', 'M', 'L'];
+  const Alphabet = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ];
+  const Layout = [
+    'Q',
+    'W',
+    'E',
+    'R',
+    'T',
+    'Z',
+    'U',
+    'I',
+    'O',
+    'A',
+    'S',
+    'D',
+    'F',
+    'G',
+    'H',
+    'J',
+    'K',
+    'P',
+    'Y',
+    'X',
+    'C',
+    'V',
+    'B',
+    'N',
+    'M',
+    'L',
+  ];
   const RotorOption = {
-    'I': {
-      'alphabet': ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J'],
-      'notch': 'Q'
+    I: {
+      alphabet: [
+        'E',
+        'K',
+        'M',
+        'F',
+        'L',
+        'G',
+        'D',
+        'Q',
+        'V',
+        'Z',
+        'N',
+        'T',
+        'O',
+        'W',
+        'Y',
+        'H',
+        'X',
+        'U',
+        'S',
+        'P',
+        'A',
+        'I',
+        'B',
+        'R',
+        'C',
+        'J',
+      ],
+      notch: 'Q',
     },
-    'II': {
-      'alphabet': ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E'],
-      'notch': 'E'
+    II: {
+      alphabet: [
+        'A',
+        'J',
+        'D',
+        'K',
+        'S',
+        'I',
+        'R',
+        'U',
+        'X',
+        'B',
+        'L',
+        'H',
+        'W',
+        'T',
+        'M',
+        'C',
+        'Q',
+        'G',
+        'Z',
+        'N',
+        'P',
+        'Y',
+        'F',
+        'V',
+        'O',
+        'E',
+      ],
+      notch: 'E',
     },
-    'III': {
-      'alphabet': ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O'],
-      'notch': 'V'
+    III: {
+      alphabet: [
+        'B',
+        'D',
+        'F',
+        'H',
+        'J',
+        'L',
+        'C',
+        'P',
+        'R',
+        'T',
+        'X',
+        'V',
+        'Z',
+        'N',
+        'Y',
+        'E',
+        'I',
+        'W',
+        'G',
+        'A',
+        'K',
+        'M',
+        'U',
+        'S',
+        'Q',
+        'O',
+      ],
+      notch: 'V',
     },
-    'IV': {
-      'alphabet': ['E', 'S', 'O', 'V', 'P', 'Z', 'J', 'A', 'Y', 'Q', 'U', 'I', 'R', 'H', 'X', 'L', 'N', 'F', 'T', 'G', 'K', 'D', 'C', 'M', 'W', 'B'],
-      'notch': 'J'
+    IV: {
+      alphabet: [
+        'E',
+        'S',
+        'O',
+        'V',
+        'P',
+        'Z',
+        'J',
+        'A',
+        'Y',
+        'Q',
+        'U',
+        'I',
+        'R',
+        'H',
+        'X',
+        'L',
+        'N',
+        'F',
+        'T',
+        'G',
+        'K',
+        'D',
+        'C',
+        'M',
+        'W',
+        'B',
+      ],
+      notch: 'J',
     },
-    'V': {
-      'alphabet': ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 'X', 'A', 'W', 'M', 'J', 'Q', 'O', 'F', 'E', 'C', 'K'],
-      'notch': 'Z'
-    }
+    V: {
+      alphabet: [
+        'V',
+        'Z',
+        'B',
+        'R',
+        'G',
+        'I',
+        'T',
+        'Y',
+        'U',
+        'P',
+        'S',
+        'D',
+        'N',
+        'H',
+        'L',
+        'X',
+        'A',
+        'W',
+        'M',
+        'J',
+        'Q',
+        'O',
+        'F',
+        'E',
+        'C',
+        'K',
+      ],
+      notch: 'Z',
+    },
   };
   const ReflectorOption = {
-    'A': ['E', 'J', 'M', 'Z', 'A', 'L', 'Y', 'X', 'V', 'B', 'W', 'F', 'C', 'R', 'Q', 'U', 'O', 'N', 'T', 'S', 'P', 'I', 'K', 'H', 'G', 'D'],
-    'B': ['Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O', 'K', 'M', 'I', 'E', 'B', 'F', 'Z', 'C', 'W', 'V', 'J', 'A', 'T'],
-    'C': ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', 'W', 'G', 'C', 'T', 'K', 'U', 'Q', 'S', 'B', 'N', 'M', 'H', 'L']
+    A: [
+      'E',
+      'J',
+      'M',
+      'Z',
+      'A',
+      'L',
+      'Y',
+      'X',
+      'V',
+      'B',
+      'W',
+      'F',
+      'C',
+      'R',
+      'Q',
+      'U',
+      'O',
+      'N',
+      'T',
+      'S',
+      'P',
+      'I',
+      'K',
+      'H',
+      'G',
+      'D',
+    ],
+    B: [
+      'Y',
+      'R',
+      'U',
+      'H',
+      'Q',
+      'S',
+      'L',
+      'D',
+      'P',
+      'X',
+      'N',
+      'G',
+      'O',
+      'K',
+      'M',
+      'I',
+      'E',
+      'B',
+      'F',
+      'Z',
+      'C',
+      'W',
+      'V',
+      'J',
+      'A',
+      'T',
+    ],
+    C: [
+      'F',
+      'V',
+      'P',
+      'J',
+      'I',
+      'A',
+      'O',
+      'Y',
+      'E',
+      'D',
+      'R',
+      'Z',
+      'X',
+      'W',
+      'G',
+      'C',
+      'T',
+      'K',
+      'U',
+      'Q',
+      'S',
+      'B',
+      'N',
+      'M',
+      'H',
+      'L',
+    ],
   };
 
   class Rotors {
@@ -55,7 +325,7 @@
       secondNextWindow.innerText = Alphabet[secondNextValueIndex];
       firstPrevWindow.innerText = Alphabet[firstPrevValueIndex];
       secondPrevWindow.innerText = Alphabet[secondPrevValueIndex];
-      wheel.style.backgroundPositionY = valueIndex * 100 / 26 * 7 + '%';
+      wheel.style.backgroundPositionY = ((valueIndex * 100) / 26) * 7 + '%';
       this.valueIndex[rotorIndex] = valueIndex;
     }
 
@@ -112,7 +382,6 @@
       this.reset();
       this.bind();
     }
-
   }
 
   const rotors = new Rotors('.rotors__item');
@@ -135,7 +404,6 @@
       this.lamps[currentIndex].classList.remove('lampboard__lamp--active');
       this.lastIndex = null;
     }
-
   }
 
   const lampboard = new Lampboard('.lampboard__lamp');
@@ -171,7 +439,6 @@
     init() {
       this.bind();
     }
-
   }
 
   const keyboard = new Keyboard('.keyboard__btn');
@@ -252,7 +519,6 @@
     init() {
       this.bind();
     }
-
   }
 
   const plugboard = new Plugboard('.plugboard__socket');
@@ -324,7 +590,6 @@
       selects[2].value = 'II';
       selects[3].value = 'III';
     }
-
   }
 
   const settings = new Settings('settings__dialogue', 'settings__toggle', 'settings__select');
@@ -339,7 +604,20 @@
       this.checkboxID = idCheckbox;
       this.submitClass = classSubmit;
       this.outputClass = classOutput;
-      this.month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      this.month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
     }
 
     setTime() {
@@ -405,7 +683,10 @@
         let text = input.value;
 
         if (!checkbox.checked) {
-          text = text.replace(/ /g, '').match(/.{1,5}/g).join(' ');
+          text = text
+            .replace(/ /g, '')
+            .match(/.{1,5}/g)
+            .join(' ');
         }
 
         output.innerText = this.encryptText(text);
@@ -415,10 +696,18 @@
     init() {
       this.bind();
     }
-
   }
 
-  const message = new Message('modal', 'modal__toggle', 'date', 'time', 'message__input', 'keep-formatting', 'message__btn', 'message__output');
+  const message = new Message(
+    'modal',
+    'modal__toggle',
+    'date',
+    'time',
+    'message__input',
+    'keep-formatting',
+    'message__btn',
+    'message__output',
+  );
 
   class Enigma {
     constructor() {}
@@ -440,24 +729,34 @@
         if (i == 0) {
           result = Alphabet.indexOf(rotors[i][this.sumValues(rotorPositions[i], letterIndex)]);
         } else {
-          result = Alphabet.indexOf(rotors[i][this.sumValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))]);
+          result = Alphabet.indexOf(
+            rotors[i][this.sumValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],
+          );
         }
       }
 
-      result = rotors[numberOfRotors - 1].indexOf(Alphabet[this.sumValues(Alphabet.indexOf(reflector[this.subValues(result, rotorPositions[numberOfRotors - 1])]), rotorPositions[numberOfRotors - 1])]);
+      result = rotors[numberOfRotors - 1].indexOf(
+        Alphabet[
+          this.sumValues(
+            Alphabet.indexOf(reflector[this.subValues(result, rotorPositions[numberOfRotors - 1])]),
+            rotorPositions[numberOfRotors - 1],
+          )
+        ],
+      );
 
       for (let i = numberOfRotors - 1; i >= 0; i--) {
         if (i == 0) {
           result = this.subValues(result, rotorPositions[0]);
         } else {
-          result = rotors[i - 1].indexOf(Alphabet[this.subValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))]);
+          result = rotors[i - 1].indexOf(
+            Alphabet[this.subValues(result, this.subValues(rotorPositions[i], rotorPositions[i - 1]))],
+          );
         }
       }
 
       result = Alphabet[result];
       return result;
     }
-
   }
 
   const enigma = new Enigma();
@@ -534,10 +833,13 @@
       lampboard.newOutput(result);
       return result;
     }
-
   }
 
-  const app = new App([RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet], [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch], ReflectorOption.B);
+  const app = new App(
+    [RotorOption.III.alphabet, RotorOption.II.alphabet, RotorOption.I.alphabet],
+    [RotorOption.III.notch, RotorOption.II.notch, RotorOption.I.notch],
+    ReflectorOption.B,
+  );
   app.init();
 
   keyboard.inputAction = letter => {
@@ -568,7 +870,6 @@
 
     return output;
   };
-
-}());
+})();
 
 //# sourceMappingURL=main.js.map

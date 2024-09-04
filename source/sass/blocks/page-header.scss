@@ -19,7 +19,7 @@
   }
 }
 
-@media (min-width: $tablet-width + px) {
+@media (min-width: ($tablet-width + px)) {
   .page-header {
     position: absolute;
     top: 0;
@@ -44,7 +44,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .page-header {
     &__wrapper {
       width: $desktop-width * 0.4 + px;

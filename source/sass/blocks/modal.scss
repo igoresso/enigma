@@ -101,7 +101,7 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .modal {
     &__toggle {
       right: 3.1vw;
@@ -109,7 +109,7 @@
   }
 }
 
-@media (min-width: $tablet-width + px) {
+@media (min-width: ($tablet-width + px)) {
   .modal {
     &__toggle {
       top: 75px;

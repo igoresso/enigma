@@ -2,30 +2,43 @@
   "name": "enigma",
   "description": "Enigma Emulator",
   "homepage": "http://igoresso.github.io/enigma",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Igor Tyshchenko",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^10.1.0",
-    "browser-sync": "^2.26.13",
-    "del": "^6.0.0",
-    "eslint": "^7.17.0",
-    "gulp": "^4.0.2",
-    "gulp-better-rollup": "^4.0.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.9.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/stream": "^3.0.1",
+    "autoprefixer": "^10.4.20",
+    "babel-minify": "^0.5.2",
+    "browser-sync": "^3.0.2",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-babel-minify": "^0.5.2",
+    "gulp-clean": "^0.4.0",
     "gulp-csso": "^4.0.1",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^9.1.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^9.0.0",
+    "gulp-postcss": "^10.0.0",
     "gulp-posthtml": "^3.0.5",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "postcss": "^8.2.2",
-    "posthtml-include": "^1.6.0",
-    "rollup": "^2.35.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "stylelint": "^13.8.0",
-    "stylelint-config-standard": "^20.0.0"
+    "postcss": "^8.4.44",
+    "posthtml-include": "^2.0.1",
+    "prettier": "^3.3.3",
+    "rollup": "^4.21.2",
+    "sass": "^1.78.0",
+    "stylelint": "^16.9.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-prettier": "^5.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
     "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
@@ -34,9 +47,11 @@
     "start": "npm run build && gulp serve"
   },
   "browserslist": [
-    "last 2 versions"
+    ">0.2%",
+    "not dead",
+    "not IE 11"
   ],
   "engines": {
-    "node": "10.14.0"
+    "node": ">=10.0.0"
   }
 }

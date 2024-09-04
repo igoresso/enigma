@@ -28,7 +28,7 @@
   }
 }
 
-@media (min-width: $mobile-width + px) {
+@media (min-width: ($mobile-width + px)) {
   .keyboard {
     &__btn {
       width: 7.4vw;
@@ -44,7 +44,7 @@
   }
 }
 
-@media (min-width: $desktop-width + px) {
+@media (min-width: ($desktop-width + px)) {
   .keyboard {
     &__btn {
       width: $desktop-width * 0.074 + px;
